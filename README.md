@@ -7,9 +7,16 @@ AIの使用を隠すことが目的ではありません。人間が目的・原
 > AIくさい成果物は、AIが作った成果物ではない。  
 > 誰も本気で選んでいないように見える成果物である。
 
-## 最短で使う
+## 人が読む
 
-### AIにリポジトリ全体の原則を参照させる
+HTML版では、原則・媒体別ガイド・制作工程・レビュー・コピペ用プロンプトを1ページにまとめています。
+
+- HTML版: https://silovar-uk.github.io/designmd/
+- ソース: [`site/`](site/)
+
+チェックリストは画面上で選択でき、プロンプトはボタンからコピーできます。
+
+## AIに参照させる
 
 次のURLを、依頼文と一緒にAIへ渡してください。
 
@@ -46,6 +53,7 @@ https://raw.githubusercontent.com/silovar-uk/designmd/main/DESIGN.md
 
 | 目的 | 参照先 |
 |---|---|
+| 人がブラウザで読む | [HTML版](https://silovar-uk.github.io/designmd/) |
 | AIへ一つだけ渡す | [`DESIGN.md`](DESIGN.md) |
 | 原理原則を理解する | [`docs/core-principles.md`](docs/core-principles.md) |
 | 文章を作る・直す | [`docs/writing.md`](docs/writing.md) |
@@ -63,6 +71,13 @@ https://raw.githubusercontent.com/silovar-uk/designmd/main/DESIGN.md
 4. **装飾と意味の乖離** — 画像や図が、理解・検証・記憶のどれにも寄与しない
 5. **原材料と生活痕跡の欠如** — 実際の発言、日時、場所、失敗、数字、観察が消える
 6. **判断主体と責任の不在** — なぜ採用し、なぜ削り、どこまで言えるかを説明できない
+
+## HTML版の構成
+
+- `site/index.html` — 本文とページ構造
+- `site/styles.css` — レスポンシブデザイン
+- `site/app.js` — プロンプトコピーとレビュー集計
+- `.github/workflows/pages.yml` — GitHub Pagesへの自動デプロイ
 
 ## 運用上の注意
 
