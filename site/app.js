@@ -1,4 +1,20 @@
 (() => {
+  const iconLinks = [
+    { rel: 'icon', href: './favicon.ico', type: 'image/x-icon' },
+    { rel: 'icon', href: './favicon-32x32.png', type: 'image/png', sizes: '32x32' },
+    { rel: 'icon', href: './favicon-16x16.png', type: 'image/png', sizes: '16x16' },
+    { rel: 'apple-touch-icon', href: './apple-touch-icon.png', sizes: '180x180' },
+  ];
+
+  iconLinks.forEach((attributes) => {
+    const selector = `link[rel="${attributes.rel}"][href="${attributes.href}"]`;
+    if (document.head.querySelector(selector)) return;
+
+    const link = document.createElement('link');
+    Object.entries(attributes).forEach(([name, value]) => link.setAttribute(name, value));
+    document.head.append(link);
+  });
+
   const copyButtons = document.querySelectorAll('[data-copy-group] .copy-button');
 
   copyButtons.forEach((button) => {
