@@ -7,16 +7,25 @@ AIの使用を隠すことが目的ではありません。人間が目的・原
 > AIくさい成果物は、AIが作った成果物ではない。  
 > 誰も本気で選んでいないように見える成果物である。
 
-今回の更新では、**完成品を一度に作らず、段階ごとに判断を確定する制作方法**を中核へ追加しました。
+現在は、**完成品を一度に作らず、段階ごとに判断を確定する制作方法**に加えて、正確さを保ちながら、あたたかみ・面白味・ユーモアを設計する方法も扱っています。
 
 ## 人が読む
 
-HTML版では、原則・媒体別ガイド・制作工程・レビュー・コピペ用プロンプトを1ページにまとめています。
+HTML版では、原則・段階制作・参照戦略・グリッド・あたたかみとユーモア・レビュー・コピペ用プロンプトを1ページにまとめています。
 
 - HTML版: https://silovar-uk.github.io/designmd/
 - ソース: [`site/`](site/)
 
-チェックリストは画面上で選択でき、プロンプトはボタンからコピーできます。
+HTML版では、次を操作しながら確認できます。
+
+- 9段階のステージゲート
+- 参照先の4分類
+- 静・標準・密・動の速度設計
+- 本線・副線・脱線の三層
+- 正確さ、あたたかみ、小さなユーモア、静かな帰還のトーン試作
+- 同じ事実を異なるユーモア強度で書き分けるトーンラボ
+- 問題に応じて戻るべき制作段階を示すチェックリスト
+- コピペ用プロンプト
 
 GitHub Pagesを初めて使うリポジトリでは、`Settings > Pages > Source` を一度だけ `GitHub Actions` に設定する必要があります。以降は `site/` の更新時に自動デプロイされます。
 
@@ -60,6 +69,19 @@ https://raw.githubusercontent.com/silovar-uk/designmd/main/DESIGN.md
 
 すぐ使える完全版プロンプトは [`prompts/slide-create.md`](prompts/slide-create.md) にあります。
 
+### あたたかみ・面白味・ユーモアを加える
+
+ポップな装飾や面白い見出しを均等に足すのではなく、次の三層を分けて設計します。
+
+- 本線：正確な情報、根拠、論理
+- 副線：作り手の観察、戸惑い、反応、生活の具体性
+- 脱線：ズレ、余計な検証、キャプション、コールバック
+
+全体制作前に、正確さ、あたたかみ、小さなユーモア、静かな帰還の4種類を代表ページで試します。
+
+- ガイド: [`docs/playful-editoriality.md`](docs/playful-editoriality.md)
+- 追加プロンプト: [`prompts/playful-editoriality.md`](prompts/playful-editoriality.md)
+
 ### 文章だけ参照させる
 
 - 文章設計: https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/writing.md
@@ -76,6 +98,7 @@ https://raw.githubusercontent.com/silovar-uk/designmd/main/DESIGN.md
 | 原理原則を理解する | [`docs/core-principles.md`](docs/core-principles.md) |
 | 段階的に制作する | [`docs/staged-production.md`](docs/staged-production.md) |
 | 独自性・面白味・動きを設計する | [`docs/reference-strategy.md`](docs/reference-strategy.md) |
+| あたたかみ・ユーモアを設計する | [`docs/playful-editoriality.md`](docs/playful-editoriality.md) |
 | 文章を作る・直す | [`docs/writing.md`](docs/writing.md) |
 | スライドを作る・直す | [`docs/slides.md`](docs/slides.md) |
 | 画像・図・チャートを選ぶ | [`docs/visuals.md`](docs/visuals.md) |
@@ -125,11 +148,24 @@ https://raw.githubusercontent.com/silovar-uk/designmd/main/DESIGN.md
 
 例：予想が外れるページだけグリッドから要素を外す、反証ページだけ左右を反転する、同じ引用を意味を変えて再登場させる。
 
+### 正しさに人の気配を混ぜる
+
+あたたかみは、ベージュ、丸い角、手書き文字から自動的には生まれません。
+
+- 読み手と同じ疑問を小さく共有する
+- 誤解や言い直しを理解へ使う
+- キャプションを第二の語り手にする
+- 失敗のうち、理解を深めるものだけを編集して残す
+- 面白さを全ページへ均等に配らない
+- 笑いの後に静かなページへ戻る
+
 ## HTML版の構成
 
 - `site/index.html` — 本文とページ構造
-- `site/styles.css` — レスポンシブデザイン
-- `site/app.js` — プロンプトコピーとレビュー集計
+- `site/styles.css` — 基本のレスポンシブデザイン
+- `site/app.js` — 機能レイヤーの読み込みと基本操作
+- `site/v2.css` / `site/v2.js` — 段階制作、参照戦略、グリッド
+- `site/v3.css` / `site/v3.js` — あたたかみ、面白味、ユーモアのトーン試作
 - `.github/workflows/pages.yml` — GitHub Pagesへの自動デプロイ
 
 ## 運用上の注意
