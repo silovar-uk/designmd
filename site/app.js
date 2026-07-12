@@ -72,5 +72,10 @@
 
   const layerScript = document.createElement('script');
   layerScript.src = './v2.js';
+  layerScript.addEventListener('load', () => {
+    const fixes = document.createElement('script');
+    fixes.src = './v2-fixes.js';
+    document.body.append(fixes);
+  });
   document.body.append(layerScript);
 })();
