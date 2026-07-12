@@ -14,7 +14,7 @@
     document.head.append(link);
   });
 
-  ['./v2.css', './v3.css'].forEach((href) => {
+  ['./v2.css', './v3.css', './v4.css'].forEach((href) => {
     const layerStyle = document.createElement('link');
     layerStyle.rel = 'stylesheet';
     layerStyle.href = href;
@@ -83,6 +83,7 @@
   loadScript('./v2.js')
     .then(() => loadScript('./v2-fixes.js'))
     .then(() => loadScript('./v3.js'))
+    .then(() => loadScript('./v4.js'))
     .catch(() => {
       // Base content remains usable even if an enhancement layer fails.
     });
