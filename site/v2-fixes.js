@@ -1,4 +1,24 @@
 (() => {
+  document.title = 'designmd｜完成を一度にさせない制作ガイド';
+  const description = document.querySelector('meta[name="description"]');
+  if (description) description.content = '完成を急がず、判断を段階ごとに確定するための文章・スライド・画像制作ガイド。';
+
+  const problemNav = [...document.querySelectorAll('.side-nav a')].find((node) => node.textContent.includes('6要因'));
+  if (problemNav) problemNav.textContent = 'AIくささの7要因';
+
+  const quickCode = document.querySelector('#quick-start [data-copy-group] code');
+  if (quickCode) {
+    quickCode.textContent = `以下の制作ガイドを必須要件として参照してください。
+https://raw.githubusercontent.com/silovar-uk/designmd/main/DESIGN.md
+
+今回の依頼：
+（依頼内容）
+
+完成版を一度に作らないでください。
+目的、原材料、参照戦略、構成、デザインシステム、代表ページ、全体制作を別々の段階として扱ってください。
+対話可能な場合は、逆質問、構成案、代表ページの各段階で一度止まり、確認を得てから次へ進んでください。`;
+  }
+
   const setNumber = (id, value) => {
     const node = document.querySelector(`${id} .section-number`);
     if (node) node.textContent = value;
