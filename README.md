@@ -7,11 +7,11 @@ AIの使用を隠すことが目的ではありません。人間が目的・原
 > AIくさい成果物は、AIが作った成果物ではない。  
 > 誰も本気で選んでいないように見える成果物である。
 
-現在は、**完成品を一度に作らず、段階ごとに判断を確定する制作方法**に加えて、正確さを保ちながら、あたたかみ・面白味・ユーモアを設計する方法も扱っています。
+現在は、**完成品を一度に作らず、段階ごとに判断を確定する制作方法**、あたたかみ・面白味・ユーモアの設計、日本語のAIくささを表面・論証・身体の3回に分けて編集する方法を扱っています。
 
 ## 人が読む
 
-HTML版では、原則・段階制作・参照戦略・グリッド・あたたかみとユーモア・レビュー・コピペ用プロンプトを1ページにまとめています。
+HTML版では、原則・段階制作・参照戦略・グリッド・あたたかみとユーモア・日本語文章編集・レビュー・コピペ用プロンプトを1ページにまとめています。
 
 - HTML版: https://silovar-uk.github.io/designmd/
 - ソース: [`site/`](site/)
@@ -24,6 +24,8 @@ HTML版では、次を操作しながら確認できます。
 - 本線・副線・脱線の三層
 - 正確さ、あたたかみ、小さなユーモア、静かな帰還のトーン試作
 - 同じ事実を異なるユーモア強度で書き分けるトーンラボ
+- 日本語文章の表面・論証・身体を切り替える3パス編集
+- 禁止語の置換と、原材料へ戻る編集の違い
 - 問題に応じて戻るべき制作段階を示すチェックリスト
 - コピペ用プロンプト
 
@@ -82,9 +84,26 @@ https://raw.githubusercontent.com/silovar-uk/designmd/main/DESIGN.md
 - ガイド: [`docs/playful-editoriality.md`](docs/playful-editoriality.md)
 - 追加プロンプト: [`prompts/playful-editoriality.md`](prompts/playful-editoriality.md)
 
+### 日本語文章のAIくささを減らす
+
+禁止語を別の語へ置換するだけで終えず、文章を3回に分けて編集します。
+
+1. **表面**：記号、定型句、文末、接続詞、過剰な文完結性
+2. **論証**：段落の役割、主張と証拠、因果、条件、読者負荷
+3. **身体**：本人の観察、記憶、迷い、音読、最終責任
+
+本人が提供していない感情、経験、会話、五感は創作しません。不足している場合は、AIが書き足すのではなく本人へ質問します。
+
+- 実践ガイド: [`docs/japanese-ai-writing-practices.md`](docs/japanese-ai-writing-practices.md)
+- 過剰な文完結性: [`docs/sentence-completeness.md`](docs/sentence-completeness.md)
+- 専用チェックリスト: [`docs/japanese-writing-review-checklist.md`](docs/japanese-writing-review-checklist.md)
+- レビュープロンプト: [`prompts/writing-review.md`](prompts/writing-review.md)
+
 ### 文章だけ参照させる
 
 - 文章設計: https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/writing.md
+- 日本語AI文章: https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/japanese-ai-writing-practices.md
+- 専用チェックリスト: https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/japanese-writing-review-checklist.md
 - 最終レビュー: https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/review-checklist.md
 
 すぐ使える依頼文は [`prompts/writing-review.md`](prompts/writing-review.md) にあります。
@@ -100,6 +119,9 @@ https://raw.githubusercontent.com/silovar-uk/designmd/main/DESIGN.md
 | 独自性・面白味・動きを設計する | [`docs/reference-strategy.md`](docs/reference-strategy.md) |
 | あたたかみ・ユーモアを設計する | [`docs/playful-editoriality.md`](docs/playful-editoriality.md) |
 | 文章を作る・直す | [`docs/writing.md`](docs/writing.md) |
+| 日本語のAIくささを深く直す | [`docs/japanese-ai-writing-practices.md`](docs/japanese-ai-writing-practices.md) |
+| 文の完結度を設計する | [`docs/sentence-completeness.md`](docs/sentence-completeness.md) |
+| 日本語文章を点検する | [`docs/japanese-writing-review-checklist.md`](docs/japanese-writing-review-checklist.md) |
 | スライドを作る・直す | [`docs/slides.md`](docs/slides.md) |
 | 画像・図・チャートを選ぶ | [`docs/visuals.md`](docs/visuals.md) |
 | 制作手順を整える | [`docs/workflow.md`](docs/workflow.md) |
@@ -159,6 +181,16 @@ https://raw.githubusercontent.com/silovar-uk/designmd/main/DESIGN.md
 - 面白さを全ページへ均等に配らない
 - 笑いの後に静かなページへ戻る
 
+### 日本語文章を三回に分けて編集する
+
+表面校正だけでは、文章の論証や原材料不足は直りません。
+
+- Lint：機械的な残留物と反復
+- Argument：段落、主張、証拠、因果
+- Embodiment：本人の身体、記憶、語彙、責任
+
+「人間らしく」と抽象的に指定せず、どの深さを直しているかを明示します。
+
 ## HTML版の構成
 
 - `site/index.html` — 本文とページ構造
@@ -166,12 +198,15 @@ https://raw.githubusercontent.com/silovar-uk/designmd/main/DESIGN.md
 - `site/app.js` — 機能レイヤーの読み込みと基本操作
 - `site/v2.css` / `site/v2.js` — 段階制作、参照戦略、グリッド
 - `site/v3.css` / `site/v3.js` — あたたかみ、面白味、ユーモアのトーン試作
+- `site/v4.css` / `site/v4.js` — 日本語文章の3パス編集と原材料への逆質問
 - `.github/workflows/pages.yml` — GitHub Pagesへの自動デプロイ
 
 ## 運用上の注意
 
 - このガイドは、AI生成物を見破る検出器ではありません。
 - 手書き風、紙の質感、崩したレイアウトを加えるだけでは人間らしくなりません。
+- 禁止語を別の言葉へ置換するだけでは、問題が移動します。
+- 本人が提供していない感情、経験、会話、五感を作りません。
 - ルールを機械的に守ると、このガイド自体が新しいテンプレートになります。
 - 内容上の理由がある場合は、ルールを破って構いません。その理由を説明できることが条件です。
 - 一括制作を求められた場合も、内部ではステージを順番に通し、置いた前提と判断を示してください。
