@@ -14,10 +14,12 @@
     document.head.append(link);
   });
 
-  const layerStyle = document.createElement('link');
-  layerStyle.rel = 'stylesheet';
-  layerStyle.href = './v2.css';
-  document.head.append(layerStyle);
+  ['./v2.css', './v3.css'].forEach((href) => {
+    const layerStyle = document.createElement('link');
+    layerStyle.rel = 'stylesheet';
+    layerStyle.href = href;
+    document.head.append(layerStyle);
+  });
 
   const copyButtons = document.querySelectorAll('[data-copy-group] .copy-button');
   copyButtons.forEach((button) => {
@@ -70,12 +72,18 @@
     });
   }
 
-  const layerScript = document.createElement('script');
-  layerScript.src = './v2.js';
-  layerScript.addEventListener('load', () => {
-    const fixes = document.createElement('script');
-    fixes.src = './v2-fixes.js';
-    document.body.append(fixes);
+  const loadScript = (src) => new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    script.src = src;
+    script.addEventListener('load', resolve, { once: true });
+    script.addEventListener('error', reject, { once: true });
+    document.body.append(script);
   });
-  document.body.append(layerScript);
+
+  loadScript('./v2.js')
+    .then(() => loadScript('./v2-fixes.js'))
+    .then(() => loadScript('./v3.js'))
+    .catch(() => {
+      // Base content remains usable even if an enhancement layer fails.
+    });
 })();
