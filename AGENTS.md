@@ -13,10 +13,13 @@
 - 学習資料：`docs/learning-materials.md`
 - 逆質問のテキストブロック：`docs/question-blocks.md`
 - 画像・図解：`docs/visuals.md`
-- 段階制作：`docs/staged-production.md`
+- 物語設計（冒頭・転換・見せ場・タイトル）：`docs/story-design.md`
+- 資料タイプ別方針（発表資料・報告書・学習資料などの判定）：`docs/document-type-policies.md`
+- AI失敗パターン集・案件間バリエーション規則：`docs/ai-failure-patterns.md`
+- 品質ルーブリック（成果物・ガイド自体の到達水準）：`docs/quality-rubric.md`
+- 制作工程（統一STEP 1–10）：`docs/staged-production.md`
 - 参照戦略：`docs/reference-strategy.md`
 - あたたかみ・ユーモア：`docs/playful-editoriality.md`
-- 制作工程：`docs/staged-production.md`
 - 最終レビュー：`docs/review-checklist.md`
 
 ## 作業時の必須事項
@@ -91,3 +94,13 @@
 - 各ページの文章形式の台本
 - 捨てた案
 - 未確認事項
+
+## 保守規約
+
+このリポジトリ自体を編集するAI・人間は、次の規約に従うこと。
+
+1. **正典所有制**：各概念には唯一の正典ファイルがある。他ファイルは要約と参照リンクにとどめ、内容を重複させない。新しい原則を追加する前に、既存の正典ファイル（[`docs/core-principles.md`](docs/core-principles.md)、[`docs/staged-production.md`](docs/staged-production.md)、[`docs/story-design.md`](docs/story-design.md)、[`docs/visuals.md`](docs/visuals.md)、[`docs/document-type-policies.md`](docs/document-type-policies.md)、[`docs/ai-failure-patterns.md`](docs/ai-failure-patterns.md)、[`docs/quality-rubric.md`](docs/quality-rubric.md) など）に該当概念がすでにないか確認してから、追加場所を決める。
+2. **DESIGN.md同期義務**：`docs/` 配下の正典ファイルを編集した場合、[`DESIGN.md`](DESIGN.md) の対応する章も同じ内容へ同期更新する。DESIGN.mdは正典群の自己完結ダイジェストであり、放置すると外部AIへ渡す版だけが古くなる。
+3. **「必ず」「常に」の使用制限**：例外条件を伴わない「必ず」「常に」の追加は避ける。内容上の理由があればルールを破ってよいという本ガイドの前提と矛盾するため。
+4. **追加時の重複チェック**：新しい原則やルールを追加する前に、既存ファイルに同趣旨の記述がないか検索する。見つかった場合は新規追加ではなく、既存箇所の更新または参照リンク化を優先する。
+5. **案件間バリエーション規則の自己適用**：[`docs/ai-failure-patterns.md`](docs/ai-failure-patterns.md) が定める案件間バリエーション規則は、ガイド自体にも適用される。例文・数値をそのまま使い続けると、ガイドの例自体が新しい「型」になり、模倣対象が変わるだけになる。例を更新・追加する際は、題材や数値パターンの多様性を意識する。

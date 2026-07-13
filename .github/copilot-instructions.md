@@ -22,6 +22,8 @@
 - `docs/slides.md`
 - `docs/staged-production.md`
 - `docs/reference-strategy.md`
+- `docs/story-design.md`
+- `docs/document-type-policies.md`
 - `prompts/slide-create.md`
 
 一括出力を求められた場合も、内部では各段階を順番に通し、置いた前提と判断を提出時に示してください。
