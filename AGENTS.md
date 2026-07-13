@@ -16,7 +16,7 @@
 - 段階制作：`docs/staged-production.md`
 - 参照戦略：`docs/reference-strategy.md`
 - あたたかみ・ユーモア：`docs/playful-editoriality.md`
-- 制作工程：`docs/workflow.md`
+- 制作工程：`docs/staged-production.md`
 - 最終レビュー：`docs/review-checklist.md`
 
 ## 作業時の必須事項
