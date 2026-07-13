@@ -8,6 +8,9 @@
 共通原則：
 https://raw.githubusercontent.com/silovar-uk/designmd/main/DESIGN.md
 
+理念・9要因診断：
+https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/core-principles.md
+
 逆質問テキストブロック：
 https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/question-blocks.md
 
