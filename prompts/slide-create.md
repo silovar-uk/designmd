@@ -32,6 +32,18 @@ https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/reference-strate
 あたたかみ・ユーモア：
 https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/playful-editoriality.md
 
+物語設計：
+https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/story-design.md
+
+資料タイプ別方針：
+https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/document-type-policies.md
+
+失敗パターン集：
+https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/ai-failure-patterns.md
+
+品質ルーブリック：
+https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/quality-rubric.md
+
 依頼内容：
 （ここに記載）
 
@@ -39,13 +51,13 @@ https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/playful-editoria
 
 完成版を一度に作らないでください。
 
-目的、原材料、参照戦略、構成、台本、図の文法、デザインシステム、代表ページ、全体制作を別々の段階として扱ってください。
+目的と読み手、原材料、中心メッセージ、ストーリーライン、各ページの役割、情報量、ビジュアル方針、レイアウトと文字組み、AIらしさ除去、リズムと完成度検証を、別々のSTEPとして扱ってください。
 
 対話可能な場合は、逆質問、構成案の選択、代表ページの確認で一度止まり、ユーザーの回答または承認を得てから次へ進んでください。
 
-ユーザーが「一括で」「質問不要」「仮定して進めて」と明示した場合のみ、一度の出力で進めて構いません。ただし、その場合も内部では全ステージを順番に通し、置いた前提、比較した案、採用理由、捨てた案を提出時に示してください。
+ユーザーが「一括で」「質問不要」「仮定して進めて」と明示した場合のみ、一度の出力で進めて構いません。ただし、その場合も内部では全ステップを順番に通し、置いた前提、比較した案、採用理由、捨てた案を提出時に示してください。
 
-# GATE 0：逆質問
+# STEP 1：目的と読み手
 
 不足情報がある場合、制作へ入る前にユーザーへ逆質問してください。
 
@@ -140,32 +152,31 @@ https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/playful-editoria
 
 対話モードでは、ここで一度止まってください。
 
-# GATE 1：原材料と証拠
+# STEP 2：読後の変化の定義と原材料
+
+原材料を整理する前に、この制作物を読み終えたとき読み手の理解・判断・行動がどう変わっているべきかを1文で定義してください。
 
 ユーザーの回答後、元記事、文字起こし、メモ、データ、会話ログ、研究、画像などから、実際の発言、固有名詞、日時、人数、数値、場面、失敗、違和感、反対意見、出典、断定できない点を抜き出してください。
 
 それらを、事実、解釈、仮説、未確認、提案、演出候補へ分類してください。
 
-# GATE 2：参照戦略
+# STEP 3：中心メッセージ
 
-参照資料を、雰囲気ではなく次の四役へ分けてください。
+資料全体を貫く主張を30字以内の1文で確定してください。
 
-1. 骨格：出版物、グリッド、組版、階層
-2. 逸脱：実験的タイポグラフィ、ポスター、コラージュ
-3. 時間：漫画、映画タイトル、映像、舞台、展示動線
-4. 固有素材：元記事、会話、写真、表、手書き、現場記録
+各ページについて、この1文に反していないかを確認する反例テストを行ってください。反例テストに落ちた内容は、削除するか、中心メッセージ自体を見直してください。
 
-各参照について、借りる操作、借りない外見、内容との接続、リスクを示してください。
-
-# GATE 3：構成仮説
+# STEP 4：ストーリーライン
 
 いきなり1案に決めず、最低3案を出してください。
 
 各案について、強み、弱み、向いている使用場面、面白味が生まれる場所、誤解のリスク、不採用理由を示してください。
 
+構成案の比較と合わせて、冒頭の型（結論先行型／問い提示型／コールドオープン型）を [`story-design.md`](https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/story-design.md) の使用条件に従って選んでください。
+
 対話モードでは、ここで一度止まり、ユーザーに構成案を選んでもらってください。
 
-# GATE 4：ストーリーボードと台本
+# STEP 5：各ページの役割と主張
 
 採用された構成について、各ページへ次を割り当ててください。
 
@@ -186,7 +197,24 @@ https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/playful-editoria
 
 読み上げ台本は、箇条書きの断片ではなく、実際にそのまま話せる自然な文章で書いてください。
 
-# GATE 5：デザインシステムと図の文法
+転換点（予想が外れる場面）と見せ場（最も見せたい主張）をどこに置くかを、[`story-design.md`](https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/story-design.md) の間隔規則（8〜12枚に1回）に従って決めてください。
+
+# STEP 6：情報量と優先順位
+
+各ページの密度（高／中／低）を割り当て、同じ密度が連続していないか確認してください。
+
+中心メッセージ（STEP 3）を支えない情報、読後の変化（STEP 2）に不要な情報は削除するか、本編／台本／付録／制作ログの4層（[`audience-first-redesign.md`](https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/audience-first-redesign.md) 参照）へ振り分けてください。
+
+# STEP 7：ビジュアル方針
+
+参照資料を、雰囲気ではなく次の四役へ分けてください。
+
+1. 骨格：出版物、グリッド、組版、階層
+2. 逸脱：実験的タイポグラフィ、ポスター、コラージュ
+3. 時間：漫画、映画タイトル、映像、舞台、展示動線
+4. 固有素材：元記事、会話、写真、表、手書き、現場記録
+
+各参照について、借りる操作、借りない外見、内容との接続、リスクを示してください。
 
 全ページを作る前に、グリッド、ベースライン、安全余白、書体と文字階層、出典、注釈、ページ番号、色の役割、密度、速度、モチーフ、逸脱ルール、図形と矢印の意味を設計してください。
 
@@ -194,7 +222,13 @@ https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/playful-editoria
 
 並列、比較、グルーピングには原則として矢印を使わないでください。
 
-# GATE 6：代表ページ
+デザインシステムを決める際は、[`visuals.md`](https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/visuals.md) のタイポグラフィ数値（ジャンプ率・行長・行間）、余白を増やす条件、レイアウト変化規則、写真のアートディレクション、色の規律に従ってください。
+
+直近で制作した他の資料と骨格・配色・見せ場の位置が同じになっていないか確認してください（案件間バリエーション確認。[`ai-failure-patterns.md`](https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/ai-failure-patterns.md) 参照）。
+
+資料タイプ（発表資料／社内報告／解説資料）に応じた方針は [`document-type-policies.md`](https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/document-type-policies.md) を参照してください。
+
+# STEP 8：レイアウトと文字組み
 
 全体を量産する前に、3〜6ページを試作してください。
 
@@ -203,8 +237,6 @@ https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/playful-editoria
 代表ページでは、30秒テスト、再話テスト、図単独テスト、本文単独テスト、台本の音読テスト、実寸閲覧テストを行ってください。
 
 対話モードでは、ここで一度止まり、ユーザーの確認を得るまで全ページを制作しないでください。
-
-# GATE 7：全体制作
 
 代表ページで承認されたルールを使って全体を制作してください。
 
@@ -216,23 +248,32 @@ PDFだけを制作する場合は、ページ番号と対応した台本MD、DOC
 
 台本のないスライドを完成扱いにしないでください。
 
-# GATE 8：最終レビュー
+# STEP 9：AIらしさ除去
 
-完成後、以下を確認してください。
+9要因診断（[`core-principles.md`](https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/core-principles.md) 参照）と失敗パターン照合（[`ai-failure-patterns.md`](https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/ai-failure-patterns.md) 参照）を行ってください。
+
+以下を確認してください。
 
 - 逆質問を飛ばして早すぎる収束をしていないか
 - 逆質問で空欄だけを並べていないか
 - 今回の題材に合わせた具体案、推奨案、推奨理由を示したか
 - ユーザーが違うところだけ修正できる形だったか
 - 比較した構成案と不採用理由があるか
-- 代表ページで方向性を検証したか
 - 事実、解釈、仮説、提案を区別しているか
+
+# STEP 10：リズムと完成度検証
+
+完成後、以下を確認してください。
+
+- 代表ページで方向性を検証したか
 - 画像や図が情報上の仕事をしているか
 - 図形へ変換して新しい関係が増えたか
 - 箇条書きのまま残すべきページを無理にカード化していないか
 - 各スライドに文章形式の台本があるか
 - 台本がスライド本文の読み上げになっていないか
 - 重要な視覚情報を台本でも説明しているか
+
+最後に [`quality-rubric.md`](https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/quality-rubric.md) のルーブリックで採点し、3点以下の軸があれば該当STEPへ戻ってください。
 
 # 提出時に添えること
 
@@ -253,4 +294,5 @@ PDFだけを制作する場合は、ページ番号と対応した台本MD、DOC
 - 代表ページで確認したこと
 - 各ページの文章形式の台本
 - まだ確認が必要な点
+- quality-rubric.mdの採点結果
 ````

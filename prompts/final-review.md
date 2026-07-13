@@ -5,6 +5,7 @@
 
 https://raw.githubusercontent.com/silovar-uk/designmd/main/DESIGN.md
 https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/review-checklist.md
+https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/quality-rubric.md
 
 特に確認：
 - 一般論と抽象語
@@ -19,6 +20,8 @@ https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/review-checklist
 
 問題を重要度順に並べてください。
 表面的な言い換えや配色変更ではなく、制作工程のどこへ戻るべきかを示してください。
+
+その後、docs/quality-rubric.md のルーブリックで成果物を採点し、3点以下の軸があれば該当するSTEPへ戻ってください。
 
 最後に次の5問へ回答してください。
 1. この成果物でしか伝えられない情報は何か
