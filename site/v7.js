@@ -46,6 +46,17 @@
       <p>designmdは検討を支援する。規格適合や成果物の品質を自動保証するものではない。</p>
     </section>
 
+    <section class="v7-access v7-delivery">
+      <div><small>SLIDE DELIVERY</small><h3>PPTXとPDFを、同じ完成版からセットで出力する。</h3></div>
+      <ol>
+        <li><b>1</b><span>編集用PPTXを完成</span></li>
+        <li><b>2</b><span>最終PPTXからPDF化</span></li>
+        <li><b>3</b><span>全ページを再確認</span></li>
+        <li><b>4</b><span>2形式をセットで納品</span></li>
+      </ol>
+      <p>ページ数、文字切れ、重なり、フォント置換、画像欠落、余白崩れをPDF化後にも確認する。ユーザーが片方のみを明示した場合は、その指定を優先する。</p>
+    </section>
+
     <section class="v7-format" data-format-lab>
       <header><div><small>EXPERIMENTAL</small><h3>形式を、見栄えではなく仕事で選ぶ。</h3></div><span>試行中</span></header>
       <div class="v7-questions">
@@ -83,6 +94,7 @@
       <a href="https://github.com/silovar-uk/designmd/blob/main/docs/project-style-guide.md">案件別スタイルガイド</a>
       <a href="https://github.com/silovar-uk/designmd/blob/main/docs/accessibility.md">アクセシビリティ</a>
       <a href="https://github.com/silovar-uk/designmd/blob/main/docs/roles-and-responsibility.md">役割と責任</a>
+      <a href="https://github.com/silovar-uk/designmd/blob/main/docs/slide-delivery.md">PPTX・PDF納品</a>
       <a href="https://github.com/silovar-uk/designmd/blob/main/docs/format-selection.md">形式選択（experimental）</a>
       <a href="https://github.com/silovar-uk/designmd/blob/main/docs/governance.md">版と状態</a>
     </div>
