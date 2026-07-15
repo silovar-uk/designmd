@@ -1,0 +1,36 @@
+name: Markdown release
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - 'docs-v*'
+
+permissions:
+  contents: write
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build Markdown package
+        shell: bash
+        run: |
+          set -euo pipefail
+          version="$(cat VERSION)"
+          root="dist/designmd-${version}"
+          mkdir -p "$root"
+          cp DESIGN.md README.md CHANGELOG.md VERSION "$root/"
+          cp -R docs prompts "$root/"
+          find "$root" -type f | sort > "$root/MANIFEST.txt"
+          (cd dist && zip -qr "designmd-${version}.zip" "designmd-${version}")
+      - uses: actions/upload-artifact@v4
+        with:
+          name: designmd-markdown
+          path: dist/designmd-*.zip
+      - name: Attach to GitHub Release
+        if: startsWith(github.ref, 'refs/tags/docs-v')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "${GITHUB_REF_NAME}" dist/designmd-*.zip --generate-notes --verify-tag
