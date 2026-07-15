@@ -23,6 +23,9 @@ https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/story-design.md
 スライド設計：
 https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/slides.md
 
+スライド納品形式：
+https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/slide-delivery.md
+
 箇条書き・プレーンスライド：
 https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/plain-slides.md
 
@@ -179,11 +182,18 @@ D. 制作ログ
 - 台本が不自然に硬くなっていないか
 - 台本がスライド本文の読み上げになっていないか
 - 重要な視覚情報を台本でも説明しているか
+- 編集用PPTXと、同じ完成版から生成したPDFをセットで用意したか
+- PPTXとPDFのページ数、順序、内容が一致しているか
+- PDF化後に全ページを再レンダリングし、文字切れ、重なり、フォント置換、画像欠落、余白崩れを確認したか
+
+ユーザーが「PPTXのみ」または「PDFのみ」と明示した場合は、その指定を優先してください。片方を生成できない場合は、黙って省略せず理由を明記してください。
 
 最後に `quality-rubric.md` で採点し、3点以下の軸があれば該当STEPへ戻ってください。
 
 # 最終提出
 
+- 編集用PPTX
+- 閲覧・共有用PDF
 - 逆質問で提示した案とユーザーの修正
 - 旧版の機能保存表
 - 本編／台本／付録／制作ログの分離表
