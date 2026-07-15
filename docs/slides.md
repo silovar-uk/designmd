@@ -211,3 +211,28 @@
 10. 逸脱がある場合、その内容上の理由は何か
 11. 題材固有の情報があるか
 12. 前後のページで理解がどう変わるか
+13. PPTXの場合、PowerPointで修復警告が出ないか
+14. `[Content_Types].xml` と `.rels` に存在しないパーツ参照が残っていないか
+
+## 16. PPTX出力時の構造チェック
+
+PowerPointで「修復が必要」と表示される場合、見た目ではなくPPTX内部のOOXMLパッケージ不整合が原因のことがあります。ZIPとして壊れていない、XMLが構文上正しい、LibreOfficeで開ける場合でも、PowerPointは不整合を修復対象にします。
+
+特に確認する。
+
+- `[Content_Types].xml` の `<Override PartName="...">` が、実在するファイルだけを指しているか
+- `ppt/slideMasters/slideMaster*.xml` など、存在しないスライドマスター、レイアウト、ノート、メディアへのOverrideが残っていないか
+- `.rels` の `Target` が実在する内部ファイルを指しているか
+- 各スライド内の `p:cNvPr id` が同一スライド内で重複していないか
+
+今回確認した失敗例：`ppt/slideMasters/slideMaster1.xml` しか存在しないのに、`[Content_Types].xml` に `slideMaster2.xml` 〜 `slideMaster23.xml` のOverrideが残り、PowerPointが毎回修復を求めた。不要なOverrideを削除すると、構造不整合は解消した。
+
+出力後は、見た目のレビューとは別に、次を実施する。
+
+1. `unzip -t` でZIPとして壊れていないか確認する。
+2. すべての `.xml` と `.rels` がXMLとしてパースできるか確認する。
+3. `[Content_Types].xml` のOverrideが実在パーツだけを指しているか確認する。
+4. `.rels` の内部Targetが実在パーツだけを指しているか確認する。
+5. PowerPointで開き、修復警告が出ないことを確認する。
+
+自動生成や変換ツールを使ったPPTXでは、見た目が成立していても、不要なContent Typesの参照が残る場合があります。最終納品前にパッケージ整合性の確認を入れる。
