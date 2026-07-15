@@ -1,0 +1,52 @@
+name: Apply DADS integration
+
+on:
+  push:
+    paths:
+      - '.github/workflows/apply-dads-integration.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Apply integration
+        run: python scripts/integrate_dads_adoption.py
+
+      - name: Validate files
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/integrate_dads_adoption.py
+          node --check site/v7.js
+          git diff --check
+          test "$(cat VERSION)" = "2026.07.15-beta"
+          grep -q "dads-adoption-2026-07" README.md
+          grep -q "共通基盤と案件別スタイルガイド" DESIGN.md
+          grep -q "アクセシビリティ" docs/review-checklist.md
+
+      - name: Commit synchronized guides
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md DESIGN.md AGENTS.md CHANGELOG.md \
+            docs/staged-production.md docs/visuals.md docs/review-checklist.md
+          if git diff --cached --quiet; then
+            echo "No synchronized changes"
+          else
+            git commit -m "DADS参考実装を既存正典へ同期"
+            git push
+          fi
