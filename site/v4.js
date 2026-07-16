@@ -19,10 +19,10 @@
 
     <div class="v4-thesis">
       <p>AIくささを「使ってはいけない言葉」の一覧だけで直すと、別の定型文へ移動します。</p>
-      <strong>表面、論証、身体。<br>深さの違う3回の編集。</strong>
+      <strong>表面、論証、認知、身体。<br>深さの違う4回の編集。</strong>
     </div>
 
-    <div class="v4-sources" aria-label="参照した三つの実践">
+    <div class="v4-sources" aria-label="参照した四つの実践">
       <article>
         <span>01 / LINT</span>
         <h3>納品物の表面</h3>
@@ -35,8 +35,14 @@
         <p>段落の役割、因果、条件、不要な演出を点検する。</p>
         <a href="https://gist.github.com/k16shikano/fd287c3133457c4fd8f5601d34aa817d">japanese-tech-writing</a>
       </article>
+      <article class="rhythm">
+        <span>03 / COGNITIVE RHYTHM</span>
+        <h3>認識の更新</h3>
+        <p>対象更新、問いの回収、認知モード、密度を設計する。</p>
+        <a href="https://gist.github.com/k16shikano/eb2929f13ed19c97188393d297be8432">cognitive-rhythm-writing</a>
+      </article>
       <article>
-        <span>03 / EMBODIMENT</span>
+        <span>04 / EMBODIMENT</span>
         <h3>身体と記憶</h3>
         <p>音読し、自分の呼吸、経験、言い切れなさへ戻す。</p>
         <a href="https://note.com/moriyoshizan/n/ncb52779509c1">AIの文章には香りがない</a>
@@ -45,14 +51,15 @@
 
     <section class="v4-pass-lab" data-writing-pass>
       <div class="v4-pass-lab__intro">
-        <small>THREE-PASS EDIT</small>
+        <small>FOUR-PASS EDIT</small>
         <h3>いま、どこを直しているか。</h3>
         <p>ボタンを押すと、同じ文章に対する編集の深さが切り替わります。</p>
       </div>
       <div class="v4-pass-tabs" role="tablist" aria-label="文章編集の段階">
         <button type="button" class="is-active" data-pass="lint">1　表面</button>
         <button type="button" data-pass="argument">2　論証</button>
-        <button type="button" data-pass="body">3　身体</button>
+        <button type="button" data-pass="rhythm">3　認知</button>
+        <button type="button" data-pass="body">4　身体</button>
       </div>
       <article class="v4-pass-panel" aria-live="polite">
         <small data-pass-label>PASS 1 / LINT</small>
@@ -98,6 +105,12 @@
           <p><span>原因</span>何が判断を難しくしたか</p>
           <p><span>対応</span>誰が、いつ、何を変えるか</p>
         </article>
+        <article class="cognitive">
+          <b>認知を動かす</b>
+          <p><span>対象更新</span>文章の予定ではなく、数字・発言・因果を置く</p>
+          <p><span>回収</span>冒頭の問いが、後の判断を変える</p>
+          <p><span>密度</span>短文ではなく、読む負荷と視点距離を変える</p>
+        </article>
         <article class="source">
           <b>本人へ戻す</b>
           <p>実際のメモ、発言、数字、迷いを追加確認。</p>
@@ -116,6 +129,7 @@
         <li>本人が感じていない感情</li>
         <li>見ていない景色や五感</li>
         <li>意図的な誤字や言い淀み</li>
+        <li>意味のない問いと短い断定</li>
       </ul>
       <p>足りない場合は、書き足さずに<strong>本人へ質問</strong>します。</p>
     </aside>
@@ -136,7 +150,8 @@
     </section>
 
     <div class="v4-actions">
-      <a href="https://github.com/silovar-uk/designmd/blob/main/docs/japanese-ai-writing-practices.md">実践ガイドを読む</a>
+      <a href="https://github.com/silovar-uk/designmd/blob/main/docs/japanese-ai-writing-practices.md">四回編集を読む</a>
+      <a href="https://github.com/silovar-uk/designmd/blob/main/docs/cognitive-rhythm-writing.md">認知リズムを読む</a>
       <a href="https://github.com/silovar-uk/designmd/blob/main/docs/japanese-writing-review-checklist.md">専用チェックリスト</a>
       <a href="https://github.com/silovar-uk/designmd/blob/main/prompts/writing-review.md">文章レビュー用プロンプト</a>
     </div>
@@ -188,8 +203,16 @@
       limit: '同じ順序のまま文章だけ整えない。',
       returnTo: '構成・段落設計'
     },
+    rhythm: {
+      label: 'PASS 3 / COGNITIVE RHYTHM',
+      title: '読み手の認識を動かす',
+      purpose: '対象更新、問いの回収、認知モード、密度、節境界を確認します。',
+      checks: ['対象更新／文書更新', '問い・回収台帳', '観察・推論・反証', '密度と視点距離'],
+      limit: '問い、短文、迷いを新しい定型にしない。',
+      returnTo: '原材料・問い・段落の役割'
+    },
     body: {
-      label: 'PASS 3 / EMBODIMENT',
+      label: 'PASS 4 / EMBODIMENT',
       title: '本人の身体と記憶へ戻す',
       purpose: '音読し、実際の場面、言葉、迷い、責任を文章へ戻します。',
       checks: ['本人が見た場面', '実際に使われた言葉', '言い切れない理由', '本人の語彙と呼吸'],
@@ -218,6 +241,7 @@
   if (documents && !$('.v4-writing-doc', documents)) {
     const guides = [
       ['日本語AI文章', 'japanese-ai-writing-practices.md', 'https://github.com/silovar-uk/designmd/blob/main/docs/japanese-ai-writing-practices.md'],
+      ['認知リズム', 'cognitive-rhythm-writing.md', 'https://github.com/silovar-uk/designmd/blob/main/docs/cognitive-rhythm-writing.md'],
       ['文章チェック', 'japanese-writing-review-checklist.md', 'https://github.com/silovar-uk/designmd/blob/main/docs/japanese-writing-review-checklist.md']
     ];
     guides.forEach(([label, title, href]) => {
