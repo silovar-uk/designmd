@@ -14,6 +14,10 @@
 - 役割・責任境界：`docs/roles-and-responsibility.md`
 - 読者向け本編と制作ログ：`docs/audience-first-redesign.md`
 - 物語設計：`docs/story-design.md`
+- 文章：`docs/writing.md`
+- 日本語文章の実践編集：`docs/japanese-ai-writing-practices.md`
+- 認知リズム文章：`docs/cognitive-rhythm-writing.md`（experimental）
+- 文型・文の完結度：`docs/sentence-completeness.md`
 - スライド：`docs/slides.md`
 - 箇条書き・プレーンスライド：`docs/plain-slides.md`
 - 図形・矢印・台本：`docs/diagram-shapes.md`
@@ -76,15 +80,48 @@
 44. `docs/quality-rubric.md` で採点し、3点以下があれば該当STEPへ戻る。
 45. 完成後、`docs/review-checklist.md` に沿って点検する。
 
+## 日本語長文の認知リズム
+
+`docs/cognitive-rhythm-writing.md` は、長文のコラム、解説、インタビュー記事、学習資料の説明本文などで、論証は成立しているが平坦な場合だけ任意適用する。
+
+### 適用前
+
+- 媒体、読み手、目的、緊急性を確認する
+- 主張、根拠、因果、条件、限界を先に整える
+- 緊急告知、安全情報、法務、手順書、議事録、短いメールには原則として全面適用しない
+
+### 適用時
+
+- 対象について新しい情報を出す文と、文章の進行だけを実況する文を区別する
+- 問い、仮の見立て、反論、後で説明する約束を制作ログで管理する
+- 認知モードと密度波形は診断語彙として使い、固定配列にしない
+- 問い、告白、短い断定、体言止めを機械的に増やさない
+- 結論、重要条件、注意事項を遅らせない
+- 書き手が持っていない迷い、感情、告白、場面を創作しない
+- 技法名や制作手順を本文へ漏らさない
+
+### 評価
+
+- 6文書または3案件で現行版と比較する
+- 評価記録は `docs/experiments/cognitive-rhythm-evaluation.md` を使う
+- 正式採用前は `DESIGN.md` の必須原則とHTML版へ統合しない
+- 効果が限定的な場合、対象更新テストと問い・回収台帳だけを残す
+
 ## Experimentalの扱い
 
-`docs/format-selection.md` と `docs/type-spacing-decisions.md` はexperimentalである。
+次はexperimentalである。
+
+- `docs/format-selection.md`
+- `docs/type-spacing-decisions.md`
+- `docs/cognitive-rhythm-writing.md`
+
+共通ルール：
 
 - 通常ルールと同じ強さで強制しない
-- 形式や数値を先に決め、内容を当てはめない
-- 3案件で試行結果を記録する
-- 形式先行、同型化、制作時間増、理解改善なしの場合は撤回または縮小する
-- stable化するときはVERSION、CHANGELOG、DESIGN.md、READMEを更新する
+- 内容より先に形式・数値・文章技法を決めない
+- 試行結果を記録する
+- 同型化、制作時間増、理解改善なしの場合は撤回または縮小する
+- stable化するときはVERSION、CHANGELOG、DESIGN.md、README、必要に応じsiteを更新する
 
 ## 対話できない場合
 
@@ -108,15 +145,26 @@
 - 未確認事項
 - 最終判断者
 
+日本語長文へ認知リズムを適用した場合は、次も示す。
+
+- 適用判定
+- 対象更新として残した文
+- 削除した文書更新文
+- 問い・回収台帳
+- 過剰適用を避けた判断
+
 ## 保守規約
 
 1. 各概念には一つの正典を置く。他ファイルでは要約とリンクにとどめる。
 2. 新しい原則を追加する前に、既存正典との重複を確認する。
 3. 新しい規範には、目的、向く場面、注意が必要な場面、例外、検証方法を書く。
 4. `docs/` の正典を編集したら、`DESIGN.md` の同期要否を確認する。
-5. STEP番号を変更する場合は、レビュー、プロンプト、DESIGN.mdの参照をすべて更新する。
-6. 正典の追加、削除、意味変更は `CHANGELOG.md` に記録する。
-7. `experimental` には評価期限、試行範囲、撤回条件を書く。
-8. 版を変更する場合は `VERSION`、README、サイト表示を同期する。
-9. デジタル庁デザインシステムの参考箇所を変更する場合は、`docs/references/digital-agency-design-system.md` の出典・加工表示を更新する。
-10. 案件間バリエーション規則を、ガイドの例文とサイト表示にも自己適用する。
+5. experimentalは、正式採用前なら`DESIGN.md`への統合を保留できる。その場合、READMEとCHANGELOGへ保留理由を書く。
+6. STEP番号を変更する場合は、レビュー、プロンプト、DESIGN.mdの参照をすべて更新する。
+7. 正典の追加、削除、意味変更は `CHANGELOG.md` に記録する。
+8. `experimental` には評価期限、試行範囲、撤回条件を書く。
+9. 版を変更する場合は `VERSION`、README、サイト表示を同期する。
+10. 外部資料を参考にした場合は、出典、編集・加工の事実、借りた考え方、借りなかった表現を記録する。
+11. デジタル庁デザインシステムの参考箇所を変更する場合は、`docs/references/digital-agency-design-system.md` を更新する。
+12. cognitive-rhythm-writingの参考箇所を変更する場合は、`docs/references/cognitive-rhythm-writing.md` を更新する。
+13. 案件間バリエーション規則を、ガイドの例文とサイト表示にも自己適用する。
