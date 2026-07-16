@@ -9,10 +9,10 @@ https://raw.githubusercontent.com/silovar-uk/designmd/main/DESIGN.md
 文章ガイド：
 https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/writing.md
 
-日本語のAIくささを減らす実践編集：
+日本語の実践編集：
 https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/japanese-ai-writing-practices.md
 
-認知リズム文章ガイド（experimental）：
+認知リズム文章ガイド：
 https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/cognitive-rhythm-writing.md
 
 専用チェックリスト：
@@ -22,13 +22,15 @@ https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/japanese-writing
 
 禁止語を別の語へ置換するだけで終えないでください。
 
-最初に、媒体、読み手、目的、緊急性から、認知リズム診断を全面適用・部分適用・不適用のどれにするか判断してください。
+最初に、媒体、読み手、目的、緊急性から、認知リズムの適用範囲を選んでください。
 
-緊急告知、安全情報、障害情報、法務、手順書、議事録、短いメールには、認知リズムを原則として全面適用しないでください。
+- 全工程：コラム、解説、インタビュー記事、長めの企画文、学習資料の説明本文
+- 一部：提案書、社内説明、調査レポート、プレゼンノート、プレスリリース
+- 対象更新のみ：緊急告知、安全情報、法務、手順書、議事録、短いメール
 
 文章を、次の順で点検してください。
 
-## PASS 1：表面と文型
+## PASS 1：Lint／表面と文型
 
 - 不自然な記号、半角スペース、Markdown記法
 - 同じ文末、接続詞、文長の反復
@@ -39,7 +41,7 @@ https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/japanese-writing
 
 この段階では、内容を勝手に増やさないでください。
 
-## PASS 2：段落と論証
+## PASS 2：Argument／段落と論証
 
 各段落について、次を一文ずつ示してください。
 
@@ -60,11 +62,9 @@ https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/japanese-writing
 
 必要なら、文の修正だけでなく、段落の削除、統合、移動を提案してください。
 
-論証が崩れている場合は、認知リズムを足す前に構成を修正してください。
+論証が崩れている場合は、認知リズムを直す前に構成を修正してください。
 
-## OPTIONAL PASS：認知リズム
-
-コラム、解説、インタビュー記事、長めの企画文、学習資料の説明本文など、読み物としての推進力が必要な場合だけ実施してください。
+## PASS 3：Cognitive Rhythm／認知リズム
 
 ### 対象更新テスト
 
@@ -77,13 +77,13 @@ https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/japanese-writing
 
 ### 問い・回収台帳
 
-本文内の問い、仮の見立て、反論、後で説明する約束を一覧化し、回収位置を示してください。
+全工程または一部適用の場合、本文内の問い、仮の見立て、反論、後で説明する約束を一覧化し、回収位置を示してください。
 
 回収できないものは、追加調査へ戻すか、問いごと削除してください。
 
 ### モードと密度
 
-各段落の主な役割を、観察、推論、保留、反証、固定、適用から一つ選んでください。
+全工程の場合、各段落の主な役割を、観察、推論、保留、反証、固定、適用から一つ選んでください。
 
 同じモードや密度が長く続く箇所を示してください。ただし、材料がない場所へ人工的な迷い、反証、告白を足さないでください。
 
@@ -104,7 +104,7 @@ https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/japanese-writing
 - 読み進めやすさのために内容理解を落としていないか
 - 制作技法の名前や手順を本文へ漏らしていないか
 
-## PASS 3：具体性と書き手
+## PASS 4：Embodiment／具体性と書き手
 
 - 固有名詞、数字、日時、場面、発言の不足
 - 書き手が実際に引っ掛かった点
@@ -120,23 +120,23 @@ https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/japanese-writing
 
 # 出力
 
-1. 媒体・目的と認知リズムの適用判定
+1. 媒体・目的と認知リズムの適用範囲
 2. 総評
 3. PASS 1の問題と修正
 4. PASS 2の段落診断と再構成案
-5. OPTIONAL PASSの診断
+5. PASS 3の診断
    - 対象更新／文書更新
    - 問い・回収台帳
    - 段落モード
    - 密度波形
    - 境界・列挙・結び
-6. PASS 3で不足している原材料
+6. PASS 4で不足している原材料
 7. 本人への追加質問
 8. 残すべき表現
 9. 削るべき表現
 10. 修正文
 11. 採用した修正と、採用しなかった修正の理由
-12. experimental評価用メモ
+12. 運用レビュー用メモ
 
 文章：
 （ここに貼る）
