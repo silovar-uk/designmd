@@ -12,7 +12,7 @@
   section.innerHTML = `
     <header class="v7-head">
       <div><small>DESIGN SYSTEM, NOT A TEMPLATE</small><h2>共通基盤は残す。<br>案件の顔は、案件で決める。</h2></div>
-      <span class="v7-version">2026.07.15-beta</span>
+      <span class="v7-version">2026.07.16-beta</span>
     </header>
 
     <div class="v7-foundation">
