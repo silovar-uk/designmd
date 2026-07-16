@@ -1,8 +1,8 @@
 # バージョン・状態・更新運用
 
 > 状態：stable  
-> designmd版：2026.07.15-beta  
-> 最終更新：2026-07-15
+> designmd版：2026.07.16-beta  
+> 最終更新：2026-07-16
 
 ## 1. バージョン
 
@@ -40,6 +40,7 @@ YYYY.MM.DD-beta
 - 正典の追加・削除・意味変更は `CHANGELOG.md` へ記載する
 - 誤字やリンク修正は、意味が変わらない限り省略できる
 - experimentalの追加には、評価期限と撤回条件を書く
+- stableへの昇格には、DESIGN.md、README、プロンプト、site、VERSIONの同期を確認する
 - deprecated化には、代替先と移行期限を書く
 
 ## 5. Markdownリリース
@@ -61,6 +62,7 @@ YYYY.MM.DD-beta
 - 正典所有表とリンクが一致する
 - experimentalの評価期限がある
 - DESIGN.mdへ要約が同期されている
+- stableへ昇格した機能がREADME、プロンプト、siteへ反映されている
 - サイトがJavaScriptなしでも基礎内容を読める
 - 出典・加工表示が必要な参照に記載がある
 
