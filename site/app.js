@@ -14,7 +14,15 @@
     document.head.append(link);
   });
 
-  ['./v2.css', './v3.css', './v4.css', './v5.css', './v6.css', './v7.css'].forEach((href) => {
+  [
+    './v2.css',
+    './v3.css',
+    './v4.css',
+    './v5.css',
+    './v6.css',
+    './v7.css',
+    './layout-fixes.css',
+  ].forEach((href) => {
     const layerStyle = document.createElement('link');
     layerStyle.rel = 'stylesheet';
     layerStyle.href = href;
