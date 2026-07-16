@@ -6,6 +6,73 @@
 
 ---
 
+## 2026-07-16：認知リズム文章ガイドをexperimentalで追加
+
+### 背景
+
+既存の日本語文章ガイドは、AI生成物の残留物、定型句、過剰な文完結性、段落の論証、具体性、書き手の身体と責任を扱っていた。
+
+一方で、論証と具体性は成立しているのに、次の状態になる長文への診断が弱かった。
+
+- すべての段落が同じ認知モードで進む
+- 理論や説明が続き、具体へ戻らない
+- 問いを置いても、後の説明や判断が変わらない
+- 文章の進行だけを実況する短文が残る
+- 列挙が続き、今回の判断へ着地しない
+- 冒頭と結びが一般論で入れ替え可能
+
+鹿野桂一郎「cognitive-rhythm-writing」を参考に、長文のコラム・解説・読み物へ限定したexperimentalガイドを追加した。
+
+### 追加
+
+- `docs/cognitive-rhythm-writing.md`
+  - 対象更新／文書更新テスト
+  - 問い・回収台帳
+  - 観察、推論、保留、反証、固定、適用の認知モード
+  - 高・中・低の密度波形
+  - 冒頭、節頭、節末、列挙、結びの点検
+  - 過剰適用と撤回条件
+- `docs/experiments/cognitive-rhythm-evaluation.md`
+  - 6文書または3案件の比較評価
+  - コラム、解説、報告、告知を使った適用判定
+  - Stable化、継続、縮小、撤回の判定
+- `docs/references/cognitive-rhythm-writing.md`
+  - 出典、借りた考え方、designmd向けの変更、借りなかった表現を記録
+- `prompts/cognitive-rhythm-writing.md`
+  - 長文生成・改稿用の適用判定付きプロンプト
+
+### 既存ファイルへの接続
+
+- `docs/writing.md`
+  - 文長だけでリズムを作らないことを追加
+  - 長文で平坦さが問題の場合だけ認知リズムを任意適用
+- `docs/japanese-writing-review-checklist.md`
+  - OPTIONAL PASSとして対象更新、問い・回収、モード、密度、境界、過剰適用を追加
+- `prompts/writing-review.md`
+  - 媒体別の適用判定と認知リズム診断を追加
+- `prompts/README.md`
+  - 専用プロンプトを追加
+- `README.md`、`AGENTS.md`
+  - experimentalとしての適用範囲、評価、撤回条件を追加
+
+### 正式採用前に行わないこと
+
+- `DESIGN.md`の必須原則へ統合しない
+- HTML版へ診断UIを追加しない
+- 既存の三回編集を四回編集へ変更しない
+- 緊急告知、法務、手順書、議事録、短いメールへ全面適用しない
+
+6文書または3案件の評価後に、Stable化、Experimental継続、機能縮小、撤回を判断する。
+
+### 参考・加工表示
+
+出典：鹿野桂一郎「cognitive-rhythm-writing/SKILL.md」  
+https://gist.github.com/k16shikano/eb2929f13ed19c97188393d297be8432
+
+同Gistの考え方をdesignmd向けに編集・加工している。原文の規則・例文をそのまま転載せず、作者がdesignmdを作成、推奨、監修したことを意味しない。
+
+---
+
 ## 2026-07-15：デジタル庁デザインシステムを参考にした運用基盤の追加
 
 ### 背景
@@ -132,6 +199,8 @@ https://design.digital.go.jp/dads/
 - `CHANGELOG.md`
 
 すべてを毎回更新するのではなく、意味が変わる箇所だけを同期する。
+
+Experimentalで正式採用前の場合は、`DESIGN.md`と`site/`への統合を保留できる。その理由と評価条件をREADME、AGENTS、CHANGELOGへ記録する。
 
 ### 5. STEP番号を変更する場合
 
