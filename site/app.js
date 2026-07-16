@@ -22,6 +22,7 @@
     './v6.css',
     './v7.css',
     './layout-fixes.css',
+    './v8.css',
   ].forEach((href) => {
     const layerStyle = document.createElement('link');
     layerStyle.rel = 'stylesheet';
@@ -95,6 +96,7 @@
     .then(() => loadScript('./v5.js'))
     .then(() => loadScript('./v6.js'))
     .then(() => loadScript('./v7.js'))
+    .then(() => loadScript('./v8.js'))
     .catch(() => {
       // Base content remains usable even if an enhancement layer fails.
     });
