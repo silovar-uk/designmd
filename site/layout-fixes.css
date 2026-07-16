@@ -1,0 +1,89 @@
+/* Cross-layer layout fixes loaded after the versioned styles. */
+
+@media (max-width: 680px) {
+  /*
+   * Relation diagrams become a true vertical flow on narrow screens.
+   * Rotating the entire arrow element also rotated its label, so the
+   * line and arrowhead are redrawn vertically while the text stays upright.
+   */
+  .v5-demo:not(.is-parallel):not(.is-tree) {
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+
+  .v5-demo:not(.is-parallel):not(.is-tree) .node {
+    width: min(100%, 280px);
+  }
+
+  .v5-demo:not(.is-parallel):not(.is-tree) .edge {
+    flex: 0 0 64px;
+    width: 120px;
+    height: 64px;
+    transform: none;
+  }
+
+  .v5-demo:not(.is-parallel):not(.is-tree) .edge::before {
+    left: 50%;
+    right: auto;
+    top: 4px;
+    width: 1.5px;
+    height: 45px;
+    transform: translateX(-50%);
+  }
+
+  .v5-demo:not(.is-parallel):not(.is-tree) .edge::after {
+    left: 50%;
+    right: auto;
+    top: 45px;
+    border-top: 10px solid var(--v2-ink);
+    border-right: 6px solid transparent;
+    border-bottom: 0;
+    border-left: 6px solid transparent;
+    transform: translateX(-50%);
+  }
+
+  .v5-demo:not(.is-parallel):not(.is-tree) .edge span {
+    left: calc(50% + 14px);
+    right: auto;
+    top: 20px;
+    width: max-content;
+    max-width: 80px;
+    text-align: left;
+  }
+
+  /* The handoff illustration uses the same vertical-arrow treatment. */
+  .v5-lanes > i {
+    flex: 0 0 68px;
+    width: 120px;
+    height: 68px;
+    transform: none;
+  }
+
+  .v5-lanes > i::before {
+    left: 50%;
+    right: auto;
+    top: 4px;
+    width: 2px;
+    height: 46px;
+    transform: translateX(-50%);
+  }
+
+  .v5-lanes > i::after {
+    left: 50%;
+    right: auto;
+    top: 48px;
+    border-top: 11px solid var(--v5-orange);
+    border-right: 7px solid transparent;
+    border-bottom: 0;
+    border-left: 7px solid transparent;
+    transform: translateX(-50%);
+  }
+
+  .v5-lanes > i small {
+    left: calc(50% + 16px);
+    right: auto;
+    top: 21px;
+    width: 92px;
+    text-align: left;
+  }
+}
