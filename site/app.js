@@ -175,22 +175,48 @@ https://raw.githubusercontent.com/silovar-uk/designmd/main/DESIGN.md
   };
 
   const promptTabs = $$('[data-prompt]');
+  const promptPanel = $('#prompt-panel');
   const promptOutput = $('[data-prompt-output]');
   const promptCopy = $('[data-copy-prompt]');
   const promptStatus = $('[data-prompt-status]');
 
-  const showPrompt = (key) => {
-    promptTabs.forEach((tab) => tab.setAttribute('aria-selected', String(tab.dataset.prompt === key)));
+  promptTabs.forEach((tab, index) => {
+    if (!tab.id) tab.id = `prompt-tab-${tab.dataset.prompt}`;
+    tab.tabIndex = index === 0 ? 0 : -1;
+  });
+
+  const showPrompt = (selected) => {
+    const key = selected.dataset.prompt;
+    promptTabs.forEach((tab) => {
+      const active = tab === selected;
+      tab.setAttribute('aria-selected', String(active));
+      tab.tabIndex = active ? 0 : -1;
+    });
+    if (promptPanel) promptPanel.setAttribute('aria-labelledby', selected.id);
     if (promptOutput) promptOutput.textContent = promptTemplates[key] || '';
     if (promptStatus) promptStatus.textContent = '';
   };
 
-  promptTabs.forEach((tab) => tab.addEventListener('click', () => showPrompt(tab.dataset.prompt)));
+  promptTabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => showPrompt(tab));
+    tab.addEventListener('keydown', (event) => {
+      if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+      event.preventDefault();
+      let nextIndex = index;
+      if (event.key === 'ArrowRight') nextIndex = (index + 1) % promptTabs.length;
+      if (event.key === 'ArrowLeft') nextIndex = (index - 1 + promptTabs.length) % promptTabs.length;
+      if (event.key === 'Home') nextIndex = 0;
+      if (event.key === 'End') nextIndex = promptTabs.length - 1;
+      showPrompt(promptTabs[nextIndex]);
+      promptTabs[nextIndex].focus();
+    });
+  });
+
   promptCopy?.addEventListener('click', async () => {
     const copied = await copyText(promptOutput?.textContent || '');
     if (promptStatus) promptStatus.textContent = copied ? 'コピーした。' : 'コピーできなかった。';
   });
 
-  showPrompt('audit');
+  if (promptTabs[0]) showPrompt(promptTabs[0]);
   updateReview();
 })();
