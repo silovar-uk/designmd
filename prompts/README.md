@@ -2,6 +2,8 @@
 
 必要な部分だけコピーして使える。
 
+- [`question-audit.md`](question-audit.md)：依頼文の前提と代替問いを比較する
+- [`question-block-template.md`](question-block-template.md)：逆質問テキストブロックの型だけを使う
 - [`slide-create.md`](slide-create.md)：スライドを新規作成する
 - [`slide-redesign.md`](slide-redesign.md)：既存スライドを再設計する
 - [`slide-review.md`](slide-review.md)：既存スライドを批評・改善する
@@ -10,7 +12,6 @@
 - [`visual-review.md`](visual-review.md)：画像・図解の必要性を点検する
 - [`final-review.md`](final-review.md)：成果物全体を最終点検する
 - [`playful-editoriality.md`](playful-editoriality.md)：通常の制作プロンプトへ追加してあたたかみ・ユーモアを加える
-- [`question-block-template.md`](question-block-template.md)：逆質問テキストブロックの型だけを使う
 
 AIがURLを読める場合は、各プロンプトと一緒に次を渡す。
 
@@ -19,7 +20,9 @@ AIがURLを読める場合は、各プロンプトと一緒に次を渡す。
 https://raw.githubusercontent.com/silovar-uk/designmd/main/DESIGN.md
 ```
 
-認知リズムは正式な文章設計工程だが、文書種別に応じて適用範囲を変える。
+制作前に、依頼された問いの前提と根拠を確認し、複数の問いを比較する。AIは候補を出し、最終判断は人間が行う。
+
+認知リズムは文書種別に応じて適用範囲を変える。
 
 - 全工程：コラム、解説、インタビュー記事、長めの企画文、学習資料
 - 一部：提案書、社内説明、調査レポート、プレゼンノート、プレスリリース
