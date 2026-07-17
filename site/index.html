@@ -3,351 +3,127 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="AIと人間が問いを監査し、原材料から構成・表現・検証まで進めるための制作ガイド。">
-  <meta name="theme-color" content="#f2eee5">
-  <meta property="og:title" content="designmd｜問いから始める制作ガイド">
-  <meta property="og:description" content="整っているだけで終わらせない。AIも問いを問い直し、人が採用と責任を引き受ける。">
-  <title>designmd｜問いから始める制作ガイド</title>
-  <link rel="icon" href="./favicon.ico" type="image/x-icon">
-  <link rel="icon" href="./favicon-32x32.png" type="image/png" sizes="32x32">
-  <link rel="apple-touch-icon" href="./apple-touch-icon.png" sizes="180x180">
+  <meta name="description" content="AIくささを減らし、人が判断した痕跡を残すための文章・スライド・画像制作ガイド。">
+  <meta name="theme-color" content="#f4f0e8">
+  <title>designmd｜AIくささを減らす制作ガイド</title>
   <link rel="stylesheet" href="./styles.css">
   <script src="./app.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">本文へ移動</a>
-
-  <header class="site-header" data-header>
+  <header class="site-header">
     <div class="site-header__inner">
-      <a class="brand" href="#top" aria-label="designmd トップへ">
-        <span class="brand__mark" aria-hidden="true">d/</span>
-        <span>designmd</span>
-      </a>
-
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="global-nav" data-nav-toggle>
-        <span>メニュー</span>
-      </button>
-
-      <nav id="global-nav" class="global-nav" aria-label="主要ナビゲーション" data-nav>
-        <a href="#question">問い</a>
-        <a href="#process">工程</a>
-        <a href="#medium">媒体</a>
-        <a href="#review">レビュー</a>
-        <a href="#use">使う</a>
+      <a class="brand" href="#top"><span class="brand__mark">d/</span><span class="brand__text">designmd</span></a>
+      <nav class="header-nav" aria-label="主要リンク">
+        <a href="#principles">原則</a><a href="#media">媒体別</a><a href="#workflow">工程</a><a href="#review">レビュー</a><a href="#prompts">プロンプト</a><a class="header-nav__github" href="https://github.com/silovar-uk/designmd">GitHub</a>
       </nav>
     </div>
   </header>
 
   <main id="main">
-    <section id="top" class="hero" aria-labelledby="hero-title">
-      <div class="hero__grid">
-        <div class="hero__copy">
-          <p class="version">designmd 2026.07.17-beta</p>
-          <h1 id="hero-title">答える前に、<br>問いを疑う。</h1>
-          <p class="hero__lead">AIも問いを問い直せる。人は、どの問いへ時間・予算・信用を賭けるかを決める。</p>
-          <div class="hero__actions">
-            <a class="button button--primary" href="#question">問いを監査する</a>
-            <a class="button" href="https://raw.githubusercontent.com/silovar-uk/designmd/main/DESIGN.md">AI向け統合版</a>
-          </div>
-        </div>
-
-        <figure class="hero__diagram" aria-labelledby="hero-diagram-title">
-          <figcaption id="hero-diagram-title">制作の流れ</figcaption>
-          <div class="hero__diagram-flow">
-            <span>依頼された問い</span>
-            <i aria-hidden="true"></i>
-            <strong>問いの監査</strong>
-            <i aria-hidden="true"></i>
-            <span>採用した問い</span>
-            <i aria-hidden="true"></i>
-            <span>制作と検証</span>
-          </div>
-        </figure>
-      </div>
-
-      <div class="manifesto" aria-label="designmdの5原則">
-        <p><b>01</b> 問いを固定しない</p>
-        <p><b>02</b> 原材料を消さない</p>
-        <p><b>03</b> 内容から形式を選ぶ</p>
-        <p><b>04</b> 入口は5つ以下に束ねる</p>
-        <p><b>05</b> 採用と責任は人が持つ</p>
+    <section id="top" class="hero">
+      <div class="hero__inner">
+        <p class="eyebrow">AI-assisted creative work guide</p>
+        <h1>「整っている」だけで、<br>終わらせない。</h1>
+        <p class="hero__lead">文章、スライド、画像をつくるとき、AIの痕跡を隠すのではなく、<strong>人が何を見て、何を選び、何を捨てたか</strong>を成果物に残すためのガイドです。</p>
+        <blockquote><p>AIくさい成果物は、AIが作った成果物ではない。<br>誰も本気で選んでいないように見える成果物である。</p></blockquote>
+        <div class="hero__actions"><a class="button button--primary" href="#quick-start">まず使う</a><a class="button button--secondary" href="https://raw.githubusercontent.com/silovar-uk/designmd/main/DESIGN.md">AI向け統合版を開く</a></div>
       </div>
     </section>
 
-    <section id="question" class="section section--question" aria-labelledby="question-title">
-      <div class="section-head">
-        <p class="section-index" aria-hidden="true">01</p>
-        <div>
-          <h2 id="question-title">問いを監査する</h2>
-          <p>ブリーフを否定するのではない。前提を確かめ、元の問いと別の問いを比較する。</p>
-        </div>
-      </div>
+    <div class="page-shell">
+      <aside class="side-nav" aria-label="ページ内ナビゲーション"><p class="side-nav__title">CONTENTS</p><ol><li><a href="#quick-start">最短で使う</a></li><li><a href="#problems">AIくささ</a></li><li><a href="#principles">共通原則</a></li><li><a href="#media">媒体別ガイド</a></li><li><a href="#workflow">制作工程</a></li><li><a href="#review">レビュー</a></li><li><a href="#prompts">プロンプト</a></li><li><a href="#documents">原文を読む</a></li></ol></aside>
 
-      <ol class="audit-list">
-        <li>
-          <b>前提</b>
-          <p>何を事実として扱っているか。</p>
-        </li>
-        <li>
-          <b>根拠</b>
-          <p>事実、仮説、慣習、未確認のどれか。</p>
-        </li>
-        <li>
-          <b>欲望</b>
-          <p>解決後に、本当は何を変えたいか。</p>
-        </li>
-        <li>
-          <b>文脈</b>
-          <p>生活者、競合、組織、社会、時代を加える。</p>
-        </li>
-        <li>
-          <b>代替問い</b>
-          <p>元の問いを採用しない場合を考える。</p>
-        </li>
-      </ol>
+      <div class="content-column">
+        <section id="quick-start" class="section section--first">
+          <div class="section-heading"><p class="section-number">01</p><div><p class="section-kicker">Quick start</p><h2>最短で使う</h2></div></div>
+          <p class="section-intro">ページ全体をAIへ渡さず、用途に合う正典とプロンプトだけを使います。</p>
+          <div class="quick-grid">
+            <article class="quick-item quick-item--wide">
+              <p class="quick-item__label">AIへURLを1つだけ渡す</p><h3>DESIGN.mdを参照させる</h3><p>問い、文章、スライド、画像、工程、レビューをまとめた統合版です。</p>
+              <div class="code-block" data-copy-group><pre><code>以下の制作ガイドを必須要件として参照してください。
+https://raw.githubusercontent.com/silovar-uk/designmd/main/DESIGN.md
 
-      <div class="question-frames" aria-label="比較する3つの問い">
-        <article>
-          <span>そのまま解く</span>
-          <h3>ブリーフ忠実案</h3>
-          <p>依頼された課題へ、最もまっすぐ答える。</p>
-        </article>
-        <article class="question-frames__focus">
-          <span>一段持ち上げる</span>
-          <h3>再定義案</h3>
-          <p>表面的な課題の先にある、変えたい状態を問う。</p>
-        </article>
-        <article>
-          <span>前提を外す</span>
-          <h3>反転・別軸案</h3>
-          <p>元の前提を採用しない場合の問題設定を置く。</p>
-        </article>
-      </div>
+今回の依頼：
+（依頼内容）
 
-      <div class="audit-tool">
-        <div class="audit-tool__intro">
-          <h3>自分のブリーフで試す</h3>
-          <p>依頼文を入れると、問いの監査プロンプトと一緒にコピーできる。入力内容はブラウザ内だけで扱う。</p>
-        </div>
-        <label for="brief-input">ブリーフ</label>
-        <textarea id="brief-input" rows="7" placeholder="例：25〜34歳の働く女性へ、商品の認知を広げたい。" data-brief></textarea>
-        <button class="button button--primary" type="button" data-copy-brief>監査プロンプトをコピー</button>
-        <p class="copy-status" role="status" aria-live="polite" data-brief-status></p>
-      </div>
-
-      <div class="responsibility-line">
-        <p><strong>AI</strong> 前提を抽出し、矛盾を見つけ、代替問いを比較する。</p>
-        <p><strong>人間</strong> 採用する問いを選び、その問いへの説明責任を引き受ける。</p>
-      </div>
-    </section>
-
-    <section id="process" class="section" aria-labelledby="process-title">
-      <div class="section-head">
-        <p class="section-index" aria-hidden="true">02</p>
-        <div>
-          <h2 id="process-title">五段階でつくる</h2>
-          <p>工程を増やして安心しない。段階ごとに、異なる判断を確定する。</p>
-        </div>
-      </div>
-
-      <ol class="process-list">
-        <li>
-          <span class="process-list__number">1</span>
-          <div class="process-list__main">
-            <h3>定める</h3>
-            <p>問い、読み手、使用場面、読後の変化、固定条件を決める。</p>
+与えられた問いを固定せず、代替案を比較してください。
+完成版を一度に作らず、問い、原材料、構成、代表ページ、全体制作を分けてください。
+最後に、採用理由、不採用理由、未確認事項を示してください。</code></pre><button class="copy-button" type="button">コピー</button></div>
+            </article>
+            <article class="quick-item"><p class="quick-item__label">つくる</p><h3>完成より先に、判断を分ける</h3><p>構成が決まる前に、全ページを立派にしない。</p><a href="#stages">段階制作を見る →</a></article>
+            <article class="quick-item"><p class="quick-item__label">直す</p><h3>見た目より前へ戻る</h3><p>材料、問い、役割、形式のどこで平らになったかを探す。</p><a href="#review">レビューを見る →</a></article>
           </div>
-          <p class="process-list__output">問いの監査<br>制作前ブリーフ</p>
-        </li>
-        <li>
-          <span class="process-list__number">2</span>
-          <div class="process-list__main">
-            <h3>集める</h3>
-            <p>発言、数字、失敗、反対意見、外部文脈、反証を集める。</p>
-          </div>
-          <p class="process-list__output">原材料リスト<br>証拠マップ</p>
-        </li>
-        <li>
-          <span class="process-list__number">3</span>
-          <div class="process-list__main">
-            <h3>組み立てる</h3>
-            <p>採用した問いに答える中心メッセージと、最低3つの構成案を比較する。</p>
-          </div>
-          <p class="process-list__output">中心メッセージ<br>構成と不採用理由</p>
-        </li>
-        <li>
-          <span class="process-list__number">4</span>
-          <div class="process-list__main">
-            <h3>つくる</h3>
-            <p>静・標準・密・動の代表画面を試し、成立してから全体へ広げる。</p>
-          </div>
-          <p class="process-list__output">案件別スタイル<br>代表画面</p>
-        </li>
-        <li>
-          <span class="process-list__number">5</span>
-          <div class="process-list__main">
-            <h3>確かめる</h3>
-            <p>問い、根拠、形式、アクセシビリティ、最終判断者を確認する。</p>
-          </div>
-          <p class="process-list__output">採否記録<br>最終制作ログ</p>
-        </li>
-      </ol>
-
-      <aside class="stop-points" aria-label="対話時に止まる3か所">
-        <p>対話できる場合は、ここで止まる。</p>
-        <ol>
-          <li>問いの監査</li>
-          <li>構成案の選択</li>
-          <li>代表画面の確認</li>
-        </ol>
-      </aside>
-    </section>
-
-    <section id="medium" class="section" aria-labelledby="medium-title">
-      <div class="section-head">
-        <p class="section-index" aria-hidden="true">03</p>
-        <div>
-          <h2 id="medium-title">媒体で形を変える</h2>
-          <p>同じ原則でも、文章・スライド・画像では、担う仕事が違う。</p>
-        </div>
-      </div>
-
-      <div class="medium-switcher">
-        <div class="tab-list" role="tablist" aria-label="媒体を選ぶ">
-          <button id="tab-writing" role="tab" aria-selected="true" aria-controls="panel-writing" tabindex="0">文章</button>
-          <button id="tab-slides" role="tab" aria-selected="false" aria-controls="panel-slides" tabindex="-1">スライド</button>
-          <button id="tab-visual" role="tab" aria-selected="false" aria-controls="panel-visual" tabindex="-1">画像・図</button>
-        </div>
-
-        <section id="panel-writing" class="tab-panel" role="tabpanel" aria-labelledby="tab-writing">
-          <div class="medium-statement">
-            <h3>滑らかさより、対象固有の言葉を残す。</h3>
-            <p>文章は、表面・論証・認知リズム・身体の4回で編集する。</p>
-          </div>
-          <dl class="medium-rules">
-            <div><dt>残す</dt><dd>数字、日時、発言、迷い、例外、未確認事項</dd></div>
-            <div><dt>減らす</dt><dd>抽象語の連続、同じ接続詞、進行だけを実況する文</dd></div>
-            <div><dt>確かめる</dt><dd>問いが回収され、本人の語彙と呼吸に戻っているか</dd></div>
-          </dl>
         </section>
 
-        <section id="panel-slides" class="tab-panel" role="tabpanel" aria-labelledby="tab-slides" hidden>
-          <div class="medium-statement">
-            <h3>ページの役割から、レイアウトを選ぶ。</h3>
-            <p>見る・比べる・考える・決める・進める。内容の違いを、形の違いとして出す。</p>
+        <section id="problems" class="section">
+          <div class="section-heading"><p class="section-number">02</p><div><p class="section-kicker">Diagnosis</p><h2>AIくささの6要因</h2></div></div>
+          <p class="section-intro">黒背景や発光画像だけの問題ではありません。文章、構造、素材、責任の置き方が重なると「誰も選んでいない」印象になります。</p>
+          <div class="factor-list">
+            <article class="factor"><p class="factor__number">01</p><div><h3>言語的平均化</h3><p>抽象語、二項対立、均一な文長へ収束する。</p><p class="factor__action">固有名詞、数字、日時、発言、失敗を戻す。</p></div></article>
+            <article class="factor"><p class="factor__number">02</p><div><h3>ジャンルと文化の不整合</h3><p>ウェブのカードUIを、会議スライドへそのまま移す。</p><p class="factor__action">読み手と使用場面から形式を選ぶ。</p></div></article>
+            <article class="factor"><p class="factor__number">03</p><div><h3>構造的均質化</h3><p>同じ見出し、同じカード、同じ密度が続く。</p><p class="factor__action">内容の違いを形の違いとして出す。</p></div></article>
+            <article class="factor"><p class="factor__number">04</p><div><h3>装飾と意味の乖離</h3><p>画像や図が、理解にも検証にも寄与しない。</p><p class="factor__action">削除時に失われる情報を説明する。</p></div></article>
+            <article class="factor"><p class="factor__number">05</p><div><h3>原材料の欠如</h3><p>現場の発言や例外が、一般論へ置き換わる。</p><p class="factor__action">2〜3節に一度、具体的な材料を置く。</p></div></article>
+            <article class="factor"><p class="factor__number">06</p><div><h3>判断主体の不在</h3><p>なぜ選び、なぜ捨てたか説明できる人がいない。</p><p class="factor__action">採否、限界、最終判断者を残す。</p></div></article>
           </div>
-          <dl class="medium-rules">
-            <div><dt>残す</dt><dd>本編、台本、付録、制作ログの役割分担</dd></div>
-            <div><dt>減らす</dt><dd>同じカード、同じ密度、装飾目的の英語ラベル</dd></div>
-            <div><dt>確かめる</dt><dd>実寸、投影、PDF、読み順、ノート欄が成立するか</dd></div>
-          </dl>
         </section>
 
-        <section id="panel-visual" class="tab-panel" role="tabpanel" aria-labelledby="tab-visual" hidden>
-          <div class="medium-statement">
-            <h3>「あると映える」ではなく、「ないと分からない」。</h3>
-            <p>画像や図は、事実・比較・構造・時間・空間のどれを担うか説明する。</p>
+        <section id="principles" class="section">
+          <div class="section-heading"><p class="section-number">03</p><div><p class="section-kicker">Principles</p><h2>共通原則</h2></div></div>
+          <div class="principle-stack">
+            <article class="principle principle--accent"><p class="principle__index">A</p><div><h3>人間らしさは「雑さ」ではなく「判断」</h3><p>紙の質感や崩した余白を加えるだけでは、別のテンプレートになる。</p></div></article>
+            <article class="principle"><p class="principle__index">B</p><div><h3>原材料を消しすぎない</h3><p>発言、数字、日時、失敗、迷いには、その成果物でしか使えない情報がある。</p></div></article>
+            <article class="principle"><p class="principle__index">C</p><div><h3>事実・解釈・仮説・提案を分ける</h3><p>すべてを同じ確信度で書かない。</p></div></article>
+            <article class="principle"><p class="principle__index">D</p><div><h3>一貫性と均質性を区別する</h3><p>書体はそろえてよい。内容に関係なく、同じ構造を繰り返さない。</p></div></article>
+            <article class="principle"><p class="principle__index">E</p><div><h3>AIも問い直す。採用は人が引き受ける</h3><p>AIは候補、比較、反論を支援できる。採用する問いと説明責任は人が持つ。</p></div></article>
           </div>
-          <dl class="medium-rules">
-            <div><dt>優先する</dt><dd>現場写真、原文、実データ、内容固有の説明図</dd></div>
-            <div><dt>減らす</dt><dd>抽象画像、汎用アイコン、本文を丸で囲んだだけの図</dd></div>
-            <div><dt>確かめる</dt><dd>削除したとき、見栄え以外の情報が失われるか</dd></div>
-          </dl>
         </section>
+
+        <section id="media" class="section">
+          <div class="section-heading"><p class="section-number">04</p><div><p class="section-kicker">By medium</p><h2>媒体別ガイド</h2></div></div>
+          <div class="media-sections">
+            <article id="writing-guide" class="media-section"><div class="media-section__header"><p class="media-section__marker">文章</p><h3>滑らかさより、対象固有の言葉を残す</h3></div><div class="media-section__body"><ul><li>すべての見出しを格言にしない。</li><li>数字、日時、場面、発言を近くに置く。</li><li>研究は結果と推測と限界を分ける。</li></ul><div class="before-after"><div><p class="before-after__label">抽象化しすぎ</p><p>連携不足が課題だった。</p></div><div><p class="before-after__label">材料を戻す</p><p>北門と南門で異なる案内が行われた。</p></div></div></div></article>
+            <article id="slide-guide" class="media-section"><div class="media-section__header"><p class="media-section__marker">スライド</p><h3>ページの役割から、レイアウトを選ぶ</h3></div><div class="media-section__body"><p>問い、観察、比較、反証、判断。役割が違えば、形も変える。</p><div class="role-line"><span>観察</span><span>問い</span><span>事実</span><span>比較</span><span>反証</span><span>判断</span></div><ul><li>カードを使う前に、本当に並列か確認する。</li><li>一枚一メッセージを、一枚一断言にしない。</li></ul></div></article>
+            <article id="visual-guide" class="media-section"><div class="media-section__header"><p class="media-section__marker">画像・図解</p><h3>「あると映える」ではなく「ないと分からない」</h3></div><div class="media-section__body"><p class="visual-question">この画像を削除したら、失われる情報は何か。</p><ol class="priority-list"><li>現場写真・画面</li><li>原文・資料</li><li>実データ</li><li>内容固有の図</li><li>権利確認済み素材</li><li>生成画像</li><li>汎用装飾</li></ol></div></article>
+          </div>
+        </section>
+
+        <section id="workflow" class="section">
+          <div class="section-heading"><p class="section-number">05</p><div><p class="section-kicker">Workflow</p><h2>制作工程</h2></div></div>
+          <p class="section-intro">AIくささは、仕上げより制作順序から生まれます。詳細な段階制作は、上部のエクスプローラーで確認できます。</p>
+          <ol class="workflow-list"><li><p class="workflow-list__step">STEP 1</p><div><h3>問いと目的を定める</h3><p>読み手、使用場面、読後の変化を決める。</p></div></li><li><p class="workflow-list__step">STEP 2</p><div><h3>原材料を集める</h3><p>発言、数字、失敗、反証を、まだ整えずに並べる。</p></div></li><li><p class="workflow-list__step">STEP 3</p><div><h3>構成を比較する</h3><p>最低3案を比べ、採用と不採用の理由を残す。</p></div></li><li><p class="workflow-list__step">STEP 4</p><div><h3>代表ページを試す</h3><p>静、標準、密、動を確認してから全体へ進む。</p></div></li><li><p class="workflow-list__step">STEP 5</p><div><h3>壊して確かめる</h3><p>白黒、画像なし、見出しだけ、実寸で検証する。</p></div></li></ol>
+        </section>
+
+        <section id="review" class="section">
+          <div class="section-heading"><p class="section-number">06</p><div><p class="section-kicker">Review</p><h2>最終レビュー</h2></div></div>
+          <p class="section-intro">チェック数は点数ではなく、どの工程へ戻るかを決める手掛かりです。</p>
+          <div class="review-layout"><div class="review-panel" data-review-checklist>
+            <details open><summary>文章</summary><label><input type="checkbox"> 抽象語が具体語より多い</label><label><input type="checkbox"> 見出しが全部キャッチコピー</label><label><input type="checkbox"> 数字・日時・実例が少ない</label><label><input type="checkbox"> 問いが回収されていない</label><label><input type="checkbox"> 本人にない感情を作っている</label></details>
+            <details><summary>構造・形式</summary><label><input type="checkbox"> 同じ構成が3回以上続く</label><label><input type="checkbox"> 何でもカードにしている</label><label><input type="checkbox"> 同じ階層に入口が6つ以上ある</label><label><input type="checkbox"> 副題を消しても意味が変わらない</label><label><input type="checkbox"> 図形化しても関係が増えない</label></details>
+            <details><summary>材料・責任</summary><label><input type="checkbox"> 強い主張の近くに根拠がない</label><label><input type="checkbox"> 反証や限界を消している</label><label><input type="checkbox"> 不採用案がない</label><label><input type="checkbox"> 旧版の機能が消えている</label><label><input type="checkbox"> 最終判断者が分からない</label></details>
+          </div><aside class="score-box" aria-live="polite"><p class="score-box__label">CHECKED</p><p class="score-box__value"><span data-review-score>0</span><small>/ 15</small></p><p data-review-message>まずは該当箇所を選んでください。</p><button class="button button--secondary button--small" type="button" data-review-reset>リセット</button></aside></div>
+        </section>
+
+        <section id="prompts" class="section"><div class="section-heading"><p class="section-number">07</p><div><p class="section-kicker">Copy & use</p><h2>コピペ用プロンプト</h2></div></div><div class="prompt-list"><details open><summary>スライドを段階的につくる</summary><div class="code-block" data-copy-group><pre><code>以下を参照してください。
+https://raw.githubusercontent.com/silovar-uk/designmd/main/DESIGN.md
+
+依頼内容：
+（ここに記載）
+
+問いを監査し、原材料を整理し、構成案を最低3案比較してください。
+代表ページで静・標準・密・動を確認してから全体制作へ進んでください。
+最後に採用理由、不採用理由、未確認事項を示してください。</code></pre><button class="copy-button" type="button">コピー</button></div></details><details><summary>文章を4回編集する</summary><div class="code-block" data-copy-group><pre><code>以下の文章を、表面、論証、認知リズム、身体の4段階で点検してください。
+問題箇所、理由、修正方針、残すべき具体表現を示してください。
+
+文章：
+（ここに貼る）</code></pre><button class="copy-button" type="button">コピー</button></div></details></div></section>
+
+        <section id="documents" class="section section--last"><div class="section-heading"><p class="section-number">08</p><div><p class="section-kicker">Source documents</p><h2>原文を読む</h2></div></div><div class="document-links"><a href="https://github.com/silovar-uk/designmd/blob/main/DESIGN.md"><span>統合版</span><strong>DESIGN.md</strong></a><a href="https://github.com/silovar-uk/designmd/blob/main/docs/question-audit.md"><span>問い</span><strong>question-audit.md</strong></a><a href="https://github.com/silovar-uk/designmd/blob/main/docs/staged-production.md"><span>工程</span><strong>staged-production.md</strong></a><a href="https://github.com/silovar-uk/designmd/blob/main/docs/writing.md"><span>文章</span><strong>writing.md</strong></a><a href="https://github.com/silovar-uk/designmd/blob/main/docs/slides.md"><span>スライド</span><strong>slides.md</strong></a><a href="https://github.com/silovar-uk/designmd/blob/main/docs/visuals.md"><span>画像・図解</span><strong>visuals.md</strong></a><a href="https://github.com/silovar-uk/designmd/blob/main/docs/review-checklist.md"><span>レビュー</span><strong>review-checklist.md</strong></a><a href="https://github.com/silovar-uk/designmd/tree/main/prompts"><span>プロンプト</span><strong>prompts/</strong></a></div></section>
       </div>
-    </section>
-
-    <section id="review" class="section" aria-labelledby="review-title">
-      <div class="section-head">
-        <p class="section-index" aria-hidden="true">04</p>
-        <div>
-          <h2 id="review-title">完成より前へ戻る</h2>
-          <p>チェック数は点数ではない。どの段階へ戻るべきかを見つける。</p>
-        </div>
-      </div>
-
-      <div class="review-layout">
-        <div class="review-groups" data-review-list>
-          <fieldset>
-            <legend>問い</legend>
-            <label><input type="checkbox"> 依頼された問いを監査していない</label>
-            <label><input type="checkbox"> 刺激的という理由だけで問いを選んでいる</label>
-            <label><input type="checkbox"> 採用しなかった問いと理由がない</label>
-          </fieldset>
-          <fieldset>
-            <legend>材料</legend>
-            <label><input type="checkbox"> 固有名詞、数字、日時、発言が少ない</label>
-            <label><input type="checkbox"> 主張の近くに根拠・条件・限界がない</label>
-            <label><input type="checkbox"> 反証や未確認事項を消している</label>
-          </fieldset>
-          <fieldset>
-            <legend>構造</legend>
-            <label><input type="checkbox"> 同じ構成や密度が3回以上続く</label>
-            <label><input type="checkbox"> 同じ階層に6つ以上の入口がある</label>
-            <label><input type="checkbox"> 見出しと同義の副題を重ねている</label>
-          </fieldset>
-          <fieldset>
-            <legend>表現</legend>
-            <label><input type="checkbox"> 形式が内容より先に決まっている</label>
-            <label><input type="checkbox"> 画像や図を消しても理解が変わらない</label>
-            <label><input type="checkbox"> 書き手が持っていない迷いや感情を作っている</label>
-          </fieldset>
-          <fieldset>
-            <legend>責任</legend>
-            <label><input type="checkbox"> AI案の採用・棄却理由がない</label>
-            <label><input type="checkbox"> 権利・公開・アクセシビリティの確認者が不明</label>
-            <label><input type="checkbox"> 最終判断者を説明できない</label>
-          </fieldset>
-        </div>
-
-        <aside class="review-score" aria-live="polite">
-          <p>CHECKED</p>
-          <strong><span data-review-count>0</span><small>/15</small></strong>
-          <p data-review-message>該当箇所を選ぶと、戻る段階を示す。</p>
-          <button type="button" data-review-reset>リセット</button>
-        </aside>
-      </div>
-    </section>
-
-    <section id="use" class="section section--use" aria-labelledby="use-title">
-      <div class="section-head">
-        <p class="section-index" aria-hidden="true">05</p>
-        <div>
-          <h2 id="use-title">必要なものだけ使う</h2>
-          <p>ページ全体をAIへ渡さない。依頼に合う入口を選ぶ。</p>
-        </div>
-      </div>
-
-      <div class="prompt-tool">
-        <div class="prompt-options" role="tablist" aria-label="プロンプトを選ぶ">
-          <button role="tab" aria-selected="true" aria-controls="prompt-panel" data-prompt="audit">問いの監査</button>
-          <button role="tab" aria-selected="false" aria-controls="prompt-panel" data-prompt="all">統合版</button>
-          <button role="tab" aria-selected="false" aria-controls="prompt-panel" data-prompt="slides">スライド</button>
-          <button role="tab" aria-selected="false" aria-controls="prompt-panel" data-prompt="writing">文章レビュー</button>
-        </div>
-
-        <div id="prompt-panel" class="prompt-panel" role="tabpanel">
-          <pre><code data-prompt-output></code></pre>
-          <button class="copy-button" type="button" data-copy-prompt>コピー</button>
-          <p class="copy-status" role="status" aria-live="polite" data-prompt-status></p>
-        </div>
-      </div>
-
-      <div class="source-links">
-        <h3>正典を読む</h3>
-        <a href="https://github.com/silovar-uk/designmd/blob/main/DESIGN.md">統合版</a>
-        <a href="https://github.com/silovar-uk/designmd/blob/main/docs/question-audit.md">問いの監査</a>
-        <a href="https://github.com/silovar-uk/designmd/blob/main/docs/staged-production.md">五段階制作</a>
-        <a href="https://github.com/silovar-uk/designmd/blob/main/docs/japanese-ai-writing-practices.md">日本語の四回編集</a>
-        <a href="https://github.com/silovar-uk/designmd/blob/main/docs/review-checklist.md">最終レビュー</a>
-      </div>
-    </section>
+    </div>
   </main>
 
-  <footer class="site-footer">
-    <p><strong>designmd</strong> — Human judgment for AI-assisted work.</p>
-    <p>ルールを守ることではなく、なぜ選んだかを説明できること。</p>
-    <a href="https://github.com/silovar-uk/designmd">GitHub</a>
-  </footer>
+  <footer class="site-footer"><div><p><strong>designmd</strong> — Human judgment for AI-assisted work.</p><p>ルールを全部守ると、このガイド自体が新しいテンプレートになります。たまには、ちゃんと理由をつけて破ってください。</p></div><a href="#top">ページ上部へ ↑</a></footer>
 </body>
 </html>
