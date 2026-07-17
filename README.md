@@ -1,6 +1,6 @@
 # designmd
 
-> Version: `2026.07.16-beta`  
+> Version: `2026.07.17-beta`  
 > Status: beta
 
 生成AIを使った文章・スライド・画像制作で、**整っているが、誰も本気で選んでいないように見える状態**を避けるための実務ガイド。
@@ -12,7 +12,7 @@
 
 https://silovar-uk.github.io/designmd/
 
-HTML版では、段階制作、参照戦略、文章の四回編集、認知リズム、図の文法、アクセシビリティ、形式選択を操作しながら確認できる。
+HTML版では、問いの監査、五段階制作、文章の四回編集、認知リズム、図の文法、アクセシビリティ、形式選択を確認できる。
 
 ## AIに一つだけ参照させる
 
@@ -26,14 +26,38 @@ https://raw.githubusercontent.com/silovar-uk/designmd/main/DESIGN.md
 今回の依頼：
 （依頼内容）
 
-完成版を一度に作らず、目的、原材料、構成、代表ページ、全体制作を分けてください。
-逆質問では、空欄だけでなく、仮説、具体案、推奨案、理由を先に示してください。
+与えられた問いをそのまま固定せず、前提、根拠、欲望、文脈、代替問いを監査してください。
+ブリーフ忠実案、再定義案、反転・別軸案を比較し、推奨案と理由を示してください。
+最終的に採用する問いと説明責任は人間が持ちます。
+完成版を一度に作らず、問い、原材料、構成、代表ページ、全体制作を分けてください。
 日本語の長文は、表面、論証、認知リズム、身体の四段階で編集してください。
 ```
 
-## 認知リズムを正式実装
+## AIも問いを問い直す
 
-日本語文章の標準工程を、次の四回編集へ更新した。
+AIは、与えられた問いへ答えるだけではない。
+
+1. **前提**：何を事実として扱っているか
+2. **根拠**：事実、仮説、慣習、未確認のどれか
+3. **欲望**：解決後に本当は何を変えたいか
+4. **文脈**：生活者、競合、組織、社会、時代を加えると何が変わるか
+5. **代替問い**：元の問いを採用しない場合、何を問うか
+
+原則として、ブリーフ忠実案、再定義案、反転・別軸案を比較する。
+
+AIは問いを生成・比較できる。人間は、どの問いへ時間、予算、信用を賭けるかを決める。
+
+詳細：[`docs/question-audit.md`](docs/question-audit.md)
+
+## 五段階制作
+
+1. **定める**：問い、読み手、使用場面、読後の変化
+2. **集める**：原材料、証拠、反証、未確認事項
+3. **組み立てる**：中心メッセージ、構成、役割、情報量
+4. **つくる**：視覚方針、代表ページ、実装
+5. **確かめる**：問い、AIらしさ、アクセシビリティ、完成度
+
+## 日本語文章の四回編集
 
 1. **Lint**：記号、定型句、反復を取る
 2. **Argument**：段落、根拠、因果、条件を直す
@@ -42,22 +66,14 @@ https://raw.githubusercontent.com/silovar-uk/designmd/main/DESIGN.md
 
 認知リズムは、問いや短文を増やす技法ではない。読み手の認識が、具体的な事実と判断によってどう更新されるかを設計する。
 
-### 文書種別ごとの適用
-
-- **全工程**：コラム、解説、インタビュー記事、長めの企画文、学習資料
-- **一部**：提案書、社内説明、調査レポート、プレゼンノート、プレスリリース
-- **対象更新のみ**：緊急告知、安全情報、法務、手順書、議事録、短いメール
-
-結論を遅らせず、書き手が持っていない迷い、感情、告白を創作しない。
-
 ## 役割から入る
 
 | やりたいこと | 最初に読む |
 |---|---|
-| AIへ依頼する | [`docs/question-blocks.md`](docs/question-blocks.md) |
+| 問いを監査する | [`docs/question-audit.md`](docs/question-audit.md) |
+| AIへ逆質問させる | [`docs/question-blocks.md`](docs/question-blocks.md) |
 | 構成・編集する | [`docs/staged-production.md`](docs/staged-production.md) |
 | 日本語文書を改善する | [`docs/japanese-ai-writing-practices.md`](docs/japanese-ai-writing-practices.md) |
-| 認知リズムを設計する | [`docs/cognitive-rhythm-writing.md`](docs/cognitive-rhythm-writing.md) |
 | 視覚設計・実装する | [`docs/visuals.md`](docs/visuals.md) |
 | レビューする | [`docs/review-checklist.md`](docs/review-checklist.md) |
 
@@ -65,50 +81,32 @@ https://raw.githubusercontent.com/silovar-uk/designmd/main/DESIGN.md
 
 | 概念 | 正典 | 状態 |
 |---|---|---|
+| 問いの監査 | [`docs/question-audit.md`](docs/question-audit.md) | stable |
 | 制作工程 | [`docs/staged-production.md`](docs/staged-production.md) | stable |
 | 案件別スタイル | [`docs/project-style-guide.md`](docs/project-style-guide.md) | stable |
 | アクセシビリティ | [`docs/accessibility.md`](docs/accessibility.md) | stable |
 | 日本語の四回編集 | [`docs/japanese-ai-writing-practices.md`](docs/japanese-ai-writing-practices.md) | stable |
 | 認知リズム | [`docs/cognitive-rhythm-writing.md`](docs/cognitive-rhythm-writing.md) | stable |
-| 認知リズム運用レビュー | [`docs/cognitive-rhythm-review.md`](docs/cognitive-rhythm-review.md) | stable |
-| 文型・完結度 | [`docs/sentence-completeness.md`](docs/sentence-completeness.md) | stable |
-| 物語設計 | [`docs/story-design.md`](docs/story-design.md) | stable |
+| 情報の束ね方 | [`docs/information-grouping.md`](docs/information-grouping.md) | stable |
 | ビジュアル | [`docs/visuals.md`](docs/visuals.md) | stable |
 | 形式選択 | [`docs/format-selection.md`](docs/format-selection.md) | experimental |
 | タイポ・余白判断 | [`docs/type-spacing-decisions.md`](docs/type-spacing-decisions.md) | experimental |
-| 版・状態管理 | [`docs/governance.md`](docs/governance.md) | stable |
 
 ## プロンプト
 
 [`prompts/README.md`](prompts/README.md) に整理している。
 
+- 問いの監査
 - スライド作成・再設計
 - 文章レビュー
 - 認知リズム文章の生成・改稿
 - 画像・図解レビュー
 - 最終レビュー
 
-## HTML版の構成
-
-- `site/v4.*` — 日本語文章の四回編集と認知リズム
-- `site/v5.*` — 図形、矢印、台本
-- `site/v6.*` — 読者向け分離、機能保存、学習、プレーンスライド
-- `site/v7.*` — 共通基盤、案件別ガイド、役割、アクセシビリティ、形式、状態
-
-## 参考・加工表示
-
-- デジタル庁デザインシステムの考え方をdesignmd向けに再構成している
-- 鹿野桂一郎「cognitive-rhythm-writing」の考え方をdesignmd向けに再構成している
-- 原文の例文や規則をそのまま転載せず、各作者による推奨・監修を意味しない
-
-詳細：
-
-- [`docs/references/digital-agency-design-system.md`](docs/references/digital-agency-design-system.md)
-- [`docs/references/cognitive-rhythm-writing.md`](docs/references/cognitive-rhythm-writing.md)
-
 ## 運用上の注意
 
-- AI検出器を通過することを目的にしない
+- AIが出した刺激的な問いを、そのまま本質的な問いと扱わない
+- 元の問いを否定すること自体をクリエイティブと考えない
+- 緊急、安全、法令、決定済み事項を面白さのために広げない
 - ルールを機械的に守り、新しいテンプレートにしない
-- 認知リズムを、問い、短文、告白の定型として使わない
 - 正確性、権利、アクセシビリティ、公開可否の最終責任は案件側が持つ
