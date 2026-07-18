@@ -1,0 +1,167 @@
+/* Mobile editorial motion: final-frame boot, purposeful interruptions, one bad example. */
+
+body {
+  transition: opacity .16s ease;
+}
+
+html.is-booting.motion-enabled .hero h1,
+html.is-booting.motion-enabled .hero .v2-question,
+html.is-booting.motion-enabled .hero .v2-answer,
+html.is-booting.motion-enabled .hero .v10-hero-note {
+  animation-play-state: paused;
+}
+
+.motion-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.motion-overdo {
+  min-height: 44px;
+  padding: 0 15px;
+  border: 1px dashed var(--motion-ink, var(--ink));
+  background: #fff;
+  color: var(--motion-ink, var(--ink));
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.motion-overdo:hover {
+  background: var(--motion-yellow, #f0cf55);
+}
+
+.motion-live__stage.is-overdoing {
+  animation: motion-stage-overdo .85s steps(2, end) both;
+}
+
+.motion-live__stage.is-overdoing .motion-live__line {
+  animation: motion-line-overdo .72s ease-in-out both !important;
+}
+
+.motion-live__stage.is-overdoing .motion-live__card--one {
+  animation: motion-card-overdo-one .78s ease-in-out both !important;
+}
+
+.motion-live__stage.is-overdoing .motion-live__card--two {
+  animation: motion-card-overdo-two .78s ease-in-out both !important;
+}
+
+.motion-live__stage.is-overdoing .motion-live__return {
+  opacity: 1;
+  animation: motion-return-overdo .78s ease-in-out both !important;
+}
+
+.motion-interlude {
+  display: none;
+}
+
+@keyframes motion-stage-overdo {
+  0%, 100% { background-position: 0 0; }
+  35% { background-position: 12px -8px; }
+  70% { background-position: -8px 10px; }
+}
+
+@keyframes motion-line-overdo {
+  0%, 100% { transform: scaleX(1) rotate(0); }
+  35% { transform: scaleX(.62) rotate(4deg); }
+  70% { transform: scaleX(1.08) rotate(-3deg); }
+}
+
+@keyframes motion-card-overdo-one {
+  0%, 100% { opacity: 1; transform: translate3d(0, 0, 0) rotate(0); }
+  35% { opacity: 1; transform: translate3d(18px, -12px, 0) rotate(7deg) scale(1.04); }
+  70% { opacity: 1; transform: translate3d(-12px, 10px, 0) rotate(-5deg) scale(.98); }
+}
+
+@keyframes motion-card-overdo-two {
+  0%, 100% { opacity: 1; transform: translate3d(0, 0, 0) rotate(2deg); }
+  35% { opacity: 1; transform: translate3d(-20px, 9px, 0) rotate(-8deg) scale(.96); }
+  70% { opacity: 1; transform: translate3d(12px, -8px, 0) rotate(9deg) scale(1.04); }
+}
+
+@keyframes motion-return-overdo {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  35% { transform: translateY(-18px) rotate(-5deg); }
+  70% { transform: translateY(8px) rotate(3deg); }
+}
+
+@media (max-width: 680px) {
+  .motion-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .motion-replay,
+  .motion-overdo {
+    width: 100%;
+    padding: 0 10px;
+    font-size: 13px;
+  }
+
+  .motion-interlude {
+    position: relative;
+    display: block;
+    margin: 24px -4px 68px;
+    padding: 22px 20px 20px;
+    border: 2px solid var(--motion-ink, var(--ink));
+    background: var(--motion-yellow, #f0cf55);
+    box-shadow: 7px 8px 0 rgba(0,0,0,.12);
+    transform: rotate(-1deg);
+    opacity: 0;
+    transition: opacity .45s ease, transform .62s cubic-bezier(.2,1.05,.2,1);
+  }
+
+  .motion-interlude:nth-of-type(even) {
+    background: #fff;
+    transform: rotate(1deg);
+  }
+
+  .motion-interlude.is-visible {
+    opacity: 1;
+    transform: rotate(-1deg) translateY(0);
+  }
+
+  .motion-interlude:nth-of-type(even).is-visible {
+    transform: rotate(1deg) translateY(0);
+  }
+
+  .motion-interlude small {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--motion-red, #b8323c);
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: .15em;
+  }
+
+  .motion-interlude p {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 1.55;
+  }
+
+  .motion-interlude::after {
+    content: "本文へ戻る ↓";
+    display: block;
+    margin-top: 12px;
+    font-size: 11px;
+    font-weight: 800;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body,
+  .motion-interlude,
+  .motion-live__stage,
+  .motion-live__stage * {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .motion-interlude {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
