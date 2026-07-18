@@ -1,38 +1,4 @@
 (() => {
-  const iconLinks = [
-    { rel: 'icon', href: './favicon.ico', type: 'image/x-icon' },
-    { rel: 'icon', href: './favicon-32x32.png', type: 'image/png', sizes: '32x32' },
-    { rel: 'icon', href: './favicon-16x16.png', type: 'image/png', sizes: '16x16' },
-    { rel: 'apple-touch-icon', href: './apple-touch-icon.png', sizes: '180x180' },
-  ];
-
-  iconLinks.forEach((attributes) => {
-    const selector = `link[rel="${attributes.rel}"][href="${attributes.href}"]`;
-    if (document.head.querySelector(selector)) return;
-    const link = document.createElement('link');
-    Object.entries(attributes).forEach(([name, value]) => link.setAttribute(name, value));
-    document.head.append(link);
-  });
-
-  [
-    './v2.css',
-    './v3.css',
-    './v4.css',
-    './v5.css',
-    './v6.css',
-    './v7.css',
-    './layout-fixes.css',
-    './v8.css',
-    './v9.css',
-    './v10.css',
-    './motion.css',
-  ].forEach((href) => {
-    const layerStyle = document.createElement('link');
-    layerStyle.rel = 'stylesheet';
-    layerStyle.href = href;
-    document.head.append(layerStyle);
-  });
-
   const copyButtons = document.querySelectorAll('[data-copy-group] .copy-button');
   copyButtons.forEach((button) => {
     button.addEventListener('click', async () => {
@@ -84,26 +50,13 @@
     });
   }
 
-  const loadScript = (src) => new Promise((resolve, reject) => {
-    const script = document.createElement('script');
-    script.src = src;
-    script.addEventListener('load', resolve, { once: true });
-    script.addEventListener('error', reject, { once: true });
-    document.body.append(script);
-  });
+  const finishBoot = () => {
+    const root = document.documentElement;
+    root.classList.add('is-ready');
+    root.classList.remove('is-booting');
+  };
 
-  loadScript('./v2.js')
-    .then(() => loadScript('./v2-fixes.js'))
-    .then(() => loadScript('./v3.js'))
-    .then(() => loadScript('./v4.js'))
-    .then(() => loadScript('./v5.js'))
-    .then(() => loadScript('./v6.js'))
-    .then(() => loadScript('./v7.js'))
-    .then(() => loadScript('./v8.js'))
-    .then(() => loadScript('./v9.js'))
-    .then(() => loadScript('./v10.js'))
-    .then(() => loadScript('./motion.js'))
-    .catch(() => {
-      // Base content remains usable even if an enhancement layer fails.
-    });
+  window.requestAnimationFrame(() => {
+    window.requestAnimationFrame(finishBoot);
+  });
 })();
