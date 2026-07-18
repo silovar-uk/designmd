@@ -67,32 +67,33 @@
   const status = $('[data-motion-status]', section);
   let statusTimer = 0;
 
-  const playStage = () => {
+  const playStage = (announce = false) => {
     if (!stage) return;
     stage.classList.remove('is-playing');
     void stage.offsetWidth;
     stage.classList.add('is-playing');
-    if (status) status.textContent = reduceMotion ? '動きを減らした表示で、全内容を表示しています。' : '再生しました。動きは一度で止まります。';
+    if (!announce || !status) return;
+    status.textContent = reduceMotion ? '動きを減らした表示で、全内容を表示しています。' : '再生しました。動きは一度で止まります。';
     window.clearTimeout(statusTimer);
     statusTimer = window.setTimeout(() => {
-      if (status) status.textContent = '';
+      status.textContent = '';
     }, 3500);
   };
 
-  $('[data-motion-replay]', section)?.addEventListener('click', playStage);
+  $('[data-motion-replay]', section)?.addEventListener('click', () => playStage(true));
 
   const motionObserver = !reduceMotion && 'IntersectionObserver' in window
     ? new IntersectionObserver((entries, observer) => {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
-          playStage();
+          playStage(false);
           observer.unobserve(entry.target);
         });
       }, { threshold: .35 })
     : null;
 
   if (motionObserver && stage) motionObserver.observe(stage);
-  else playStage();
+  else playStage(false);
 
   const insertNote = (target, text, calm = false) => {
     if (!target || $('.motion-note', target.parentElement || target)) return null;
