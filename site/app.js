@@ -25,6 +25,7 @@
     './v8.css',
     './v9.css',
     './v10.css',
+    './motion.css',
   ].forEach((href) => {
     const layerStyle = document.createElement('link');
     layerStyle.rel = 'stylesheet';
@@ -101,6 +102,7 @@
     .then(() => loadScript('./v8.js'))
     .then(() => loadScript('./v9.js'))
     .then(() => loadScript('./v10.js'))
+    .then(() => loadScript('./motion.js'))
     .catch(() => {
       // Base content remains usable even if an enhancement layer fails.
     });
