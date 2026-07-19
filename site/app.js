@@ -1,4 +1,34 @@
 (() => {
+  const loadWao = () => new Promise((resolve) => {
+    if (!document.querySelector('link[data-wao-style]')) {
+      const style = document.createElement('link');
+      style.rel = 'stylesheet';
+      style.href = './wao.css?v=20260719-1';
+      style.dataset.waoStyle = '';
+      document.head.appendChild(style);
+    }
+
+    if (document.querySelector('#wao')) {
+      resolve();
+      return;
+    }
+
+    const existing = document.querySelector('script[data-wao-script]');
+    if (existing) {
+      existing.addEventListener('load', resolve, { once: true });
+      window.setTimeout(resolve, 1000);
+      return;
+    }
+
+    const script = document.createElement('script');
+    script.src = './wao.js?v=20260719-1';
+    script.defer = true;
+    script.dataset.waoScript = '';
+    script.addEventListener('load', resolve, { once: true });
+    script.addEventListener('error', resolve, { once: true });
+    document.body.appendChild(script);
+  });
+
   const copyButtons = document.querySelectorAll('[data-copy-group] .copy-button');
   copyButtons.forEach((button) => {
     button.addEventListener('click', async () => {
@@ -56,7 +86,9 @@
     root.classList.remove('is-booting');
   };
 
-  window.requestAnimationFrame(() => {
-    window.requestAnimationFrame(finishBoot);
+  loadWao().finally(() => {
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(finishBoot);
+    });
   });
 })();
