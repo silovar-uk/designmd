@@ -1,53 +1,59 @@
 (() => {
-  const loadWao = () => {
-    const stylePromise = new Promise((resolve) => {
-      const existing = document.querySelector('link[data-wao-style]');
-      if (existing?.sheet) {
-        resolve();
-        return;
-      }
-      if (existing) {
-        existing.addEventListener('load', resolve, { once: true });
-        existing.addEventListener('error', resolve, { once: true });
-        window.setTimeout(resolve, 1200);
-        return;
-      }
-
-      const style = document.createElement('link');
-      style.rel = 'stylesheet';
-      style.href = './wao.css?v=20260719-2';
-      style.dataset.waoStyle = '';
-      style.addEventListener('load', resolve, { once: true });
-      style.addEventListener('error', resolve, { once: true });
-      document.head.appendChild(style);
+  const loadStylesheet = (href, marker) => new Promise((resolve) => {
+    const existing = document.querySelector(`link[${marker}]`);
+    if (existing?.sheet) {
+      resolve();
+      return;
+    }
+    if (existing) {
+      existing.addEventListener('load', resolve, { once: true });
+      existing.addEventListener('error', resolve, { once: true });
       window.setTimeout(resolve, 1200);
-    });
+      return;
+    }
 
-    const scriptPromise = new Promise((resolve) => {
-      if (document.querySelector('#wao')) {
-        resolve();
-        return;
-      }
+    const style = document.createElement('link');
+    style.rel = 'stylesheet';
+    style.href = href;
+    style.setAttribute(marker, '');
+    style.addEventListener('load', resolve, { once: true });
+    style.addEventListener('error', resolve, { once: true });
+    document.head.appendChild(style);
+    window.setTimeout(resolve, 1200);
+  });
 
-      const existing = document.querySelector('script[data-wao-script]');
-      if (existing) {
-        existing.addEventListener('load', resolve, { once: true });
-        existing.addEventListener('error', resolve, { once: true });
-        window.setTimeout(resolve, 1200);
-        return;
-      }
+  const loadScript = (src, marker, readySelector) => new Promise((resolve) => {
+    if (readySelector && document.querySelector(readySelector)) {
+      resolve();
+      return;
+    }
 
-      const script = document.createElement('script');
-      script.src = './wao.js?v=20260719-2';
-      script.defer = true;
-      script.dataset.waoScript = '';
-      script.addEventListener('load', resolve, { once: true });
-      script.addEventListener('error', resolve, { once: true });
-      document.body.appendChild(script);
+    const existing = document.querySelector(`script[${marker}]`);
+    if (existing) {
+      existing.addEventListener('load', resolve, { once: true });
+      existing.addEventListener('error', resolve, { once: true });
       window.setTimeout(resolve, 1200);
-    });
+      return;
+    }
 
-    return Promise.all([stylePromise, scriptPromise]);
+    const script = document.createElement('script');
+    script.src = src;
+    script.defer = true;
+    script.setAttribute(marker, '');
+    script.addEventListener('load', resolve, { once: true });
+    script.addEventListener('error', resolve, { once: true });
+    document.body.appendChild(script);
+    window.setTimeout(resolve, 1200);
+  });
+
+  const loadAddedPrinciples = async () => {
+    await Promise.all([
+      loadStylesheet('./one-question.css?v=20260719-1', 'data-one-question-style'),
+      loadStylesheet('./wao.css?v=20260719-2', 'data-wao-style')
+    ]);
+
+    await loadScript('./one-question.js?v=20260719-1', 'data-one-question-script', '#one-question');
+    await loadScript('./wao.js?v=20260719-2', 'data-wao-script', '#wao');
   };
 
   const copyButtons = document.querySelectorAll('[data-copy-group] .copy-button');
@@ -107,7 +113,7 @@
     root.classList.remove('is-booting');
   };
 
-  loadWao().finally(() => {
+  loadAddedPrinciples().finally(() => {
     window.requestAnimationFrame(() => {
       window.requestAnimationFrame(finishBoot);
     });
