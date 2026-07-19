@@ -1,33 +1,54 @@
 (() => {
-  const loadWao = () => new Promise((resolve) => {
-    if (!document.querySelector('link[data-wao-style]')) {
+  const loadWao = () => {
+    const stylePromise = new Promise((resolve) => {
+      const existing = document.querySelector('link[data-wao-style]');
+      if (existing?.sheet) {
+        resolve();
+        return;
+      }
+      if (existing) {
+        existing.addEventListener('load', resolve, { once: true });
+        existing.addEventListener('error', resolve, { once: true });
+        window.setTimeout(resolve, 1200);
+        return;
+      }
+
       const style = document.createElement('link');
       style.rel = 'stylesheet';
-      style.href = './wao.css?v=20260719-1';
+      style.href = './wao.css?v=20260719-2';
       style.dataset.waoStyle = '';
+      style.addEventListener('load', resolve, { once: true });
+      style.addEventListener('error', resolve, { once: true });
       document.head.appendChild(style);
-    }
+      window.setTimeout(resolve, 1200);
+    });
 
-    if (document.querySelector('#wao')) {
-      resolve();
-      return;
-    }
+    const scriptPromise = new Promise((resolve) => {
+      if (document.querySelector('#wao')) {
+        resolve();
+        return;
+      }
 
-    const existing = document.querySelector('script[data-wao-script]');
-    if (existing) {
-      existing.addEventListener('load', resolve, { once: true });
-      window.setTimeout(resolve, 1000);
-      return;
-    }
+      const existing = document.querySelector('script[data-wao-script]');
+      if (existing) {
+        existing.addEventListener('load', resolve, { once: true });
+        existing.addEventListener('error', resolve, { once: true });
+        window.setTimeout(resolve, 1200);
+        return;
+      }
 
-    const script = document.createElement('script');
-    script.src = './wao.js?v=20260719-1';
-    script.defer = true;
-    script.dataset.waoScript = '';
-    script.addEventListener('load', resolve, { once: true });
-    script.addEventListener('error', resolve, { once: true });
-    document.body.appendChild(script);
-  });
+      const script = document.createElement('script');
+      script.src = './wao.js?v=20260719-2';
+      script.defer = true;
+      script.dataset.waoScript = '';
+      script.addEventListener('load', resolve, { once: true });
+      script.addEventListener('error', resolve, { once: true });
+      document.body.appendChild(script);
+      window.setTimeout(resolve, 1200);
+    });
+
+    return Promise.all([stylePromise, scriptPromise]);
+  };
 
   const copyButtons = document.querySelectorAll('[data-copy-group] .copy-button');
   copyButtons.forEach((button) => {
