@@ -78,21 +78,24 @@
 
   media.parentNode.insertBefore(section, media);
 
-  const headerNav = document.querySelector('.header-nav');
-  const mediaHeaderLink = headerNav?.querySelector('a[href="#media"]');
-  if (headerNav && mediaHeaderLink && !headerNav.querySelector('a[href="#wao"]')) {
-    const link = document.createElement('a');
-    link.href = '#wao';
-    link.textContent = 'WAO';
-    headerNav.insertBefore(link, mediaHeaderLink);
+  const expressionMap = document.querySelector('.v10-map__grid a[href="#japanese-writing"] span');
+  if (expressionMap && !expressionMap.textContent.includes('WAO')) {
+    expressionMap.textContent = `${expressionMap.textContent}・WAO`;
   }
 
   const sideList = document.querySelector('.side-nav ol');
-  const mediaSideLink = sideList?.querySelector('a[href="#media"]')?.closest('li');
+  const mediaSideLink = sideList?.querySelector('a[href="#media"]');
   if (sideList && mediaSideLink && !sideList.querySelector('a[href="#wao"]')) {
-    const item = document.createElement('li');
-    item.innerHTML = '<a href="#wao">WAO</a>';
-    sideList.insertBefore(item, mediaSideLink);
+    if (mediaSideLink.parentElement?.tagName === 'DETAILS') {
+      const link = document.createElement('a');
+      link.href = '#wao';
+      link.textContent = 'WAO';
+      mediaSideLink.parentElement.insertBefore(link, mediaSideLink);
+    } else {
+      const item = document.createElement('li');
+      item.innerHTML = '<a href="#wao">WAO</a>';
+      mediaSideLink.closest('li')?.before(item);
+    }
   }
 
   const lenses = Array.from(section.querySelectorAll('[data-wao-lens]'));
