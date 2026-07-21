@@ -5,6 +5,8 @@
 - [`question-block-template.md`](question-block-template.md)：制作前の最初の一問をつくる
 - [`question-audit.md`](question-audit.md)：依頼文の前提と代替問いを比較する
 - [`wao-audit.md`](wao-audit.md)：通常の期待と、手段・表現・構造のWAO案を比較する
+- [`app-design.md`](app-design.md)：A｜操作具、B｜作業台、C｜探索空間からアプリを設計・改善する
+- [`manual-create.md`](manual-create.md)：実際の事故、例外、担当、Word書式を反映したマニュアルを作る
 - [`editorial-design.md`](editorial-design.md)：雑誌の編集型と質感五軸を決める
 - [`slide-create.md`](slide-create.md)：スライドを新規作成する
 - [`slide-redesign.md`](slide-redesign.md)：既存スライドを再設計する
@@ -20,6 +22,18 @@ AIがURLを読める場合は、各プロンプトと一緒に次を渡す。
 ```text
 共通原則：
 https://raw.githubusercontent.com/silovar-uk/designmd/main/DESIGN.md
+```
+
+アプリ案件では、次も渡す。
+
+```text
+https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/app-design.md
+```
+
+Wordマニュアル案件では、次も渡す。
+
+```text
+https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/manual.md
 ```
 
 ## すべての制作プロンプトに共通する開始規則
