@@ -39,7 +39,7 @@
         <p>副題を消すと何が失われる？　英語は実際の識別子？　制作意図が本編へ漏れていない？　確定後も「要確認」が残っていない？　全ページをレンダリングした？</p>
       </div>
 
-      <p class="operational-docs__links"><a href="https://github.com/silovar-uk/designmd/blob/main/docs/operational-documents.md">実務文書の詳しいガイド →</a><a href="https://github.com/silovar-uk/designmd/blob/main/prompts/operational-document-review.md">差分レビュー用プロンプト →</a></p>
+      <p class="operational-docs__links"><a href="https://github.com/silovar-uk/designmd/blob/main/docs/operational-documents.md">差分レビュー事例 →</a><a href="https://github.com/silovar-uk/designmd/blob/main/prompts/operational-document-review.md">差分レビュー用プロンプト →</a></p>
     </div>
   `;
 
