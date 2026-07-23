@@ -49,11 +49,15 @@
   const loadAddedPrinciples = async () => {
     await Promise.all([
       loadStylesheet('./one-question.css?v=20260719-1', 'data-one-question-style'),
-      loadStylesheet('./wao.css?v=20260719-2', 'data-wao-style')
+      loadStylesheet('./wao.css?v=20260719-2', 'data-wao-style'),
+      loadStylesheet('./operational-documents.css?v=20260723-1', 'data-operational-documents-style')
     ]);
 
-    await loadScript('./one-question.js?v=20260719-1', 'data-one-question-script', '#one-question');
-    await loadScript('./wao.js?v=20260719-2', 'data-wao-script', '#wao');
+    await Promise.all([
+      loadScript('./one-question.js?v=20260719-1', 'data-one-question-script', '#one-question'),
+      loadScript('./wao.js?v=20260719-2', 'data-wao-script', '#wao'),
+      loadScript('./operational-documents.js?v=20260723-1', 'data-operational-documents-script', '#operational-docs')
+    ]);
   };
 
   const copyButtons = document.querySelectorAll('[data-copy-group] .copy-button');
