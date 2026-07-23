@@ -1,0 +1,116 @@
+.operational-docs__body {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.operational-docs__lead {
+  max-width: 48rem;
+  font-size: 1.02rem;
+  line-height: 1.9;
+}
+
+.operational-docs__diff {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid var(--line, #c8c2b8);
+  border-bottom: 1px solid var(--line, #c8c2b8);
+}
+
+.operational-docs__diff > div {
+  padding: 1.1rem 1.2rem;
+}
+
+.operational-docs__diff > div + div {
+  border-left: 1px solid var(--line, #c8c2b8);
+}
+
+.operational-docs__diff p:last-child {
+  margin-bottom: 0;
+  line-height: 1.7;
+}
+
+.operational-docs__lessons {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: operational-lessons;
+  border-top: 1px solid var(--line, #c8c2b8);
+}
+
+.operational-docs__lessons li {
+  counter-increment: operational-lessons;
+  display: grid;
+  grid-template-columns: 2.5rem minmax(10rem, 0.7fr) minmax(14rem, 1.3fr);
+  gap: 1rem;
+  align-items: start;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--line, #c8c2b8);
+}
+
+.operational-docs__lessons li::before {
+  content: "0" counter(operational-lessons);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: var(--accent, #c40018);
+}
+
+.operational-docs__lessons strong {
+  line-height: 1.5;
+}
+
+.operational-docs__lessons span {
+  color: var(--muted, #5f5a52);
+  line-height: 1.7;
+}
+
+.operational-docs__check {
+  padding: 1rem 1.2rem;
+  border-left: 4px solid var(--accent, #c40018);
+  background: var(--paper-soft, #f4f0e8);
+}
+
+.operational-docs__check-title {
+  margin: 0 0 0.35rem;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent, #c40018);
+}
+
+.operational-docs__check p:last-child {
+  margin: 0;
+  line-height: 1.75;
+}
+
+.operational-docs__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  margin: 0;
+}
+
+.operational-docs__links a {
+  font-weight: 700;
+}
+
+@media (max-width: 760px) {
+  .operational-docs__diff {
+    grid-template-columns: 1fr;
+  }
+
+  .operational-docs__diff > div + div {
+    border-top: 1px solid var(--line, #c8c2b8);
+    border-left: 0;
+  }
+
+  .operational-docs__lessons li {
+    grid-template-columns: 2.25rem 1fr;
+  }
+
+  .operational-docs__lessons span {
+    grid-column: 2;
+  }
+}
