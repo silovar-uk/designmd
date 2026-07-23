@@ -1,8 +1,17 @@
-# アプリ・Wordマニュアル制作サプリメント
+# アプリ・PPT・Wordマニュアル制作サプリメント
 
 > designmd `2026.07.21-beta`
 
-この文書は、[`DESIGN.md`](DESIGN.md)へ追加して使う。アプリ案件とWordマニュアル案件に固有の好みをまとめたもの。
+この文書は、[`DESIGN.md`](DESIGN.md)へ追加して使う。アプリ、PowerPoint、Wordマニュアルに固有の好みをまとめたもの。
+
+## 共通フォント
+
+- PowerPoint（PPTX）の日本語フォント：**Noto Sans JP**
+- Word（DOCX）の日本語フォント：**BIZ UDPゴシック**
+- 指定フォントが制作環境にない場合、別フォントへ黙って置換しない
+- 明示的な別指定、または正式テンプレートの変更禁止規定がある場合だけ例外とする
+
+詳細：[`docs/font-policy.md`](docs/font-policy.md)
 
 ## アプリ
 
@@ -21,10 +30,21 @@
 
 詳細：[`docs/app-design.md`](docs/app-design.md)
 
+## PowerPoint
+
+- 日本語のタイトル、見出し、本文、表、図形内文字、注釈、出典、ページ番号をNoto Sans JPで統一する
+- 太さ、サイズ、余白、位置で階層を作り、別フォントの混在で強弱を付けない
+- スライドマスター、各レイアウト、個別テキストボックスを確認する
+- 最終PPTXからPDFを生成し、フォント置換、改行ずれ、文字切れがないか確認する
+
+詳細：[`docs/slide-delivery.md`](docs/slide-delivery.md)
+
 ## Wordマニュアル
 
 > マニュアルは、この業務で実際に迷う場所、事故が起きる場所、例外時の判断、責任と参照先が分かる作業道具である。
 
+- 日本語フォントはBIZ UDPゴシックに固定する
+- 「標準」、見出し、箇条書き、表、キャプション、ヘッダー、フッターへ適用する
 - 網羅的な分類より、実際の事故とヒヤリハットを優先する
 - 確認されていないベストプラクティスを標準手順へ追加しない
 - 実作業の順番で並べる
@@ -47,11 +67,12 @@
 共通原則：
 https://raw.githubusercontent.com/silovar-uk/designmd/main/DESIGN.md
 
-アプリ・Wordマニュアルの追加原則：
+アプリ・PPT・Wordマニュアルの追加原則：
 https://raw.githubusercontent.com/silovar-uk/designmd/main/APP_MANUAL.md
 ```
 
 用途別プロンプト：
 
 - [`prompts/app-design.md`](prompts/app-design.md)
+- [`prompts/slide-create.md`](prompts/slide-create.md)
 - [`prompts/manual-create.md`](prompts/manual-create.md)
