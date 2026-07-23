@@ -6,6 +6,7 @@
 以下のガイドを必須要件として参照してください。
 
 https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/manual.md
+https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/font-policy.md
 https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/writing.md
 
 今回の依頼：
@@ -29,9 +30,12 @@ https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/writing.md
 - 不明な手順、担当、日付、承認、保存ルールを推測で補わない
 
 Wordデザイン：
+- 日本語フォントはBIZ UDPゴシックに固定する
+- 「標準」、見出し1〜3、箇条書き、表、キャプション、ヘッダー、フッターへBIZ UDPゴシックを適用する
+- 指定フォントがない場合、游ゴシックやメイリオへ黙って代替しない
 - 白地、黒または濃いグレーの文字を基本にする
-- 本文書体はBIZ UDPゴシック、利用できない場合は游ゴシック
-- 本文は10.5〜11ptを基本にし、既存テンプレートがある場合はそちらを優先する
+- 本文は10.5〜11ptを基本にし、既存テンプレートがある場合はサイズや余白を調整してよい
+- 正式テンプレートに変更禁止のフォント規定がある場合だけ、その規定を優先する
 - Wordの組み込み見出しスタイルを使用する
 - 赤は重大事故、禁止、必須確認、高リスク設定だけに使う
 - 赤文字には「重要」「注意」「禁止」などの文言を併記し、色だけに意味を依存させない
@@ -49,7 +53,8 @@ Wordデザイン：
 3. 危険箇所だけ説明を濃くする
 4. 重複を削る
 5. Wordの見出し、改ページ、表、画像、リンク、強調を整える
-6. 実寸、白黒、リンク、ナビゲーション、アクセシビリティを確認する
+6. BIZ UDPゴシックがスタイルと個別文字へ適用されているか確認する
+7. 実寸、白黒、リンク、ナビゲーション、アクセシビリティを確認する
 
 原材料：
 （ここに貼る）
