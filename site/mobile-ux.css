@@ -1,0 +1,168 @@
+.mobile-ux-section {
+  --mobile-ux-deep: #20201e;
+  --mobile-ux-warm: #e8ded0;
+}
+
+.mobile-ux-hero {
+  margin: 0 0 24px 76px;
+  padding: clamp(30px, 5vw, 58px);
+  background:
+    radial-gradient(circle at 84% 20%, rgba(201, 40, 50, .2), transparent 25%),
+    linear-gradient(135deg, #242320, #161615);
+  color: var(--white);
+  box-shadow: var(--shadow);
+}
+
+.mobile-ux-hero__eyebrow {
+  margin: 0 0 20px;
+  color: #e75b63;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+
+.mobile-ux-hero__statement {
+  max-width: 760px;
+  margin: 0;
+  font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
+  font-size: clamp(32px, 5.6vw, 68px);
+  line-height: 1.25;
+  letter-spacing: -.035em;
+}
+
+.mobile-ux-hero__statement strong { color: #f06a72; font-weight: 700; }
+
+.mobile-ux-hero__body {
+  max-width: 720px;
+  margin: 30px 0 0;
+  color: rgba(255, 253, 248, .8);
+  font-size: 17px;
+}
+
+.mobile-ux-pillars {
+  margin-left: 76px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+.mobile-ux-pillars article {
+  min-height: 210px;
+  padding: 24px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: rgba(255, 253, 248, .42);
+}
+
+.mobile-ux-pillars span,
+.mobile-ux-principles__index {
+  color: var(--accent);
+  font-family: Georgia, serif;
+  font-style: italic;
+}
+
+.mobile-ux-pillars h3 { margin: 18px 0 8px; font-size: 26px; }
+.mobile-ux-pillars p { margin: 0; color: var(--muted); font-size: 14px; }
+
+.mobile-ux-principles {
+  margin: 54px 0 0 76px;
+  display: grid;
+  gap: 0;
+  border-top: 1px solid var(--ink);
+}
+
+.mobile-ux-principles article {
+  display: grid;
+  grid-template-columns: 54px minmax(0, 1fr);
+  gap: 18px;
+  padding: 26px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.mobile-ux-principles__index { margin: 2px 0 0; font-size: 19px; }
+.mobile-ux-principles h3 { margin: 0 0 7px; font-size: 22px; line-height: 1.45; }
+.mobile-ux-principles p { max-width: 760px; margin: 0; color: var(--muted); }
+
+.mobile-ux-axes {
+  margin: 64px 0 0 76px;
+  display: grid;
+  grid-template-columns: .8fr 1.2fr;
+  gap: 44px;
+  padding: clamp(28px, 4vw, 46px);
+  background: var(--white);
+  box-shadow: var(--shadow);
+}
+
+.mobile-ux-axes__intro h3 { margin: 0 0 14px; font-size: 28px; line-height: 1.35; }
+.mobile-ux-axes__intro > p:last-child { color: var(--muted); }
+.mobile-ux-axes ol { margin: 0; padding: 0; list-style: none; counter-reset: axis; }
+.mobile-ux-axes li {
+  counter-increment: axis;
+  display: grid;
+  grid-template-columns: minmax(140px, .6fr) 1fr;
+  gap: 18px;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--line);
+}
+.mobile-ux-axes li:first-child { border-top: 1px solid var(--line); }
+.mobile-ux-axes li strong::before { content: "0" counter(axis) "  "; color: var(--accent); font-family: Georgia, serif; font-style: italic; }
+.mobile-ux-axes li span { color: var(--muted); }
+
+.mobile-ux-sources {
+  margin: 48px 0 0 76px;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+
+.mobile-ux-sources summary {
+  padding: 20px 0;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 750;
+}
+
+.mobile-ux-sources__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  padding: 0 0 22px;
+}
+
+.mobile-ux-sources__grid article { padding: 22px; background: rgba(255, 253, 248, .55); border: 1px solid var(--line); }
+.mobile-ux-sources__grid h3 { margin: 0 0 7px; font-size: 18px; }
+.mobile-ux-sources__grid p { margin: 0; color: var(--muted); font-size: 14px; }
+.mobile-ux-sources__links { display: flex; flex-wrap: wrap; gap: 12px 24px; padding-bottom: 26px; }
+.mobile-ux-sources__links a { color: var(--accent-dark); font-weight: 700; }
+
+.mobile-ux-closing {
+  margin: 58px 0 0 12%;
+  padding: 0 0 0 24px;
+  border-left: 4px solid var(--accent);
+  font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
+  font-size: clamp(20px, 2.7vw, 30px);
+  line-height: 1.75;
+}
+.mobile-ux-closing p { margin: 0; }
+
+@media (max-width: 880px) {
+  .mobile-ux-hero,
+  .mobile-ux-pillars,
+  .mobile-ux-principles,
+  .mobile-ux-axes,
+  .mobile-ux-sources { margin-left: 0; }
+
+  .mobile-ux-pillars { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .mobile-ux-axes { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+  .mobile-ux-hero { padding: 28px 22px; }
+  .mobile-ux-pillars { grid-template-columns: 1fr; }
+  .mobile-ux-pillars article { min-height: 0; }
+  .mobile-ux-principles article { grid-template-columns: 36px minmax(0, 1fr); gap: 12px; }
+  .mobile-ux-sources__grid { grid-template-columns: 1fr; }
+  .mobile-ux-axes li { grid-template-columns: 1fr; gap: 4px; }
+  .mobile-ux-closing { margin-left: 0; }
+}
