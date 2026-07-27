@@ -51,14 +51,16 @@
       loadStylesheet('./one-question.css?v=20260719-1', 'data-one-question-style'),
       loadStylesheet('./wao.css?v=20260719-2', 'data-wao-style'),
       loadStylesheet('./operational-documents.css?v=20260723-1', 'data-operational-documents-style'),
-      loadStylesheet('./mobile-ux.css?v=20260727-1', 'data-mobile-ux-style')
+      loadStylesheet('./mobile-ux.css?v=20260727-1', 'data-mobile-ux-style'),
+      loadStylesheet('./line-composition.css?v=20260727-1', 'data-line-composition-style')
     ]);
 
     await Promise.all([
       loadScript('./one-question.js?v=20260719-1', 'data-one-question-script', '#one-question'),
       loadScript('./wao.js?v=20260719-2', 'data-wao-script', '#wao'),
       loadScript('./operational-documents.js?v=20260723-1', 'data-operational-documents-script', '#operational-docs'),
-      loadScript('./mobile-ux.js?v=20260727-1', 'data-mobile-ux-script', '#mobile-ux')
+      loadScript('./mobile-ux.js?v=20260727-1', 'data-mobile-ux-script', '#mobile-ux'),
+      loadScript('./line-composition.js?v=20260727-1', 'data-line-composition-script', '#line-composition')
     ]);
   };
 
