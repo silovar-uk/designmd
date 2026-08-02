@@ -32,6 +32,27 @@
       </div>
     </div>
 
+    <section class="editorial-writing-example" aria-labelledby="meaning-paragraph-title">
+      <div class="editorial-writing-example__paper">
+        <p>MEANING PARAGRAPH</p>
+        <h4 id="meaning-paragraph-title">意味が変わるところで、段落を変える。</h4>
+        <blockquote>これらは、決断を複雑にする事情ではある。<br><br>しかし、困った材料ではない。むしろ、自分が何を比べるべきかを考える材料である。</blockquote>
+        <small>説明から転換へ移る場所を、文字数ではなく意味の働きで分ける。手動改行ではなく、原稿上も別の段落として扱う。</small>
+      </div>
+      <div class="editorial-writing-example__paper">
+        <p>EMOTIONAL GRAMMAR</p>
+        <blockquote>人は数字を見た瞬間に意味を感じ、意味を感じた瞬間に結論へ走ってしまう。</blockquote>
+        <small>「〜てしまう」は、人間らしさの飾りではない。意図せず起きる反応や不本意さが実際にある場所だけに残す。</small>
+      </div>
+    </section>
+
+    <aside class="editorial-writing-return">
+      <strong>比喩と「」は、意味を狭めるために使う。</strong>
+      <p>比喩なしで明確なら直接書く。必要な比喩は「〜のような」「いわば」など、比較であることが分かる形を優先する。「」は引用、定義語、対比の中心へ限定する。</p>
+      <p>「静かに」を「そっと」へ機械的に置き換えない。音なのか、扱い方なのか、雰囲気だけなのかを先に確かめる。</p>
+      <a href="https://github.com/silovar-uk/designmd/blob/main/docs/writing.md#意味段落と文章の温度">意味段落と文章の温度を読む</a>
+    </aside>
+
     <aside class="editorial-writing-return">
       <strong>笑いの直後に、戻る場所を決める。</strong>
       <p>対象、事実、問いのどこへ帰るかを指せないボケは、だいたい居候です。</p>
@@ -81,4 +102,45 @@
   buttons.forEach((button) => {
     button.addEventListener('click', () => showExample(button.dataset.writingExample));
   });
+
+  const writingReview = [...document.querySelectorAll('#review details')]
+    .find((details) => details.querySelector('summary')?.textContent.trim() === '文章');
+
+  if (writingReview && !writingReview.querySelector('[data-meaning-paragraph-review]')) {
+    const items = [
+      '意味の転換を、一つの段落へ詰め込んでいる',
+      '感情語や雰囲気副詞が、実際の反応を示していない',
+      '比喩や「」による強調が続き、焦点が曖昧',
+    ];
+
+    items.forEach((item, index) => {
+      const reviewLabel = document.createElement('label');
+      reviewLabel.dataset.meaningParagraphReview = String(index + 1);
+      reviewLabel.innerHTML = `<input type="checkbox"> ${item}`;
+      writingReview.append(reviewLabel);
+    });
+
+    const scoreMax = document.querySelector('#review .score-box__value small');
+    if (scoreMax) scoreMax.textContent = '/ 18';
+  }
+
+  const writingPrompt = [...document.querySelectorAll('#prompts details')]
+    .find((details) => details.querySelector('summary')?.textContent.trim() === '文章を4回編集する');
+  const promptCode = writingPrompt?.querySelector('code');
+
+  if (promptCode && !promptCode.textContent.includes('意味段落')) {
+    promptCode.textContent = `以下の文章を、表面、論証、認知リズム、身体の4段階で点検してください。
+問題箇所、理由、修正方針、残すべき具体表現を示してください。
+
+追加で、次も確認してください。
+- 意味の転換が段落として見えるか
+- 「〜てしまう」「〜てほしい」などが実際の感情や願いを示しているか
+- 「静かに」「そっと」などの副詞が具体的な状態を示しているか
+- 比喩が必要か。暗喩を明示的な比較または直接表現へ変えられるか
+- 「」が引用、定義語、対比の中心に限定されているか
+- 読み味のために条件、例外、出典、未確認事項を削っていないか
+
+文章：
+（ここに貼る）`;
+  }
 })();
