@@ -1,0 +1,44 @@
+{
+  "primary": [
+    {
+      "id": "define",
+      "label": "定める",
+      "description": "問い、目的、範囲、完了条件を決める。",
+      "items": ["staged-production"]
+    },
+    {
+      "id": "build",
+      "label": "組み立てる",
+      "description": "文章、資料、Web、実務文書を構成する。",
+      "items": ["content-production"]
+    },
+    {
+      "id": "interaction",
+      "label": "使わせる",
+      "description": "操作、状態、入力、端末の違いを設計する。",
+      "items": ["system-interaction"]
+    },
+    {
+      "id": "recovery",
+      "label": "立て直す",
+      "description": "失敗、中断、障害、復旧の経路を用意する。",
+      "items": ["operational-resilience"]
+    },
+    {
+      "id": "verify",
+      "label": "確かめる",
+      "description": "事実、出典、差分、受入条件を確認する。",
+      "items": ["evidence-data-ai", "review-tool"]
+    }
+  ],
+  "secondary": [
+    {
+      "label": "ケース",
+      "items": ["case-keygrid", "case-mydailylog", "case-contents-library"]
+    },
+    {
+      "label": "ツール",
+      "items": ["review-tool", "decision-log-tool"]
+    }
+  ]
+}

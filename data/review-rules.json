@@ -1,0 +1,66 @@
+{
+  "version": 1,
+  "phaseOrder": ["define", "evidence", "structure", "interaction", "recovery", "expression", "verify"],
+  "phaseLabels": {
+    "define": "問い・目的へ戻る",
+    "evidence": "原材料・根拠へ戻る",
+    "structure": "構造へ戻る",
+    "interaction": "操作・状態へ戻る",
+    "recovery": "回復設計へ戻る",
+    "expression": "表現を修正する",
+    "verify": "確認工程へ戻る"
+  },
+  "targets": {
+    "writing": {
+      "label": "文章・Web記事",
+      "rules": ["define.reader", "evidence.fact-source", "evidence.uncertainty", "structure.repetition", "expression.line-rhythm", "verify.fact-interpretation"]
+    },
+    "app": {
+      "label": "アプリ・ブラウザ拡張",
+      "rules": ["define.primary-task", "interaction.visible-state", "interaction.alternative-path", "interaction.batch-scope", "recovery.preserve-input", "recovery.retry"]
+    },
+    "operation": {
+      "label": "実務文書・運営マニュアル",
+      "rules": ["define.owner", "evidence.fixed-information", "structure.action-near-condition", "recovery.exception-path", "verify.freshness", "verify.rendered-output"]
+    },
+    "data": {
+      "label": "データ・AI補完",
+      "rules": ["define.protected-fields", "evidence.provenance", "evidence.unknown-null", "interaction.diff-preview", "recovery.rollback", "verify.batch-size"]
+    },
+    "analysis": {
+      "label": "分析・反応集計",
+      "rules": ["define.population", "evidence.collection-condition", "evidence.representativeness", "structure.observation-interpretation", "verify.alternative-explanation"]
+    }
+  },
+  "rules": {
+    "define.reader": {"label":"誰が、どこで、何を判断する文章か定まっていない","severity":"major","returnTo":"define","remediation":"読み手、使用場面、読後の判断または行動を一文で固定する。"},
+    "define.primary-task": {"label":"利用者が最初に完了すべき操作が定まっていない","severity":"major","returnTo":"define","remediation":"主目的を一つに絞り、最短経路と完了状態を定義する。"},
+    "define.owner": {"label":"判断者、実行者、確認者の区別がない","severity":"major","returnTo":"define","remediation":"役割ごとに担当者と引き渡し条件を明示する。"},
+    "define.protected-fields": {"label":"AIや一括処理が変更してはいけない項目を定義していない","severity":"critical","returnTo":"define","remediation":"変更禁止フィールド、変更可能フィールド、承認が必要なフィールドを分ける。"},
+    "define.population": {"label":"母集団と観測対象の関係が定まっていない","severity":"major","returnTo":"define","remediation":"誰の何を観測したデータか、観測できない範囲も含めて定義する。"},
+    "evidence.fact-source": {"label":"強い主張の近くに根拠や出典がない","severity":"major","returnTo":"evidence","remediation":"主張の近くに出典、期間、対象範囲、確認日を置く。"},
+    "evidence.uncertainty": {"label":"未確認事項を完成文らしさのために埋めている","severity":"critical","returnTo":"evidence","remediation":"不明は不明のまま残し、確認先と期限を明示する。"},
+    "evidence.fixed-information": {"label":"日時、氏名、場所、役割などの固有情報が抽象化され過ぎている","severity":"major","returnTo":"evidence","remediation":"実行に必要な固有情報を本文または確認欄へ戻す。"},
+    "evidence.provenance": {"label":"補完値と入力済み値、または出典の区別がない","severity":"critical","returnTo":"evidence","remediation":"値ごとに由来、確認状態、更新日時を保持する。"},
+    "evidence.unknown-null": {"label":"不明値を推測で補完している","severity":"critical","returnTo":"evidence","remediation":"不明は null または未確認として保持し、推測値を本番へ反映しない。"},
+    "evidence.collection-condition": {"label":"取得条件、除外条件、期間が記録されていない","severity":"major","returnTo":"evidence","remediation":"取得条件と除外条件を分析結果より先に明示する。"},
+    "evidence.representativeness": {"label":"投稿数や件数を母集団全体の意見として扱っている","severity":"critical","returnTo":"evidence","remediation":"代表性、偏り、集中度、観測できない層を明記する。"},
+    "structure.repetition": {"label":"同じ段落・カード・結論型が内容に関係なく続く","severity":"minor","returnTo":"structure","remediation":"各節の役割を定義し、問い、事実、比較、判断の形を使い分ける。"},
+    "structure.action-near-condition": {"label":"行動、期限、条件、担当が離れている","severity":"major","returnTo":"structure","remediation":"実行項目の近くに担当、期限、条件、例外をまとめる。"},
+    "structure.observation-interpretation": {"label":"観察、解釈、対応案が同じ文として混ざっている","severity":"major","returnTo":"structure","remediation":"確認できた事実、読み取り、次の対応を別の層に分ける。"},
+    "interaction.visible-state": {"label":"処理中、保存、失敗、選択中の状態を利用者が推測している","severity":"major","returnTo":"interaction","remediation":"状態名、影響範囲、次に可能な操作を表示する。"},
+    "interaction.alternative-path": {"label":"ドラッグ、ホバー、マウスなど一つの操作方法に依存している","severity":"major","returnTo":"interaction","remediation":"キーボード、タッチ、ボタンなど同等の代替経路を用意する。"},
+    "interaction.batch-scope": {"label":"一括操作の対象、対象外、実行後の変化が見えない","severity":"critical","returnTo":"interaction","remediation":"実行前に対象一覧、件数、除外、不可逆性を確認できるようにする。"},
+    "interaction.diff-preview": {"label":"AI補完や一括変更を差分確認なしで反映する","severity":"critical","returnTo":"interaction","remediation":"変更前、変更後、変更理由を反映前に比較できるようにする。"},
+    "recovery.preserve-input": {"label":"エラー、画面移動、再読み込みで入力内容が失われる","severity":"critical","returnTo":"recovery","remediation":"入力を保持し、ローカル退避または再開方法を用意する。"},
+    "recovery.retry": {"label":"失敗後に再試行、修正、別経路を選べない","severity":"major","returnTo":"recovery","remediation":"残った状態と次に選べる操作を表示する。"},
+    "recovery.exception-path": {"label":"通常手順だけがあり、当日の例外や障害時の経路がない","severity":"major","returnTo":"recovery","remediation":"例外条件、連絡先、代替手段、通常運用へ戻す条件を追加する。"},
+    "recovery.rollback": {"label":"本番反映後に元へ戻す方法がない","severity":"critical","returnTo":"recovery","remediation":"バックアップ、反映単位、取消手順、復旧責任者を決める。"},
+    "expression.line-rhythm": {"label":"同じ長さ、同じ結論調、同じ見出し型が続く","severity":"minor","returnTo":"expression","remediation":"事実、判断、例外、余白に応じて文と段落の長さを変える。"},
+    "verify.fact-interpretation": {"label":"事実確認と表現改善の境界が曖昧","severity":"major","returnTo":"verify","remediation":"事実、表記、編集提案を別々に確認し、変更範囲を記録する。"},
+    "verify.freshness": {"label":"外部サービス依存の手順書に最終確認日がない","severity":"major","returnTo":"verify","remediation":"最終確認日、公式情報、更新トリガー、文書所有者を追加する。"},
+    "verify.rendered-output": {"label":"文面修正後に最終表示や全ページを確認していない","severity":"major","returnTo":"verify","remediation":"実際の表示、印刷、端末、ページ送りで最終確認する。"},
+    "verify.batch-size": {"label":"大量データを一度に本番反映している","severity":"major","returnTo":"verify","remediation":"重複検査後に少量バッチで反映し、各回の結果を確認する。"},
+    "verify.alternative-explanation": {"label":"一つの解釈だけで結論を固定している","severity":"major","returnTo":"verify","remediation":"代替解釈と、結論が変わる条件を併記する。"}
+  }
+}

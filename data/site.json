@@ -1,0 +1,11 @@
+{
+  "name": "designmd",
+  "title": "designmd｜人が判断できる状態をつくる制作・運用ガイド",
+  "description": "文章、資料、Web、アプリ、データ、運用で、人が判断・操作・説明の主導権を失わないための実務ガイド。",
+  "origin": "https://silovar-uk.github.io",
+  "basePath": "/designmd/next",
+  "repository": "https://github.com/silovar-uk/designmd",
+  "language": "ja",
+  "version": "2026.08-beta",
+  "updatedAt": "2026-08-02"
+}

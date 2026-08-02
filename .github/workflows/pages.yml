@@ -5,6 +5,12 @@ on:
     branches: [main]
     paths:
       - 'site/**'
+      - 'content/**'
+      - 'data/**'
+      - 'src/**'
+      - 'scripts/**'
+      - 'tests/**'
+      - 'package.json'
       - '.github/workflows/pages.yml'
   workflow_dispatch:
 
@@ -26,6 +32,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Build and verify next site
+        run: npm run check
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
