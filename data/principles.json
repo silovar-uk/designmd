@@ -1,0 +1,50 @@
+[
+  {
+    "id": "keep-decision-owner",
+    "title": "判断主体を残す",
+    "summary": "誰が何を根拠に選び、何を採用しなかったかを残す。",
+    "order": 10
+  },
+  {
+    "id": "visible-state",
+    "title": "状態を見せる",
+    "summary": "処理中、保存済み、未保存、失敗、未確認を推測させない。",
+    "order": 20
+  },
+  {
+    "id": "preserve-input",
+    "title": "入力を黙って失わせない",
+    "summary": "画面移動、通信失敗、自動処理で入力や作業位置を消さない。",
+    "order": 30
+  },
+  {
+    "id": "return-control",
+    "title": "操作権を返す",
+    "summary": "止める、戻る、修正する、別経路を選ぶ方法を残す。",
+    "order": 40
+  },
+  {
+    "id": "show-uncertainty",
+    "title": "不確実性を隠さない",
+    "summary": "事実、解釈、仮説、提案、未確認を分ける。",
+    "order": 50
+  },
+  {
+    "id": "design-recovery",
+    "title": "失敗後の回復を設計する",
+    "summary": "何が残り、どこから再開できるかを示す。",
+    "order": 60
+  },
+  {
+    "id": "keep-provenance",
+    "title": "出典と鮮度を持つ",
+    "summary": "何をいつ確認し、いつ再確認するかを残す。",
+    "order": 70
+  },
+  {
+    "id": "define-done",
+    "title": "終了条件を決める",
+    "summary": "今回直す範囲、受入条件、既知の問題を先に定める。",
+    "order": 80
+  }
+]
