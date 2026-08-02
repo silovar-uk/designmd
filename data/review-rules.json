@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "phaseOrder": ["define", "evidence", "structure", "interaction", "recovery", "expression", "verify"],
   "phaseLabels": {
     "define": "問い・目的へ戻る",
@@ -13,7 +13,7 @@
   "targets": {
     "writing": {
       "label": "文章・Web記事",
-      "rules": ["define.reader", "evidence.fact-source", "evidence.uncertainty", "structure.repetition", "expression.line-rhythm", "verify.fact-interpretation"]
+      "rules": ["define.reader", "evidence.fact-source", "evidence.uncertainty", "structure.repetition", "structure.meaning-paragraph", "expression.line-rhythm", "expression.emotional-grammar", "expression.metaphor-focus", "verify.fact-interpretation"]
     },
     "app": {
       "label": "アプリ・ブラウザ拡張",
@@ -46,6 +46,7 @@
     "evidence.collection-condition": {"label":"取得条件、除外条件、期間が記録されていない","severity":"major","returnTo":"evidence","remediation":"取得条件と除外条件を分析結果より先に明示する。"},
     "evidence.representativeness": {"label":"投稿数や件数を母集団全体の意見として扱っている","severity":"critical","returnTo":"evidence","remediation":"代表性、偏り、集中度、観測できない層を明記する。"},
     "structure.repetition": {"label":"同じ段落・カード・結論型が内容に関係なく続く","severity":"minor","returnTo":"structure","remediation":"各節の役割を定義し、問い、事実、比較、判断の形を使い分ける。"},
+    "structure.meaning-paragraph": {"label":"説明、転換、感情、判断の境界が段落に現れていない","severity":"major","returnTo":"structure","remediation":"文字数ではなく意味の働きで段落を分ける。意味が変わる場所を手動改行だけで処理せず、条件や例外も残す。"},
     "structure.action-near-condition": {"label":"行動、期限、条件、担当が離れている","severity":"major","returnTo":"structure","remediation":"実行項目の近くに担当、期限、条件、例外をまとめる。"},
     "structure.observation-interpretation": {"label":"観察、解釈、対応案が同じ文として混ざっている","severity":"major","returnTo":"structure","remediation":"確認できた事実、読み取り、次の対応を別の層に分ける。"},
     "interaction.visible-state": {"label":"処理中、保存、失敗、選択中の状態を利用者が推測している","severity":"major","returnTo":"interaction","remediation":"状態名、影響範囲、次に可能な操作を表示する。"},
@@ -57,6 +58,8 @@
     "recovery.exception-path": {"label":"通常手順だけがあり、当日の例外や障害時の経路がない","severity":"major","returnTo":"recovery","remediation":"例外条件、連絡先、代替手段、通常運用へ戻す条件を追加する。"},
     "recovery.rollback": {"label":"本番反映後に元へ戻す方法がない","severity":"critical","returnTo":"recovery","remediation":"バックアップ、反映単位、取消手順、復旧責任者を決める。"},
     "expression.line-rhythm": {"label":"同じ長さ、同じ結論調、同じ見出し型が続く","severity":"minor","returnTo":"expression","remediation":"事実、判断、例外、余白に応じて文と段落の長さを変える。"},
+    "expression.emotional-grammar": {"label":"感情語や副詞が、実際の反応ではなく人間らしさを演出している","severity":"minor","returnTo":"expression","remediation":"「〜てしまう」「〜てほしい」「静かに」「そっと」などが指す実際の感情、願い、動作を確認し、意味がなければ削る。"},
+    "expression.metaphor-focus": {"label":"暗喩や強調の「」が続き、文字どおりの意味と焦点が曖昧","severity":"minor","returnTo":"expression","remediation":"比喩なしで書ける箇所は直接書く。必要な比喩は比較であることを示し、「」は定義語、引用、対比の中心へ限定する。"},
     "verify.fact-interpretation": {"label":"事実確認と表現改善の境界が曖昧","severity":"major","returnTo":"verify","remediation":"事実、表記、編集提案を別々に確認し、変更範囲を記録する。"},
     "verify.freshness": {"label":"外部サービス依存の手順書に最終確認日がない","severity":"major","returnTo":"verify","remediation":"最終確認日、公式情報、更新トリガー、文書所有者を追加する。"},
     "verify.rendered-output": {"label":"文面修正後に最終表示や全ページを確認していない","severity":"major","returnTo":"verify","remediation":"実際の表示、印刷、端末、ページ送りで最終確認する。"},
