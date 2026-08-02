@@ -12,7 +12,7 @@ import {
 } from './lib.mjs';
 
 const ROOT = process.cwd();
-const OUTPUT = path.join(ROOT, 'site-next');
+const OUTPUT = path.join(ROOT, 'site/next');
 const contentRoot = path.join(ROOT, 'content');
 
 const [site, navigation, principles, reviewData] = await Promise.all([
@@ -27,12 +27,7 @@ const items = [];
 for (const filePath of files) {
   const source = await fs.readFile(filePath, 'utf8');
   const { data, body } = parseFrontMatter(source, filePath);
-  items.push({
-    ...data,
-    filePath: path.relative(ROOT, filePath),
-    body,
-    html: markdownToHtml(body)
-  });
+  items.push({ ...data, filePath: path.relative(ROOT, filePath), body, html: markdownToHtml(body) });
 }
 
 const REQUIRED = ['id', 'title', 'summary', 'type', 'area', 'status', 'updated_at', 'slug'];
@@ -48,12 +43,7 @@ for (const item of items) {
   byId.set(item.id, item);
   bySlug.set(item.slug, item);
   for (const principleId of item.principles ?? []) {
-    if (!principles.some((principle) => principle.id === principleId)) {
-      errors.push(`${item.filePath}: unknown principle ${principleId}`);
-    }
-  }
-  for (const relatedId of item.related ?? []) {
-    if (!files.length || !relatedId) continue;
+    if (!principles.some((principle) => principle.id === principleId)) errors.push(`${item.filePath}: unknown principle ${principleId}`);
   }
 }
 for (const item of items) {
@@ -80,9 +70,7 @@ const asset = (pathname) => sitePath(site.basePath, pathname);
 const hrefFor = (id) => sitePath(site.basePath, byId.get(id).slug);
 
 function header() {
-  const primaryLinks = navigation.primary
-    .map((group) => `<a href="${hrefFor(group.items[0])}">${escapeHtml(group.label)}</a>`)
-    .join('');
+  const primaryLinks = navigation.primary.map((group) => `<a href="${hrefFor(group.items[0])}">${escapeHtml(group.label)}</a>`).join('');
   return `
 <header class="site-header">
   <a class="brand" href="${sitePath(site.basePath, '/')}"><span aria-hidden="true">d/</span> designmd</a>
@@ -143,28 +131,6 @@ function principlesBlock(item) {
   return `<aside class="related-principles"><h2>関連する原則</h2><ul>${selected.map((principle) => `<li><strong>${escapeHtml(principle.title)}</strong><span>${escapeHtml(principle.summary)}</span></li>`).join('')}</ul></aside>`;
 }
 
-function articlePage(item) {
-  const tool = item.type === 'tool' ? renderTool(item) : '';
-  const content = `
-<div class="page-shell">
-  <nav class="breadcrumb" aria-label="パンくず"><a href="${sitePath(site.basePath, '/')}">トップ</a><span aria-hidden="true">/</span><span>${escapeHtml(item.title)}</span></nav>
-  <article class="article">
-    <header class="article-header"><p class="eyebrow">${escapeHtml(item.type.toUpperCase())} / ${escapeHtml(item.area.toUpperCase())}</p><h1>${escapeHtml(item.title)}</h1><p class="lead">${escapeHtml(item.summary)}</p>${contentMeta(item)}</header>
-    <div class="prose">${item.html}</div>
-    ${tool}
-    ${principlesBlock(item)}
-    ${relatedBlock(item)}
-  </article>
-</div>`;
-  return layout({
-    title: item.title,
-    description: item.summary,
-    content,
-    type: item.type,
-    pageScript: item.script ?? ''
-  });
-}
-
 function renderReviewForm() {
   const targetOptions = Object.entries(reviewData.targets).map(([id, target], index) => `<label><input type="radio" name="review-target" value="${id}" ${index === 0 ? 'checked' : ''}> ${escapeHtml(target.label)}</label>`).join('');
   const allRules = Object.entries(reviewData.rules).map(([id, rule]) => `<label class="review-rule" data-rule-id="${id}" data-return-to="${rule.returnTo}" data-severity="${rule.severity}" hidden><input type="checkbox" value="${id}"><span><strong>${escapeHtml(rule.label)}</strong><small>${escapeHtml(rule.severity.toUpperCase())}</small></span></label>`).join('');
@@ -177,8 +143,7 @@ function renderReviewForm() {
   <section class="review-result" aria-live="polite" data-review-result>
     <p class="status-chip" data-review-status>項目を選ぶと、戻る工程が表示されます。</p>
     <h2 data-review-title>レビュー結果</h2>
-    <div data-review-critical></div>
-    <div data-review-remediations></div>
+    <div data-review-critical></div><div data-review-remediations></div>
     <pre><code data-review-output></code></pre>
   </section>
 </section>`;
@@ -187,10 +152,7 @@ function renderReviewForm() {
 function renderDecisionLog() {
   return `<section class="tool-panel" data-decision-log>
   <form>
-    <div class="form-grid">
-      <label>判断日<input type="date" name="decidedAt"></label>
-      <label>判断者<input type="text" name="owner" autocomplete="name"></label>
-    </div>
+    <div class="form-grid"><label>判断日<input type="date" name="decidedAt"></label><label>判断者<input type="text" name="owner" autocomplete="name"></label></div>
     <label>決めたこと<textarea name="decision" rows="4"></textarea></label>
     <label>根拠<textarea name="evidence" rows="4" placeholder="1行に1項目"></textarea></label>
     <label>採用しなかった案<textarea name="rejected" rows="4" placeholder="1行に1項目"></textarea></label>
@@ -198,8 +160,7 @@ function renderDecisionLog() {
     <label>見直す条件<textarea name="reviewTriggers" rows="4" placeholder="1行に1項目"></textarea></label>
     <p role="status" data-draft-status>この端末内に一時保存します。</p>
     <div class="tool-actions"><button type="reset">リセット</button><button type="button" data-decision-copy>Markdownをコピー</button></div>
-  </form>
-  <pre><code data-decision-output></code></pre>
+  </form><pre><code data-decision-output></code></pre>
 </section>`;
 }
 
@@ -207,6 +168,19 @@ function renderTool(item) {
   if (item.id === 'review-tool') return renderReviewForm();
   if (item.id === 'decision-log-tool') return renderDecisionLog();
   return '';
+}
+
+function articlePage(item) {
+  const tool = item.type === 'tool' ? renderTool(item) : '';
+  const content = `
+<div class="page-shell">
+  <nav class="breadcrumb" aria-label="パンくず"><a href="${sitePath(site.basePath, '/')}">トップ</a><span aria-hidden="true">/</span><span>${escapeHtml(item.title)}</span></nav>
+  <article class="article">
+    <header class="article-header"><p class="eyebrow">${escapeHtml(item.type.toUpperCase())} / ${escapeHtml(item.area.toUpperCase())}</p><h1>${escapeHtml(item.title)}</h1><p class="lead">${escapeHtml(item.summary)}</p>${contentMeta(item)}</header>
+    <div class="prose">${item.html}</div>${tool}${principlesBlock(item)}${relatedBlock(item)}
+  </article>
+</div>`;
+  return layout({ title: item.title, description: item.summary, content, type: item.type, pageScript: item.script ?? '' });
 }
 
 function homePage() {
@@ -242,5 +216,4 @@ for (const scriptName of ['main.js', 'storage.js', 'review-engine.js', 'review.j
 await fs.writeFile(path.join(OUTPUT, 'data/review-rules.json'), JSON.stringify(reviewData, null, 2));
 await fs.writeFile(path.join(OUTPUT, 'search-index.json'), JSON.stringify(items.map((item) => ({ id: item.id, title: item.title, summary: item.summary, type: item.type, area: item.area, url: hrefFor(item.id) })), null, 2));
 await fs.writeFile(path.join(OUTPUT, '.nojekyll'), '');
-
-console.log(`Built ${items.length + 1} pages in site-next/`);
+console.log(`Built ${items.length + 1} pages in site/next/`);
