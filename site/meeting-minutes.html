@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="文字起こしを、部内共有用の簡潔な議事録へ整理するためのdesignmdガイド。">
+  <meta name="theme-color" content="#f4f0e8">
+  <title>共有用議事録｜designmd</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f4f0e8;
+      --surface: #fffdf8;
+      --ink: #20201d;
+      --muted: #6b6860;
+      --line: #cfc8bb;
+      --accent: #8d1d22;
+      --accent-soft: #f0dedc;
+      --max: 920px;
+      font-family: "BIZ UDPGothic", "Yu Gothic", "YuGothic", system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: var(--ink); background: var(--paper); line-height: 1.75; }
+    a { color: inherit; }
+    .skip-link { position: absolute; left: -9999px; top: 0; }
+    .skip-link:focus { left: 1rem; top: 1rem; z-index: 10; padding: .6rem .9rem; background: var(--ink); color: #fff; }
+    header { border-bottom: 1px solid var(--line); background: rgba(244,240,232,.96); }
+    .header-inner { width: min(calc(100% - 32px), var(--max)); margin: 0 auto; min-height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .brand { text-decoration: none; font-weight: 800; letter-spacing: .02em; }
+    .brand span { color: var(--accent); }
+    nav { display: flex; gap: 18px; font-size: .9rem; }
+    nav a { text-underline-offset: 4px; }
+    main { width: min(calc(100% - 32px), var(--max)); margin: 0 auto; padding: 72px 0 96px; }
+    .eyebrow { margin: 0 0 12px; color: var(--accent); font-size: .78rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+    h1 { margin: 0; font-size: clamp(2.2rem, 7vw, 4.8rem); line-height: 1.08; letter-spacing: -.045em; }
+    .lead { max-width: 720px; margin: 28px 0 0; font-size: 1.12rem; }
+    .principle { margin: 32px 0 0; padding: 22px 24px; border-left: 5px solid var(--accent); background: var(--surface); font-weight: 700; }
+    section { margin-top: 72px; }
+    h2 { margin: 0 0 20px; padding-bottom: 12px; border-bottom: 1px solid var(--line); font-size: clamp(1.5rem, 4vw, 2.2rem); }
+    h3 { margin: 34px 0 10px; font-size: 1.18rem; }
+    p { margin: 0 0 1em; }
+    ul { margin: 0; padding-left: 1.25em; }
+    li + li { margin-top: .45em; }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    .card { padding: 22px; background: var(--surface); border: 1px solid var(--line); }
+    .card strong { display: block; margin-bottom: 6px; color: var(--accent); }
+    pre { margin: 0; padding: 24px; overflow: auto; background: #252420; color: #f8f4eb; border-radius: 4px; font-family: "BIZ UDGothic", "Yu Gothic", monospace; font-size: .9rem; line-height: 1.75; white-space: pre-wrap; }
+    .notation { display: grid; grid-template-columns: auto 1fr; gap: 10px 18px; padding: 24px; background: var(--surface); border: 1px solid var(--line); }
+    .notation dt { font-weight: 800; color: var(--accent); }
+    .notation dd { margin: 0; }
+    .note { padding: 18px 20px; background: var(--accent-soft); }
+    .checklist { columns: 2; column-gap: 36px; }
+    .checklist li { break-inside: avoid; margin-bottom: .65em; }
+    footer { border-top: 1px solid var(--line); color: var(--muted); }
+    footer div { width: min(calc(100% - 32px), var(--max)); margin: 0 auto; padding: 28px 0 40px; }
+    @media (max-width: 680px) {
+      .header-inner { align-items: flex-start; padding: 16px 0; }
+      nav { flex-direction: column; gap: 4px; text-align: right; }
+      main { padding-top: 48px; }
+      .grid { grid-template-columns: 1fr; }
+      .checklist { columns: 1; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">本文へ移動</a>
+  <header>
+    <div class="header-inner">
+      <a class="brand" href="./"><span>d/</span>designmd</a>
+      <nav aria-label="関連リンク">
+        <a href="./">トップ</a>
+        <a href="https://github.com/silovar-uk/designmd/blob/main/docs/meeting-minutes.md">正典を読む</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <p class="eyebrow">Meeting minutes</p>
+    <h1>発言を並べず、<br>仕事が進む形へ。</h1>
+    <p class="lead">文字起こしをそのまま短くするのではなく、案件ごとに、共有事項、判断、検討、次の対応を組み直す。部内共有用の議事録は、会議を再生する文書ではなく、会議後の仕事を始める文書。</p>
+    <p class="principle">読み手が短時間で「何が共有され、何が決まり、何を次に進めるか」を把握できる構造を優先する。</p>
+
+    <section id="structure">
+      <h2>共有用の標準構成</h2>
+      <pre>■7月30日 プロモーションMTG 共有事項
+
+1. 全体概要
+会議で確認した範囲と、特に重要な方針を2〜4文で記載。
+
+2. 主な共有・確認事項
+◎案件名
+現状、確認事項、方針、検討内容を短い段落で記載。
+
+■主な案
+・案1
+・案2
+・案3
+
+3. パートナー・新規連携案件
+・案件と次の動きを箇条書きで記載
+
+4. 次回に向けた主な対応
+・対応内容を箇条書きで記載
+
+次回の全体会は、○月○日○時から実施予定。</pre>
+    </section>
+
+    <section id="hierarchy">
+      <h2>記号は装飾ではなく、階層</h2>
+      <dl class="notation">
+        <dt>■会議名</dt><dd>文書全体のタイトル</dd>
+        <dt>1. 2. 3.</dt><dd>会議全体の読み順を示す大項目</dd>
+        <dt>◎案件名</dt><dd>主要案件・議題の見出し</dd>
+        <dt>■主な案</dt><dd>案件内の案、内訳、確認対象をまとめる小見出し</dd>
+        <dt>・</dt><dd>同じ役割の項目を並べる箇条書き</dd>
+      </dl>
+    </section>
+
+    <section id="editing">
+      <h2>文字起こしから、何を変えるか</h2>
+      <div class="grid">
+        <article class="card"><strong>残す</strong><p>決定、未決定、判断理由、正式名称、数字、期限、担当、制約、次の対応。</p></article>
+        <article class="card"><strong>削る</strong><p>相づち、言い直し、操作会話、同じ説明、結論に影響しない雑談。</p></article>
+        <article class="card"><strong>並べ替える</strong><p>発言順ではなく、案件別。会議後の仕事の進めやすさを優先。</p></article>
+        <article class="card"><strong>推測しない</strong><p>固有名詞、金額、日付、人数、担当者。分からない箇所は「要確認」。</p></article>
+      </div>
+    </section>
+
+    <section id="writing">
+      <h2>文体と文末</h2>
+      <p>丁寧語を重ねず、短く客観的に記載する。「確認」「検討」「調整」「実施予定」「見込み」などの体言止めを適度に使う。</p>
+      <div class="note">体言止めを増やすこと自体を目的にしない。責任、期限、条件、次の行動が重要な箇所では、動詞まで書く。</div>
+      <h3>例</h3>
+      <pre>チケット販売は一定の動きがあるものの、目標に対しては不足している状況。
+既存クリエイティブを活用した追加広告について、見積もりと配信シミュレーションを確認し、実施判断を進める。</pre>
+    </section>
+
+    <section id="modes">
+      <h2>共有版と詳細版を分ける</h2>
+      <div class="grid">
+        <article class="card"><strong>共有版</strong><p>部内・関係部署向け。内容把握、情報共有、次の対応が目的。案件別に、要点のみ。</p></article>
+        <article class="card"><strong>詳細版</strong><p>担当者、欠席者、承認者向け。議論の経緯、判断理由、認識差を残す。</p></article>
+      </div>
+      <p class="note">共有版から詳細版を膨らませない。文字起こしと原資料から、それぞれの目的に合わせて編集する。</p>
+    </section>
+
+    <section id="check">
+      <h2>最終確認</h2>
+      <ul class="checklist">
+        <li>全体概要だけで会議の範囲と重要方針が分かる</li>
+        <li>一つの案件が一つのまとまりになっている</li>
+        <li>決定、検討、確認、次の対応が混ざっていない</li>
+        <li>正式名称を不必要に一般化していない</li>
+        <li>数字、期限、担当を推測で埋めていない</li>
+        <li>箇条書きが同じ役割でそろっている</li>
+        <li>責任や期限を体言止めで隠していない</li>
+        <li>次回に何を進めるかが分かる</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer><div>designmd — Human judgment for AI-assisted work.</div></footer>
+</body>
+</html>
