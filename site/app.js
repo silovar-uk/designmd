@@ -125,6 +125,21 @@
     updateScore();
   };
 
+  const addMeetingMinutesLink = () => {
+    const writingBody = document.querySelector('#writing-guide .media-section__body');
+    if (!writingBody || writingBody.querySelector('[data-meeting-minutes-link]')) return;
+
+    const paragraph = document.createElement('p');
+    paragraph.setAttribute('data-meeting-minutes-link', '');
+
+    const link = document.createElement('a');
+    link.href = './meeting-minutes.html';
+    link.textContent = '共有用議事録の書式を見る →';
+
+    paragraph.appendChild(link);
+    writingBody.appendChild(paragraph);
+  };
+
   const finishBoot = () => {
     const root = document.documentElement;
     root.classList.add('is-ready');
@@ -132,6 +147,7 @@
   };
 
   loadAddedPrinciples().finally(() => {
+    addMeetingMinutesLink();
     bindCopyButtons();
     bindReviewChecklist();
     window.requestAnimationFrame(() => {
