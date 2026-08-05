@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "site": "https://silovar-uk.github.io/designmd/",
+  "knowledge_map": "https://silovar-uk.github.io/designmd/knowledge-map.json",
+  "llms": "https://silovar-uk.github.io/designmd/llms.txt",
+  "priority": [
+    "principle:stable",
+    "guide:stable",
+    "pattern:stable",
+    "guide:experimental",
+    "case",
+    "essay",
+    "reference"
+  ],
+  "packs": [
+    {
+      "id": "writing",
+      "title": "文章制作",
+      "url": "https://silovar-uk.github.io/designmd/context-packs/writing.md"
+    },
+    {
+      "id": "slides",
+      "title": "スライド制作",
+      "url": "https://silovar-uk.github.io/designmd/context-packs/slides.md"
+    },
+    {
+      "id": "apps",
+      "title": "Web・アプリ",
+      "url": "https://silovar-uk.github.io/designmd/context-packs/apps.md"
+    },
+    {
+      "id": "ai-collaboration",
+      "title": "AIとの協働",
+      "url": "https://silovar-uk.github.io/designmd/context-packs/ai-collaboration.md"
+    },
+    {
+      "id": "review",
+      "title": "レビュー",
+      "url": "https://silovar-uk.github.io/designmd/context-packs/review.md"
+    },
+    {
+      "id": "recovery",
+      "title": "運用・回復",
+      "url": "https://silovar-uk.github.io/designmd/context-packs/recovery.md"
+    }
+  ],
+  "canonical_sources": [
+    "https://raw.githubusercontent.com/silovar-uk/designmd/main/DESIGN.md",
+    "https://raw.githubusercontent.com/silovar-uk/designmd/main/SLIDE_BLUEPRINT.md",
+    "https://raw.githubusercontent.com/silovar-uk/designmd/main/APP_MANUAL.md"
+  ],
+  "note": "Use knowledge-map.json for status, use_when, avoid_when, topics, and typed relations. Cases are examples, not universal rules."
+}

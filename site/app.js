@@ -53,7 +53,8 @@
       loadStylesheet('./operational-documents.css?v=20260723-1', 'data-operational-documents-style'),
       loadStylesheet('./mobile-ux.css?v=20260727-1', 'data-mobile-ux-style'),
       loadStylesheet('./line-composition.css?v=20260727-1', 'data-line-composition-style'),
-      loadStylesheet('./slide-blueprint.css?v=20260805-1', 'data-slide-blueprint-style')
+      loadStylesheet('./slide-blueprint.css?v=20260805-1', 'data-slide-blueprint-style'),
+      loadStylesheet('./knowledge-map.css?v=20260806-1', 'data-knowledge-map-style')
     ]);
 
     await Promise.all([
@@ -62,7 +63,8 @@
       loadScript('./operational-documents.js?v=20260723-1', 'data-operational-documents-script', '#operational-docs'),
       loadScript('./mobile-ux.js?v=20260727-1', 'data-mobile-ux-script', '#mobile-ux'),
       loadScript('./line-composition.js?v=20260727-1', 'data-line-composition-script', '#line-composition'),
-      loadScript('./slide-blueprint.js?v=20260805-1', 'data-slide-blueprint-script', '#slide-blueprint')
+      loadScript('./slide-blueprint.js?v=20260805-1', 'data-slide-blueprint-script', '#slide-blueprint'),
+      loadScript('./knowledge-map.js?v=20260806-1', 'data-knowledge-map-script', '#knowledge-map')
     ]);
   };
 

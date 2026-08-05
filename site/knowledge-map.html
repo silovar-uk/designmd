@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="designmdの知識を、テーマと散歩ルートから探索する地図。">
+  <meta name="theme-color" content="#f4f0e8">
+  <title>知識地図｜designmd</title>
+  <link rel="stylesheet" href="./styles.css?v=20260718-3">
+  <link rel="stylesheet" href="./knowledge-map.css?v=20260806-1">
+  <style>
+    body{background:#f4f0e8;color:#1f211f}.map-page{width:min(1180px,calc(100% - 32px));margin:0 auto;padding:96px 0}.map-page header{max-width:820px;margin-bottom:48px}.map-page h1{font-size:clamp(2.5rem,7vw,5.8rem);line-height:.98;margin:.25em 0}.map-page__actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}.map-page__actions a{display:inline-flex;padding:12px 18px;border:1px solid currentColor;border-radius:999px;text-decoration:none}.map-page__grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(280px,.65fr);gap:24px}.map-page__panel{background:#fff;border:1px solid rgba(31,33,31,.18);border-radius:28px;padding:24px}.map-page__topics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.map-page__topic{min-height:120px;padding:18px;text-align:left;border:1px solid rgba(31,33,31,.2);border-radius:20px;background:#faf8f2;cursor:pointer}.map-page__topic[aria-pressed="true"]{background:#1f211f;color:#fff}.map-page__topic span,.map-page__topic strong{display:block}.map-page__topic span{font-size:.78rem;opacity:.7;margin-bottom:10px}.map-page__detail h2{font-size:2rem;margin:.3em 0}.map-page__links{list-style:none;padding:0;margin:24px 0 0;display:grid;gap:10px}.map-page__links a{display:block;padding:14px 0;border-top:1px solid rgba(31,33,31,.16);text-decoration:none}.map-page__links small{display:block;opacity:.65;margin-top:4px}.map-page__routes{margin-top:32px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.map-page__route{padding:22px;border-radius:22px;background:#fff;border:1px solid rgba(31,33,31,.18)}.map-page__route a{text-decoration:none}.map-page__route small{display:block;margin-bottom:10px;opacity:.65}@media(max-width:820px){.map-page{padding:64px 0}.map-page__grid{grid-template-columns:1fr}.map-page__topics{grid-template-columns:repeat(2,minmax(0,1fr))}.map-page__routes{grid-template-columns:1fr}}@media(max-width:480px){.map-page__topics{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">本文へ移動</a>
+  <main id="main" class="map-page">
+    <header>
+      <p class="eyebrow">Knowledge map</p>
+      <h1>知識の街を、<br>ぶらぶら歩く。</h1>
+      <p>工程どおりに読む必要はありません。気になった地区を選び、読み物、実践、事例、別テーマへの橋をたどれます。正確にAIへ渡す場合は、AI参照面を使います。</p>
+      <div class="map-page__actions"><a href="./">入口広場へ戻る</a><a href="./ai-reference.html">AI参照面を開く</a></div>
+    </header>
+    <div class="map-page__grid">
+      <section class="map-page__panel" aria-label="知識の地区"><div class="map-page__topics" data-map-page-topics></div></section>
+      <aside class="map-page__panel map-page__detail" aria-live="polite">
+        <p class="eyebrow" data-map-page-place>現在地</p><h2 data-map-page-title>人の判断</h2><p data-map-page-description></p><p><strong data-map-page-question></strong></p><ul class="map-page__links" data-map-page-links></ul>
+      </aside>
+    </div>
+    <section class="map-page__routes" data-map-page-routes aria-label="編集された散歩ルート"></section>
+  </main>
+  <script>
+  (() => {
+    const $ = (selector) => document.querySelector(selector);
+    const params = new URLSearchParams(location.search);
+    const contentLinks = {
+      identity: ['designmdの定義', './#top'],
+      'staged-production': ['五段階制作', './#workflow'],
+      'content-production': ['文章・資料を組み立てる', './#writing-guide'],
+      'system-interaction': ['Web・アプリの操作設計', './#media'],
+      'operational-resilience': ['運用・回復を設計する', './#review'],
+      'evidence-data-ai': ['根拠・データ・AI', './#principles'],
+      'review-tool': ['レビューする', './#review'],
+      'decision-log-tool': ['Decision Log', './next/tools/decision-log/'],
+      'case-keygrid': ['KeyGridのケース', './next/cases/keygrid/'],
+      'case-mydailylog': ['MyDailyLogのケース', './next/cases/mydailylog/'],
+      'case-contents-library': ['作品体験ログのケース', './next/cases/contents-library/'],
+      'case-rhw-slide-blueprint': ['RHW記事を10枚へ変える', './next/cases/rhw-slide-blueprint/']
+    };
+
+    let data = { topics: [], routes: [] };
+    let selectedTopic = params.get('topic') || 'human-judgment';
+    let selectedRoute = params.get('route') || '';
+
+    const topicTargets = (topic) => {
+      const links = [...(topic.landmarks || [])];
+      (data.routes || [])
+        .filter((route) => route.topics?.includes(topic.id))
+        .slice(0, 2)
+        .forEach((route) => links.push({ label: route.title, url: `?route=${route.id}`, kind: `${route.duration}の散歩` }));
+      links.push({ label: 'この地区をAIへ渡す', url: `./ai-reference.html#${topic.id}`, kind: 'AI参照' });
+      return links.slice(0, 4);
+    };
+
+    const stopTarget = (stop) => {
+      if (stop.url) return [stop.label, stop.url];
+      return contentLinks[stop.id] || [stop.id, `./knowledge-map.html?content=${stop.id}`];
+    };
+
+    const renderTopic = (topic) => {
+      $('[data-map-page-place]').textContent = topic.place;
+      $('[data-map-page-title]').textContent = topic.label;
+      $('[data-map-page-description]').textContent = topic.description;
+      $('[data-map-page-question]').textContent = topic.question || '';
+      $('[data-map-page-links]').innerHTML = topicTargets(topic)
+        .map((item) => `<li><a href="${item.url}"><strong>${item.label}</strong><small>${item.kind || ''}</small></a></li>`)
+        .join('');
+    };
+
+    const renderRoute = (route) => {
+      $('[data-map-page-place]').textContent = `${route.duration}／${route.mood || '散歩道'}`;
+      $('[data-map-page-title]').textContent = route.title;
+      $('[data-map-page-description]').textContent = route.description || '';
+      $('[data-map-page-question]').textContent = '順番には、読み手の理解を変える役割があります。';
+      $('[data-map-page-links]').innerHTML = (route.stops || []).map((stop, index) => {
+        const [label, url] = stopTarget(stop);
+        return `<li><a href="${url}"><strong>${String(index + 1).padStart(2, '0')}｜${label}</strong><small>${stop.note || ''}</small></a></li>`;
+      }).join('');
+    };
+
+    const syncUrl = () => {
+      const next = selectedRoute ? `?route=${selectedRoute}` : `?topic=${selectedTopic}`;
+      history.replaceState(null, '', next);
+    };
+
+    const render = () => {
+      const route = (data.routes || []).find((item) => item.id === selectedRoute);
+      const topic = (data.topics || []).find((item) => item.id === selectedTopic) || data.topics?.[0];
+      if (route) renderRoute(route);
+      else if (topic) {
+        selectedTopic = topic.id;
+        renderTopic(topic);
+      }
+      document.querySelectorAll('[data-topic]').forEach((button) => {
+        button.setAttribute('aria-pressed', String(!selectedRoute && button.dataset.topic === selectedTopic));
+      });
+      syncUrl();
+    };
+
+    const init = () => {
+      const topics = $('[data-map-page-topics]');
+      topics.innerHTML = (data.topics || []).map((topic) => `
+        <button type="button" class="map-page__topic" data-topic="${topic.id}" aria-pressed="false">
+          <span>${topic.place}</span><strong>${topic.label}</strong>
+        </button>`).join('');
+      topics.addEventListener('click', (event) => {
+        const button = event.target.closest('[data-topic]');
+        if (!button) return;
+        selectedRoute = '';
+        selectedTopic = button.dataset.topic;
+        render();
+      });
+
+      $('[data-map-page-routes]').innerHTML = (data.routes || []).map((route) => `
+        <article class="map-page__route">
+          <small>${route.duration}／${route.mood || '散歩'}</small>
+          <h2><a href="?route=${route.id}">${route.title}</a></h2>
+          <p>${route.description || ''}</p>
+        </article>`).join('');
+      render();
+    };
+
+    fetch('./knowledge-map.json', { cache: 'no-store' })
+      .then((response) => response.ok ? response.json() : Promise.reject())
+      .then((value) => { data = value; init(); })
+      .catch(() => init());
+  })();
+  </script>
+</body>
+</html>

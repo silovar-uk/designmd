@@ -7,6 +7,6 @@
     "build": "node scripts/build.mjs",
     "validate": "node scripts/validate.mjs",
     "test": "node --test tests/*.test.mjs",
-    "check": "npm run build && npm run validate && npm test"
+    "check": "node --check site/app.js && node --check site/knowledge-map.js && npm run build && npm run validate && npm test"
   }
 }
