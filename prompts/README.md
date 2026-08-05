@@ -9,6 +9,7 @@
 - [`manual-create.md`](manual-create.md)：実際の事故、例外、担当、Word書式を反映したマニュアルを作る
 - [`editorial-design.md`](editorial-design.md)：雑誌の編集型と質感五軸を決める
 - [`slide-create.md`](slide-create.md)：スライドを新規作成する
+- [`slide-blueprint.md`](slide-blueprint.md)：一枚の伝達目的、役割、根拠、形式を決めてから設計・修正する
 - [`slide-redesign.md`](slide-redesign.md)：既存スライドを再設計する
 - [`slide-review.md`](slide-review.md)：既存スライドを批評・改善する
 - [`writing-review.md`](writing-review.md)：文章をLint、論証、認知リズム、身体の四段階で点検する
@@ -22,6 +23,12 @@ AIがURLを読める場合は、各プロンプトと一緒に次を渡す。
 ```text
 共通原則：
 https://raw.githubusercontent.com/silovar-uk/designmd/main/DESIGN.md
+```
+
+スライド案件で一枚の設計を行う場合は、次も渡す。
+
+```text
+https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/slide-blueprint.md
 ```
 
 アプリ案件では、次も渡す。
