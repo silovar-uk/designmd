@@ -1,0 +1,735 @@
+{
+  "version": 1,
+  "places": [
+    {
+      "id": "start",
+      "label": "入口広場",
+      "action": "はじめる",
+      "description": "初めて使う人と、急いでいる人の入口。"
+    },
+    {
+      "id": "walk",
+      "label": "散歩道",
+      "action": "読む・探索する",
+      "description": "問いや理論をたどり、別のテーマへ寄り道する。"
+    },
+    {
+      "id": "workshop",
+      "label": "工房",
+      "action": "実践する",
+      "description": "工程、ガイド、パターン、ツールを使ってつくる。"
+    },
+    {
+      "id": "gallery",
+      "label": "展示室",
+      "action": "事例を見る",
+      "description": "実案件、サンプル、不採用案から判断を学ぶ。"
+    },
+    {
+      "id": "archive",
+      "label": "書庫",
+      "action": "確認する",
+      "description": "用語、出典、状態、更新履歴を確認する。"
+    }
+  ],
+  "topics": [
+    {
+      "id": "human-judgment",
+      "label": "人の判断",
+      "place": "北の丘",
+      "description": "AIや仕組みに判断の主導権を預けすぎない。",
+      "question": "誰が、何を根拠に、最後の判断を引き受けるか。",
+      "order": 10,
+      "landmarks": [
+        {
+          "label": "共通原則",
+          "url": "/designmd/#principles",
+          "kind": "読み物"
+        },
+        {
+          "label": "AIくささの6要因",
+          "url": "/designmd/#problems",
+          "kind": "診断"
+        }
+      ]
+    },
+    {
+      "id": "information-grouping",
+      "label": "情報のまとまり",
+      "place": "中央広場",
+      "description": "情報量を減らす前に、仲間、順番、声量を設計する。",
+      "question": "何が同じまとまりで、どれが先に見えるべきか。",
+      "order": 20,
+      "landmarks": [
+        {
+          "label": "雑誌の読み方と質感",
+          "url": "/designmd/#editorial",
+          "kind": "読み物"
+        },
+        {
+          "label": "一枚のスライド設計図",
+          "url": "/designmd/#slide-blueprint",
+          "kind": "実践"
+        }
+      ]
+    },
+    {
+      "id": "writing",
+      "label": "文章",
+      "place": "ことば通り",
+      "description": "意味段落、論証、認知リズム、本人の言葉を扱う。",
+      "question": "どこで意味が変わり、何を根拠に言い切るか。",
+      "order": 30,
+      "landmarks": [
+        {
+          "label": "文章ガイド",
+          "url": "/designmd/#writing-guide",
+          "kind": "実践"
+        }
+      ]
+    },
+    {
+      "id": "slides",
+      "label": "スライド",
+      "place": "見せ方街区",
+      "description": "資料全体の問いから、一枚の伝達目的と形式へ落とす。",
+      "question": "この一枚で、読み手に何を成立させるか。",
+      "order": 40,
+      "landmarks": [
+        {
+          "label": "媒体別・スライド",
+          "url": "/designmd/#slide-guide",
+          "kind": "実践"
+        }
+      ]
+    },
+    {
+      "id": "apps",
+      "label": "Web・アプリ",
+      "place": "操作市場",
+      "description": "操作、状態、入力、キーボード、端末差を設計する。",
+      "question": "利用者はいま何が起き、次に何ができると分かるか。",
+      "order": 50,
+      "landmarks": [
+        {
+          "label": "媒体別ガイド",
+          "url": "/designmd/#media",
+          "kind": "入口"
+        }
+      ]
+    },
+    {
+      "id": "ai-collaboration",
+      "label": "AIとの協働",
+      "place": "協働港",
+      "description": "出力、レビュー、検証、コメント往復を設計する。",
+      "question": "AIの出力を、どう人の理解と判断へ戻すか。",
+      "order": 60,
+      "landmarks": [
+        {
+          "label": "最短で使う",
+          "url": "/designmd/#quick-start",
+          "kind": "入口"
+        }
+      ]
+    },
+    {
+      "id": "recovery",
+      "label": "運用・回復",
+      "place": "修理と復旧の谷",
+      "description": "失敗、中断、取消、復旧、再開条件を扱う。",
+      "question": "失敗したあと、何が残り、どこから戻れるか。",
+      "order": 70,
+      "landmarks": [
+        {
+          "label": "レビュー",
+          "url": "/designmd/#review",
+          "kind": "確認"
+        }
+      ]
+    }
+  ],
+  "content": {
+    "identity": {
+      "home": "start",
+      "topics": [
+        "human-judgment",
+        "ai-collaboration"
+      ],
+      "intents": [
+        "understand",
+        "reference"
+      ],
+      "use_when": [
+        "designmdの中心思想と適用範囲を確認する"
+      ],
+      "avoid_when": [
+        "個別媒体の具体的な制作手順だけが必要"
+      ],
+      "relations": {
+        "deepens": [
+          "staged-production"
+        ],
+        "applies": [
+          "decision-log-tool"
+        ],
+        "detour": [
+          "case-rhw-slide-blueprint"
+        ]
+      }
+    },
+    "staged-production": {
+      "home": "workshop",
+      "topics": [
+        "human-judgment",
+        "ai-collaboration"
+      ],
+      "intents": [
+        "create",
+        "plan"
+      ],
+      "use_when": [
+        "完成版を一度に作らず工程を分けたい",
+        "途中の判断と検証条件を残したい"
+      ],
+      "avoid_when": [
+        "表記修正だけで目的と構造が変わらない"
+      ],
+      "relations": {
+        "deepens": [
+          "identity"
+        ],
+        "applies": [
+          "content-production"
+        ],
+        "detour": [
+          "case-rhw-slide-blueprint"
+        ]
+      }
+    },
+    "content-production": {
+      "home": "workshop",
+      "topics": [
+        "writing",
+        "slides",
+        "information-grouping"
+      ],
+      "intents": [
+        "create",
+        "edit"
+      ],
+      "use_when": [
+        "原材料を文章や資料へ構成する",
+        "意味段落と媒体の役割を整理する"
+      ],
+      "avoid_when": [
+        "事実確認だけを行う"
+      ],
+      "relations": {
+        "deepens": [
+          "staged-production"
+        ],
+        "applies": [
+          "case-rhw-slide-blueprint"
+        ],
+        "detour": [
+          "system-interaction"
+        ]
+      }
+    },
+    "system-interaction": {
+      "home": "workshop",
+      "topics": [
+        "apps",
+        "recovery",
+        "human-judgment"
+      ],
+      "intents": [
+        "create",
+        "review"
+      ],
+      "use_when": [
+        "画面の操作、状態、入力保持を設計する",
+        "キーボードや端末差を扱う"
+      ],
+      "avoid_when": [
+        "静的な読み物だけを作る"
+      ],
+      "relations": {
+        "deepens": [
+          "operational-resilience"
+        ],
+        "applies": [
+          "case-keygrid"
+        ],
+        "detour": [
+          "content-production"
+        ]
+      }
+    },
+    "operational-resilience": {
+      "home": "workshop",
+      "topics": [
+        "recovery",
+        "apps"
+      ],
+      "intents": [
+        "create",
+        "review"
+      ],
+      "use_when": [
+        "失敗、中断、取消、復旧を設計する",
+        "通常手順以外の経路が必要"
+      ],
+      "avoid_when": [
+        "一度きりで復旧経路を持たない試作品"
+      ],
+      "relations": {
+        "deepens": [
+          "system-interaction"
+        ],
+        "applies": [
+          "case-mydailylog"
+        ],
+        "detour": [
+          "review-tool"
+        ]
+      }
+    },
+    "evidence-data-ai": {
+      "home": "workshop",
+      "topics": [
+        "human-judgment",
+        "ai-collaboration"
+      ],
+      "intents": [
+        "verify",
+        "reference"
+      ],
+      "use_when": [
+        "事実、解釈、仮説、提案を分ける",
+        "AI出力や外部情報を検証する"
+      ],
+      "avoid_when": [
+        "創作で事実性を要求しない箇所"
+      ],
+      "relations": {
+        "deepens": [
+          "identity"
+        ],
+        "applies": [
+          "review-tool"
+        ],
+        "detour": [
+          "case-rhw-slide-blueprint"
+        ]
+      }
+    },
+    "review-tool": {
+      "home": "workshop",
+      "topics": [
+        "human-judgment",
+        "recovery"
+      ],
+      "intents": [
+        "review"
+      ],
+      "use_when": [
+        "問題の深さと戻る工程を判定する"
+      ],
+      "avoid_when": [
+        "目的や原材料がまだ存在しない"
+      ],
+      "relations": {
+        "deepens": [
+          "evidence-data-ai"
+        ],
+        "applies": [
+          "decision-log-tool"
+        ],
+        "detour": [
+          "case-keygrid"
+        ]
+      }
+    },
+    "decision-log-tool": {
+      "home": "workshop",
+      "topics": [
+        "human-judgment",
+        "recovery"
+      ],
+      "intents": [
+        "record",
+        "review"
+      ],
+      "use_when": [
+        "採用理由、不採用案、未確認事項を残す"
+      ],
+      "avoid_when": [
+        "判断が発生しない単純作業"
+      ],
+      "relations": {
+        "deepens": [
+          "identity"
+        ],
+        "applies": [
+          "staged-production"
+        ],
+        "detour": [
+          "case-contents-library"
+        ]
+      }
+    },
+    "case-keygrid": {
+      "home": "gallery",
+      "topics": [
+        "apps",
+        "recovery",
+        "human-judgment"
+      ],
+      "intents": [
+        "learn",
+        "review"
+      ],
+      "use_when": [
+        "自動操作の安全性と副作用を考える"
+      ],
+      "avoid_when": [
+        "一般的なUIルールだけを探す"
+      ],
+      "relations": {
+        "deepens": [
+          "system-interaction"
+        ],
+        "applies": [
+          "operational-resilience"
+        ],
+        "detour": [
+          "case-mydailylog"
+        ]
+      }
+    },
+    "case-mydailylog": {
+      "home": "gallery",
+      "topics": [
+        "apps",
+        "recovery"
+      ],
+      "intents": [
+        "learn"
+      ],
+      "use_when": [
+        "入力保持と再開経路の実例を見る"
+      ],
+      "avoid_when": [
+        "文章やスライドの例だけが必要"
+      ],
+      "relations": {
+        "deepens": [
+          "operational-resilience"
+        ],
+        "applies": [
+          "system-interaction"
+        ],
+        "detour": [
+          "case-contents-library"
+        ]
+      }
+    },
+    "case-contents-library": {
+      "home": "gallery",
+      "topics": [
+        "apps",
+        "recovery",
+        "human-judgment"
+      ],
+      "intents": [
+        "learn",
+        "review"
+      ],
+      "use_when": [
+        "大量データ反映、取消、検証単位の事例を見る"
+      ],
+      "avoid_when": [
+        "小規模な静的コンテンツだけを扱う"
+      ],
+      "relations": {
+        "deepens": [
+          "operational-resilience"
+        ],
+        "applies": [
+          "decision-log-tool"
+        ],
+        "detour": [
+          "case-rhw-slide-blueprint"
+        ]
+      }
+    },
+    "case-rhw-slide-blueprint": {
+      "home": "gallery",
+      "topics": [
+        "slides",
+        "ai-collaboration",
+        "information-grouping",
+        "human-judgment"
+      ],
+      "intents": [
+        "learn",
+        "create"
+      ],
+      "use_when": [
+        "長文をスライドへ変換する設計例を見る",
+        "AI出力のレビュー往復を考える"
+      ],
+      "avoid_when": [
+        "記事内容のファクトチェック結果を求める"
+      ],
+      "relations": {
+        "deepens": [
+          "content-production"
+        ],
+        "applies": [
+          "staged-production"
+        ],
+        "detour": [
+          "evidence-data-ai"
+        ]
+      }
+    }
+  },
+  "routes": [
+    {
+      "id": "name-the-good",
+      "title": "「なんか良い」を言葉にする散歩",
+      "duration": "15分",
+      "mood": "なんとなく気になる",
+      "topics": [
+        "information-grouping",
+        "slides",
+        "writing"
+      ],
+      "description": "見た目の違和感を、まとまり、階層、媒体の役割へほどく。",
+      "stops": [
+        {
+          "label": "AIくささの6要因",
+          "url": "/designmd/#problems",
+          "note": "違和感を六つの原因へ分ける"
+        },
+        {
+          "label": "雑誌の読み方と質感",
+          "url": "/designmd/#editorial",
+          "note": "読み方と物性を分ける"
+        },
+        {
+          "id": "content-production",
+          "note": "意味段落と媒体の仕事へ戻す"
+        },
+        {
+          "id": "case-rhw-slide-blueprint",
+          "note": "長文を10枚へ変える実例を見る"
+        }
+      ]
+    },
+    {
+      "id": "longform-to-slides",
+      "title": "長文を資料へ変える散歩",
+      "duration": "20分",
+      "mood": "すぐ使いたい",
+      "topics": [
+        "writing",
+        "slides",
+        "information-grouping"
+      ],
+      "description": "原材料を消さず、ページの役割と一枚の設計へ進む。",
+      "stops": [
+        {
+          "id": "content-production",
+          "note": "原材料と意味段落を整理する"
+        },
+        {
+          "label": "媒体別・スライド",
+          "url": "/designmd/#slide-guide",
+          "note": "ページ役割から形式を選ぶ"
+        },
+        {
+          "id": "case-rhw-slide-blueprint",
+          "note": "ストーリーボードの実例を見る"
+        },
+        {
+          "id": "review-tool",
+          "note": "戻る工程を確認する"
+        }
+      ]
+    },
+    {
+      "id": "reviewable-ai",
+      "title": "AI出力を検証可能にする散歩",
+      "duration": "20分",
+      "mood": "一つ深掘りしたい",
+      "topics": [
+        "ai-collaboration",
+        "human-judgment",
+        "recovery"
+      ],
+      "description": "読みやすさだけでなく、指摘、修正、判断履歴まで設計する。",
+      "stops": [
+        {
+          "id": "evidence-data-ai",
+          "note": "事実と解釈を分ける"
+        },
+        {
+          "label": "最短で使う",
+          "url": "/designmd/#quick-start",
+          "note": "AIへ渡す正典を絞る"
+        },
+        {
+          "id": "case-rhw-slide-blueprint",
+          "note": "ArtifactとRHWの違いを見る"
+        },
+        {
+          "id": "operational-resilience",
+          "note": "失敗後の戻り方を設計する"
+        }
+      ]
+    },
+    {
+      "id": "recover-from-failure",
+      "title": "うまくいかなかった所から歩く",
+      "duration": "15分",
+      "mood": "うまくいかなかった",
+      "topics": [
+        "recovery",
+        "apps",
+        "human-judgment"
+      ],
+      "description": "表面的な修正ではなく、状態、入力、回復経路へ戻る。",
+      "stops": [
+        {
+          "id": "system-interaction",
+          "note": "操作と状態を分ける"
+        },
+        {
+          "id": "case-keygrid",
+          "note": "検証の副作用を見る"
+        },
+        {
+          "id": "operational-resilience",
+          "note": "復旧と再開条件を決める"
+        },
+        {
+          "id": "decision-log-tool",
+          "note": "判断理由を残す"
+        }
+      ]
+    }
+  ],
+  "packs": [
+    {
+      "id": "writing",
+      "title": "文章制作",
+      "description": "意味段落、論証、本人の言葉を保つ。",
+      "primary": [
+        "identity",
+        "content-production"
+      ],
+      "examples": [],
+      "sources": [
+        "https://raw.githubusercontent.com/silovar-uk/designmd/main/DESIGN.md",
+        "https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/writing.md"
+      ]
+    },
+    {
+      "id": "slides",
+      "title": "スライド制作",
+      "description": "資料全体の問いから一枚の設計、納品まで。",
+      "primary": [
+        "identity",
+        "staged-production",
+        "content-production"
+      ],
+      "examples": [
+        "case-rhw-slide-blueprint"
+      ],
+      "sources": [
+        "https://raw.githubusercontent.com/silovar-uk/designmd/main/SLIDE_BLUEPRINT.md",
+        "https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/slides.md"
+      ]
+    },
+    {
+      "id": "apps",
+      "title": "Web・アプリ",
+      "description": "操作、状態、入力保持、回復を設計する。",
+      "primary": [
+        "identity",
+        "system-interaction",
+        "operational-resilience"
+      ],
+      "examples": [
+        "case-keygrid",
+        "case-mydailylog"
+      ],
+      "sources": [
+        "https://raw.githubusercontent.com/silovar-uk/designmd/main/APP_MANUAL.md"
+      ]
+    },
+    {
+      "id": "ai-collaboration",
+      "title": "AIとの協働",
+      "description": "出力、検証、レビュー往復、判断主体を扱う。",
+      "primary": [
+        "identity",
+        "staged-production",
+        "evidence-data-ai"
+      ],
+      "examples": [
+        "case-rhw-slide-blueprint"
+      ],
+      "sources": [
+        "https://raw.githubusercontent.com/silovar-uk/designmd/main/DESIGN.md"
+      ]
+    },
+    {
+      "id": "review",
+      "title": "レビュー",
+      "description": "問題を見つけ、戻る工程と判断理由を残す。",
+      "primary": [
+        "evidence-data-ai",
+        "review-tool",
+        "decision-log-tool"
+      ],
+      "examples": [
+        "case-keygrid"
+      ],
+      "sources": [
+        "https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/review-checklist.md"
+      ]
+    },
+    {
+      "id": "recovery",
+      "title": "運用・回復",
+      "description": "失敗、中断、取消、復旧、再開条件を扱う。",
+      "primary": [
+        "system-interaction",
+        "operational-resilience",
+        "decision-log-tool"
+      ],
+      "examples": [
+        "case-keygrid",
+        "case-mydailylog",
+        "case-contents-library"
+      ],
+      "sources": [
+        "https://raw.githubusercontent.com/silovar-uk/designmd/main/APP_MANUAL.md"
+      ]
+    }
+  ],
+  "priority": [
+    "principle:stable",
+    "guide:stable",
+    "pattern:stable",
+    "guide:experimental",
+    "case",
+    "essay",
+    "reference"
+  ]
+}
