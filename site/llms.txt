@@ -5,6 +5,7 @@ Knowledge map: https://silovar-uk.github.io/designmd/knowledge-map.json
 AI manifest: https://silovar-uk.github.io/designmd/ai-manifest.json
 Canonical integrated guide: https://raw.githubusercontent.com/silovar-uk/designmd/main/DESIGN.md
 Slide supplement: https://raw.githubusercontent.com/silovar-uk/designmd/main/SLIDE_BLUEPRINT.md
+Slide visual grammar: https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/slide-visual-grammar.md
 App/manual supplement: https://raw.githubusercontent.com/silovar-uk/designmd/main/APP_MANUAL.md
 
 ## Context packs
