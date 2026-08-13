@@ -7,7 +7,7 @@ area: build
 status: experimental
 updated_at: 2026-08-13
 slug: /guides/build/slide-visual-grammar/
-principles: ["avoid-uniformity", "keep-decision-owner", "fit-medium"]
+principles: ["keep-decision-owner"]
 related: ["content-production", "deck-grammar", "case-manual-slide-grammar"]
 order: 30
 ---
