@@ -6,6 +6,7 @@ AI manifest: https://silovar-uk.github.io/designmd/ai-manifest.json
 Canonical integrated guide: https://raw.githubusercontent.com/silovar-uk/designmd/main/DESIGN.md
 Slide supplement: https://raw.githubusercontent.com/silovar-uk/designmd/main/SLIDE_BLUEPRINT.md
 Slide visual grammar: https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/slide-visual-grammar.md
+Deck grammar: https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/deck-grammar.md
 App/manual supplement: https://raw.githubusercontent.com/silovar-uk/designmd/main/APP_MANUAL.md
 
 ## Context packs
@@ -16,4 +17,4 @@ App/manual supplement: https://raw.githubusercontent.com/silovar-uk/designmd/mai
 - Review: https://silovar-uk.github.io/designmd/context-packs/review.md
 - Recovery: https://silovar-uk.github.io/designmd/context-packs/recovery.md
 
-Read stable principles and guides before experimental guidance. Treat cases as examples. Check use_when, avoid_when, status, and updated dates.
+For multi-page slide work, read Deck Grammar before page-level Slide Visual Grammar. Read stable principles and guides before experimental guidance. Treat cases as examples. Check use_when, avoid_when, status, and updated dates.
