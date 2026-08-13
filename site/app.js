@@ -55,6 +55,7 @@
       loadStylesheet('./line-composition.css?v=20260727-1', 'data-line-composition-style'),
       loadStylesheet('./slide-blueprint.css?v=20260805-1', 'data-slide-blueprint-style'),
       loadStylesheet('./slide-visual-lab.css?v=20260813-1', 'data-slide-visual-lab-style'),
+      loadStylesheet('./slide-thai-case.css?v=20260813-1', 'data-slide-thai-case-style'),
       loadStylesheet('./knowledge-map.css?v=20260806-1', 'data-knowledge-map-style')
     ]);
 
@@ -66,6 +67,7 @@
       loadScript('./line-composition.js?v=20260727-1', 'data-line-composition-script', '#line-composition'),
       loadScript('./slide-blueprint.js?v=20260805-1', 'data-slide-blueprint-script', '#slide-blueprint'),
       loadScript('./slide-visual-lab.js?v=20260813-1', 'data-slide-visual-lab-script', '#slide-visual-lab'),
+      loadScript('./slide-thai-case.js?v=20260813-1', 'data-slide-thai-case-script', '#slide-thai-case'),
       loadScript('./knowledge-map.js?v=20260806-1', 'data-knowledge-map-script', '#knowledge-map')
     ]);
   };
