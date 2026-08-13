@@ -8,6 +8,9 @@
 一枚の設計図：
 https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/slide-blueprint.md
 
+スライドの視覚文法：
+https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/slide-visual-grammar.md
+
 スライド全般：
 https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/slides.md
 
@@ -62,6 +65,24 @@ https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/font-policy.md
 
 すべての部品を置かず、不要な部品と、その理由も示してください。
 
+次に、視覚文法を二層で決めてください。
+
+1. 共通文法
+   - 基底面／構造面／アクセント面／前景の明度階層
+   - 本文を1とした文字サイズの段差
+   - 一枚の巨大要素の有無と意味
+   - 群内／群間／外周の余白差
+   - 支配的な読み方向
+   - 反復モチーフの意味
+   - 背景変更とフェーズ転換の関係
+   - 画像の役割
+
+2. ページパターン
+   - 意味パターン：S1〜S7
+   - 構図パターン：V1〜V6
+
+パターンを使うために内容を変形しないでください。該当しない場合は「既存パターン不使用」としてください。
+
 # 必須条件
 
 - 一枚一メッセージを、一枚一断言にしない
@@ -73,6 +94,11 @@ https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/font-policy.md
 - まとまり同士の声量を変える
 - 箇条書きで十分な内容をカード化しない
 - 図形化しても新しい関係が増えない場合は、文章、表、箇条書きへ戻す
+- 色相や特定のカード形状を案件横断の固定テンプレートにしない
+- 広い色面ほど弱いコントラスト、狭い色面ほど強いコントラストを基本にする
+- 巨大数字、大写真、大見出しなど複数の巨大要素を競合させない
+- 反復モチーフには現在地、進捗、分類などの意味を持たせる
+- 低コントラストの色差だけで重要な意味を表さない
 - 外部事実、数字、引用には注釈と出所を付ける
 - PowerPointの日本語フォントはNoto Sans JPにする
 - 元資料にない事実、因果、評価を創作しない
@@ -93,17 +119,25 @@ https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/font-policy.md
 
 各部品について、採用／不採用と理由を示す。
 
-## C. 形式案
+## C. 視覚文法
+
+- 共通文法で今回固定するもの
+- 意味パターン S1〜S7 の選択
+- 構図パターン V1〜V6 の選択
+- 選ばなかった代表候補と理由
+- 資料全体で固定するもの／このページで変えるもの
+
+## D. 形式案
 
 最低2案を比較し、推奨案を一つ選ぶ。
 外見の違いだけでなく、理解、比較、判断のしやすさで比較する。
 
-## D. 低忠実度ワイヤーフレーム
+## E. 低忠実度ワイヤーフレーム
 
 白黒の箱と文字だけで、位置関係、まとまり、視線の入口を文章またはASCIIで示す。
 すべてのページへ使い回せる固定テンプレートにはしない。
 
-## E. 完成用テキスト
+## F. 完成用テキスト
 
 - タイトル
 - キーメッセージ（必要な場合だけ）
@@ -112,7 +146,7 @@ https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/font-policy.md
 - 出所
 - ノート欄の文章
 
-## F. 10秒テスト
+## G. 10秒テスト
 
 次に答えられるか自己点検する。
 
