@@ -1,6 +1,6 @@
 # 一枚のスライド設計サプリメント
 
-> designmd `2026.08.05-beta`
+> designmd `2026.08.13-beta`
 
 この文書は、[`DESIGN.md`](DESIGN.md)へ追加して使う。資料全体の構成を決めた後、PowerPoint上で一枚を組み始める前の判断をまとめたもの。
 
@@ -94,6 +94,54 @@
 > 情報を減らす前に、仲間をつくる。  
 > 仲間をつくったら、順番をつける。
 
+## 視覚文法は「共通」と「パターン」に分ける
+
+レイアウトをテンプレートとして固定せず、二層で設計する。
+
+### 共通文法
+
+資料全体で共有する。
+
+- **明度階層**：基底面／構造面／アクセント面／前景を分ける
+- **文字サイズ比**：本文を1とし、カード見出し1.4〜1.7、タイトル2.4〜3.4を初期目安にする
+- **巨大要素**：大きな数字、短語、写真などは原則一つ。意味がある場合だけ使う
+- **余白**：群内 < 群間 < 外周の関係をつくる
+- **読み方向**：左→右、上→下、左右比較など、一枚の支配方向を一つ決める
+- **反復**：同じ形を繰り返す場合は、現在地、進捗、分類などの意味を持たせる
+- **フェーズ転換**：背景や基調の変更は、問題→解決、事実→判断など内容の転換へ対応させる
+- **画像**：証拠／現物／具体例／状態／比較／空間／人物の役割を一語で言える場合だけ置く
+
+色そのものを固定しない。広い面ほど弱いコントラスト、狭い面ほど強いコントラストを許す。
+
+### 意味パターン
+
+何を伝えるかで選ぶ。
+
+- **S1 段階診断**：どこで止まっているか
+- **S2 比較・反転**：A/B、現状/理想、Before/After
+- **S3 障害・具体例**：抽象的な問題を現場へ落とす
+- **S4 打ち手→到達状態**：施策と目標状態をつなぐ
+- **S5 現在地ナビ**：シリーズ内の位置を示す
+- **S6 因果・プロセス**：流れ、分岐、条件を理解させる
+- **S7 全体回収**：既出内容を一枚で構造化する
+
+### 構図パターン
+
+どう見せるかで選ぶ。
+
+- **V1 Hero + Evidence**：巨大な番号・短語＋具体例
+- **V2 Action → Outcome**：打ち手→変化→到達状態
+- **V3 Split Contrast**：左右または上下の比較
+- **V4 Sequence Navigator**：3〜5段階の現在地
+- **V5 Decision Flow**：条件分岐を含むフロー
+- **V6 Single Claim + Proof**：結論＋根拠
+
+意味パターンと構図パターンは別に選ぶ。パターンを使うために内容を変形しない。
+
+詳細：[`docs/slide-visual-grammar.md`](docs/slide-visual-grammar.md)
+
+分析元と、別の専門家視点による批評：[`docs/references/manual-slide-grammar-case.md`](docs/references/manual-slide-grammar-case.md)
+
 ## 10秒テスト
 
 第三者が次に答えられるか確認する。
@@ -111,6 +159,8 @@
 - 根拠以上の意味、因果、感情を創作しない
 - 高密度ページそのものを悪としない
 - 全ページを同じ構造へ入れない
+- 色相やカード形状を案件横断の固定テンプレートにしない
+- 低コントラストの色差だけで重要な意味を表さない
 
 詳細：[`docs/slide-blueprint.md`](docs/slide-blueprint.md)
 
@@ -122,6 +172,9 @@ https://raw.githubusercontent.com/silovar-uk/designmd/main/DESIGN.md
 
 一枚のスライド設計：
 https://raw.githubusercontent.com/silovar-uk/designmd/main/SLIDE_BLUEPRINT.md
+
+スライドの視覚文法：
+https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/slide-visual-grammar.md
 ```
 
 用途別プロンプト：[`prompts/slide-blueprint.md`](prompts/slide-blueprint.md)
