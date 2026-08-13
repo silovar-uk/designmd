@@ -7,6 +7,41 @@
 > PowerPointを開く前に、その一枚が誰へ何を成立させるのかを決める。  
 > 一枚の中心を決めても、全ページを同じ形にはしない。
 
+## まず資料全体を設計する
+
+3枚以上の資料では、一枚の設計より先に [`docs/deck-grammar.md`](docs/deck-grammar.md) を使う。
+
+先に決めるのは、
+
+- 資料全体の問い
+- フェーズ
+- 各ページの役割
+- 固定するもの
+- 意味がある場合だけ反復するもの
+- 積極的に変えるもの
+- 3〜5枚単位の密度リズム
+
+である。
+
+一枚の成功要因を、資料全体のテンプレートへ拡大しない。
+
+```text
+資料全体の問い
+↓
+Deck Grammar
+  フェーズ
+  固定／反復／変化
+  静／標準／密／動
+↓
+各ページの役割
+↓
+Slide Visual Grammar
+↓
+代表3ページを低忠実度で横並び確認
+↓
+全体制作
+```
+
 ## 一枚の二軸
 
 ### 伝達目的
@@ -140,7 +175,22 @@
 
 詳細：[`docs/slide-visual-grammar.md`](docs/slide-visual-grammar.md)
 
+資料全体の反復と変化：[`docs/deck-grammar.md`](docs/deck-grammar.md)
+
 分析元と、別の専門家視点による批評：[`docs/references/manual-slide-grammar-case.md`](docs/references/manual-slide-grammar-case.md)
+
+## 3〜5枚レビュー
+
+複数ページの資料では、10秒テストの前に3〜5枚を横に並べる。
+
+- 同じ構図が3枚以上続いていないか
+- 巨大数字や大写真など強い手法が連続していないか
+- 静／標準／密／動のリズムがあるか
+- 主役位置が固定され過ぎていないか
+- 背景変更がフェーズ転換と対応しているか
+- 反復モチーフに「何を覚えてほしいか」という意味があるか
+
+同じ資料には見せる。同じページには見せない。
 
 ## 10秒テスト
 
@@ -161,6 +211,7 @@
 - 全ページを同じ構造へ入れない
 - 色相やカード形状を案件横断の固定テンプレートにしない
 - 低コントラストの色差だけで重要な意味を表さない
+- 一枚の成功要因を資料全体のテンプレートへ拡大しない
 
 詳細：[`docs/slide-blueprint.md`](docs/slide-blueprint.md)
 
@@ -175,6 +226,12 @@ https://raw.githubusercontent.com/silovar-uk/designmd/main/SLIDE_BLUEPRINT.md
 
 スライドの視覚文法：
 https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/slide-visual-grammar.md
+
+資料全体の構成文法：
+https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/deck-grammar.md
 ```
 
-用途別プロンプト：[`prompts/slide-blueprint.md`](prompts/slide-blueprint.md)
+用途別プロンプト：
+
+- 一枚：[`prompts/slide-blueprint.md`](prompts/slide-blueprint.md)
+- 複数ページ：[`prompts/deck-blueprint.md`](prompts/deck-blueprint.md)
