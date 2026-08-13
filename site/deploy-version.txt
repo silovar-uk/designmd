@@ -1,2 +1,2 @@
-designmd 2026.07.18-beta
-reconstructed site deployment
+designmd 2026.08.13-beta
+optical balance iconography experiment
