@@ -34,7 +34,7 @@
   "secondary": [
     {
       "label": "ケース",
-      "items": ["case-keygrid", "case-mydailylog", "case-contents-library", "case-rhw-slide-blueprint", "case-manual-slide-grammar"]
+      "items": ["case-keygrid", "case-mydailylog", "case-contents-library", "case-rhw-slide-blueprint", "case-manual-slide-grammar", "case-thai-slide-redesign"]
     },
     {
       "label": "ツール",
