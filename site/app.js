@@ -148,6 +148,22 @@
     writingBody.appendChild(paragraph);
   };
 
+  const addOpticalBalanceLink = () => {
+    const principles = document.querySelector('#principles');
+    if (!principles || principles.querySelector('[data-optical-balance-link]')) return;
+
+    const paragraph = document.createElement('p');
+    paragraph.setAttribute('data-optical-balance-link', '');
+    paragraph.style.marginTop = '18px';
+
+    const link = document.createElement('a');
+    link.href = './optical-balance.html';
+    link.textContent = 'Web・アプリ：光学バランスとUIアイコンを見る →';
+
+    paragraph.appendChild(link);
+    principles.appendChild(paragraph);
+  };
+
   const finishBoot = () => {
     const root = document.documentElement;
     root.classList.add('is-ready');
@@ -156,6 +172,7 @@
 
   loadAddedPrinciples().finally(() => {
     addMeetingMinutesLink();
+    addOpticalBalanceLink();
     bindCopyButtons();
     bindReviewChecklist();
     window.requestAnimationFrame(() => {
