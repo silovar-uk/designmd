@@ -47,6 +47,7 @@
   "canonical_sources": [
     "https://raw.githubusercontent.com/silovar-uk/designmd/main/DESIGN.md",
     "https://raw.githubusercontent.com/silovar-uk/designmd/main/SLIDE_BLUEPRINT.md",
+    "https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/slide-visual-grammar.md",
     "https://raw.githubusercontent.com/silovar-uk/designmd/main/APP_MANUAL.md"
   ],
   "note": "Use knowledge-map.json for status, use_when, avoid_when, topics, and typed relations. Cases are examples, not universal rules."
