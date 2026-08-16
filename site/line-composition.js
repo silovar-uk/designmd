@@ -14,26 +14,27 @@
   section.setAttribute('aria-labelledby', 'line-composition-title');
   section.innerHTML = `
     <header class="line-composition__head">
-      <p class="line-composition__eyebrow">LINE COMPOSITION FOR THE WEB</p>
-      <h2 id="line-composition-title">改行を置くのではなく、<br>改行できる条件を設計する。</h2>
-      <p>紙の固定された版面を再現しない。意味のまとまり、行幅、禁則、読ませる速度を決め、画面幅に応じて行末は流動させる。</p>
+      <p class="line-composition__eyebrow">JAPANESE LINE COMPOSITION</p>
+      <h2 id="line-composition-title">「改行できる」と、<br>「そこで改行したい」は別。</h2>
+      <p>ブラウザが合法な位置で折り返していても、語や意味のまとまりが壊れれば読みにくい。行末を固定するのではなく、守る単位と調整の順序を設計する。</p>
     </header>
 
     <div class="line-composition__principles">
-      <article><b>意味は固定</b><p>固有名詞、数字と単位、強調句など、壊してはいけない単位を先に決める。</p></article>
-      <article><b>行末は流動</b><p>PCで美しい一行を全端末へ強制せず、幅と文字倍率の変化を受け入れる。</p></article>
-      <article><b>変化を検査</b><p>代表幅だけでなく、幅を連続的に動かし、不自然になる瞬間を探す。</p></article>
+      <article><b>規則 → 語 → 意味</b><p>禁則を守った上で、短い見出しでは固有名詞、外来語、文節など認識のまとまりまで見る。</p></article>
+      <article><b>一行ではなくリズム</b><p>最終行だけ短い、一語だけ孤立する、短い行が連続する状態を、複数行全体で確認する。</p></article>
+      <article><b>行末は可変</b><p>PCで美しい位置を全端末へ強制せず、幅、文字拡大、文言の変化に耐える条件をつくる。</p></article>
     </div>
 
     <div class="line-composition__lab">
       <div class="line-composition__controls">
         <label>試す見出し
-          <textarea data-line-title>紙雑誌のような編集密度を、変化するWebページへ持ち込む</textarea>
+          <textarea data-line-title>AIがつくったページで感じる日本語改行の違和感</textarea>
         </label>
         <label>折り返し方法
           <select data-line-mode>
-            <option value="default">ブラウザの通常折り返し</option>
-            <option value="balanced" selected>見出しを均衡させる</option>
+            <option value="default">通常の折り返し</option>
+            <option value="balanced" selected>複数行を均衡させる</option>
+            <option value="phrase">自然なフレーズを優先する</option>
             <option value="nowrap">折り返さない</option>
           </select>
         </label>
@@ -43,13 +44,13 @@
             <output data-line-width-output>23em</output>
           </span>
         </label>
-        <p class="line-composition__preview-note" data-line-note>短い見出しでは行ごとの文字量を均衡させる。未対応ブラウザでは通常折り返しへ戻る。</p>
+        <p class="line-composition__preview-note" data-line-note>短い見出しでは複数行全体の形を見る。未対応ブラウザでは通常の折り返しへ戻る。</p>
       </div>
 
       <div class="line-composition__preview-shell">
         <article class="line-composition__preview" data-line-preview data-wrap-mode="balanced">
           <small>LIVE WRAP PREVIEW</small>
-          <h3 data-line-preview-title>紙雑誌のような編集密度を、変化するWebページへ持ち込む</h3>
+          <h3 data-line-preview-title>AIがつくったページで感じる日本語改行の違和感</h3>
         </article>
       </div>
     </div>
@@ -59,19 +60,23 @@
         <h3>AIが先に決めるもの</h3>
         <ul>
           <li>見出しの役割と最大行数</li>
-          <li>同じ行に置きたい意味のまとまり</li>
-          <li>分割禁止語、数字＋単位、固有名詞</li>
+          <li>壊したくない意味のまとまり</li>
+          <li>分割を避けたい固有名詞・外来語・数字＋単位</li>
+          <li>短い表示文字で許容する最小文字サイズ</li>
           <li>スマホで短縮可能な表現</li>
         </ul>
       </article>
       <article>
-        <h3>ブラウザへ委ねるもの</h3>
-        <ul>
-          <li>その画面幅での最終行末</li>
-          <li>文字拡大時の再折り返し</li>
-          <li>禁則と行幅の局所的な調整</li>
-          <li>未対応機能の通常折り返しへの退避</li>
-        </ul>
+        <h3>収まらない時の順番</h3>
+        <ol>
+          <li>意味を確認</li>
+          <li>文言を編集</li>
+          <li>幅・余白・配置を調整</li>
+          <li>折り返し候補を調整</li>
+          <li>必要なら字間を微調整</li>
+          <li>短い表示文字だけ下限まで縮小</li>
+          <li>最後は一行増やす</li>
+        </ol>
       </article>
     </div>
 
@@ -80,18 +85,23 @@
       <pre data-line-prompt>以下を必須要件として参照してください。
 https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/web-line-composition.md
 
-主要見出しごとに、役割、最大行数、意味のまとまり、分割禁止語、折り返し候補、スマホで短縮可能な表現を整理してから実装してください。
-固定の&lt;br&gt;は原則使わず、見出しはtext-wrap: balance、本文はtext-wrap: prettyとline-break: strictを漸進適用してください。
-nowrapは人名、日付、数字＋単位、短いタグだけに限定し、長いURLだけoverflow-wrap: anywhereで救済してください。
-320、375、768、1024、1440pxと200％文字拡大で確認し、固定した意味単位、流動させた行末、例外的な固定改行の理由を報告してください。</pre>
+日本語の改行は「改行可能な場所」と「読み手にとって望ましい場所」を分けて判断してください。
+規則 → 語 → 意味 → リズム → 可変幅の順で確認し、短い見出しでは固有名詞、外来語、複合語、文節を不自然に分割しないでください。
+固定の&lt;br&gt;は原則使わず、見出しはtext-wrap: balance、対応環境ではword-break: auto-phraseを漸進適用してください。
+本文へword-break: break-allやoverflow-wrap: anywhereを一括適用せず、長いURL・識別子だけ局所的に救済してください。
+
+収まらない場合は、意味 → 文言 → 幅・余白・配置 → 折り返し → 字間 → 短い表示文字のサイズ → 行数追加、の順で検討してください。
+本文は収めるために縮小しないでください。見出しやKVで文字サイズを調整する場合も、最小サイズを先に決め、下限を超えたら一行増やしてください。
+
+320、375、768、1024、1440pxと200％文字拡大で確認し、固定した意味単位、流動させた行末、例外的な固定改行、文字サイズ調整の下限と理由を報告してください。</pre>
     </div>
 
     <div class="line-composition__links">
       <a href="https://github.com/silovar-uk/designmd/blob/main/docs/web-line-composition.md">詳細ガイド</a>
       <a href="https://github.com/silovar-uk/designmd/blob/main/prompts/web-line-composition.md">プロンプト全文</a>
       <a href="https://www.w3.org/International/jlreq/">W3C 日本語組版</a>
-      <a href="https://alistapart.com/article/dao/">A Dao of Web Design</a>
-      <a href="https://frankchimero.com/blog/2013/what-screens-want/">What Screens Want</a>
+      <a href="https://www.unicode.org/reports/tr14/">Unicode UAX #14</a>
+      <a href="https://www.w3.org/TR/css-text-4/">CSS Text Level 4</a>
     </div>
   `;
 
@@ -106,9 +116,10 @@ nowrapは人名、日付、数字＋単位、短いタグだけに限定し、�
   const note = section.querySelector('[data-line-note]');
 
   const notes = {
-    default: '通常の折り返し。意味上の分割禁止や最大幅を別途設計しないと、偶然の行末になりやすい。',
-    balanced: '短い見出しでは行ごとの文字量を均衡させる。未対応ブラウザでは通常折り返しへ戻る。',
-    nowrap: '短いラベルでは有効。長い見出しに使うと、縮小か横はみ出しを招くため原則採用しない。'
+    default: '通常の折り返し。合法な位置で切れても、語や意味のまとまりが自然とは限らない。',
+    balanced: '短い見出しでは複数行全体の形を見る。未対応ブラウザでは通常の折り返しへ戻る。',
+    phrase: '対応環境では言語解析で自然なフレーズ内の折り返しを抑える。未対応環境では通常折り返しへ戻す。',
+    nowrap: '短いラベルや分割不能語には使える。長い見出し全体へ使うと縮小・はみ出しを招く。'
   };
 
   const sync = () => {
@@ -146,7 +157,7 @@ nowrapは人名、日付、数字＋単位、短いタグだけに限定し、�
   const sideNavList = document.querySelector('.side-nav ol');
   if (sideNavList && !sideNavList.querySelector('a[href="#line-composition"]')) {
     const item = document.createElement('li');
-    item.innerHTML = '<a href="#line-composition">行と折り返し</a>';
+    item.innerHTML = '<a href="#line-composition">日本語の改行</a>';
     const editorialLink = sideNavList.querySelector('a[href="#editorial"]')?.closest('li');
     editorialLink?.before(item);
     if (!editorialLink) sideNavList.append(item);
@@ -156,9 +167,10 @@ nowrapは人名、日付、数字＋単位、短いタグだけに限定し、�
   if (checklist && !checklist.querySelector('[data-line-review]')) {
     const reviewItems = [
       '主要見出しに、意味上の理由がない固定改行が残っている',
-      '本文の行幅が広すぎ、次の行頭へ視線を戻しにくい',
-      '助詞、固有名詞、数字と単位が不自然に分割されている',
+      '固有名詞、外来語、文節が不自然な位置で分割されている',
+      '短い行や一語だけの最終行が連続している',
       '長いURL対策のため、通常の日本語まで文字単位で割っている',
+      '収めるために本文を縮小している',
       '320〜1440pxと200％文字拡大で折り返しを確認していない'
     ];
 
@@ -175,14 +187,11 @@ nowrapは人名、日付、数字＋単位、短いタグだけに限定し、�
     const details = document.createElement('details');
     details.setAttribute('data-line-references', '');
     details.innerHTML = `
-      <summary>Webの文章・行・折り返し</summary>
+      <summary>日本語の行・折り返し</summary>
       <a href="https://www.w3.org/International/jlreq/">W3C 日本語組版処理の要件</a>
-      <a href="https://www.w3.org/TR/css-text-3/">W3C CSS Text Module</a>
-      <a href="https://developer.mozilla.org/ja/docs/Web/CSS/Reference/Properties/text-wrap">MDN text-wrap</a>
+      <a href="https://www.unicode.org/reports/tr14/">Unicode Line Breaking Algorithm</a>
+      <a href="https://www.w3.org/TR/css-text-4/">W3C CSS Text Module Level 4</a>
       <a href="https://design.digital.go.jp/dads/foundations/typography/">デジタル庁 タイポグラフィ</a>
-      <a href="https://alistapart.com/article/dao/">A Dao of Web Design</a>
-      <a href="https://frankchimero.com/blog/2013/what-screens-want/">What Screens Want</a>
-      <a href="https://www.gov.uk/government/publications/govuk-content-principles-conventions-and-research-background/govuk-content-principles-conventions-and-research-background">GOV.UK content principles</a>
     `;
     references.append(details);
   }
