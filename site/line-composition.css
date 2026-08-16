@@ -17,7 +17,7 @@
 .line-composition :where(p, li, blockquote) {
   line-break: strict;
   word-break: normal;
-  overflow-wrap: break-word;
+  overflow-wrap: normal;
   text-wrap: pretty;
 }
 
@@ -216,6 +216,17 @@
   word-break: normal;
 }
 
+.line-composition__preview[data-wrap-mode="phrase"] h3 {
+  text-wrap: balance;
+  word-break: normal;
+}
+
+@supports (word-break: auto-phrase) {
+  .line-composition__preview[data-wrap-mode="phrase"] h3 {
+    word-break: auto-phrase;
+  }
+}
+
 .line-composition__preview[data-wrap-mode="nowrap"] h3 {
   width: max-content;
   max-width: none;
@@ -248,14 +259,19 @@
   font-size: 17px;
 }
 
-.line-composition__implementation ul {
+.line-composition__implementation :where(ul, ol) {
   display: grid;
   gap: 7px;
   margin: 0;
-  padding-left: 1.15em;
+  padding-left: 1.25em;
   color: #615950;
   font-size: 12px;
   line-height: 1.65;
+}
+
+.line-composition__implementation ol li::marker {
+  color: #9b5033;
+  font-weight: 800;
 }
 
 .line-composition__prompt {
