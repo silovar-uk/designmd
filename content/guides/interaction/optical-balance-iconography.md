@@ -8,7 +8,7 @@ status: experimental
 updated_at: 2026-08-13
 verified_at: 2026-08-13
 slug: /guides/interaction/optical-balance-iconography/
-principles: ["optical-balance", "icon-system", "separate-hit-area", "avoid-glyph-dependence"]
+principles: ["keep-decision-owner"]
 related: ["system-interaction"]
 order: 35
 ---
