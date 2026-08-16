@@ -1,10 +1,10 @@
 # designmd Context Pack｜文章制作
 
-> 意味段落、論証、本人の言葉を保つ。
+> 意味段落、論証、本人の言葉を保ち、改行では意味のまとまりを壊さない。
 
-- site_version: 2026.08.06-beta
+- site_version: 2026.08.16-beta
 - pack_id: writing
-- rule: stable原則とガイドを優先し、caseは適用例として扱う
+- rule: stable原則とガイドを優先し、experimentalは適用条件とフォールバックを確認して使う
 
 ## 使い方
 
@@ -35,9 +35,25 @@
 避ける場面:
 - 事実確認だけを行う
 
+### `japanese-line-breaking`
+
+- home: workshop
+- status: experimental
+- topics: japanese-typography, line-breaking, responsive-web, headings
+
+使う場面:
+- 日本語の見出し、カード、Web記事で不自然な折り返しを減らす
+- 固有名詞や意味のまとまりを保ちながらレスポンシブ対応する
+- `<br>`、`word-break`、`text-wrap`、文字サイズ調整の優先順位を決める
+
+避ける場面:
+- 法令や既存組版規程で改行位置が固定されている
+- experimentalなCSS機能をフォールバックなしで必須化する
+
 ## 正典・追加参照
 - https://raw.githubusercontent.com/silovar-uk/designmd/main/DESIGN.md
 - https://raw.githubusercontent.com/silovar-uk/designmd/main/docs/writing.md
+- https://raw.githubusercontent.com/silovar-uk/designmd/main/content/guides/build/japanese-line-breaking.md
 
 ## 機械可読索引
 - https://silovar-uk.github.io/designmd/ai-manifest.json
