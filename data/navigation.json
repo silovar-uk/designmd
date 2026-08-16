@@ -10,7 +10,7 @@
       "id": "build",
       "label": "組み立てる",
       "description": "文章、資料、Web、実務文書を構成する。",
-      "items": ["content-production", "slide-visual-grammar", "deck-grammar"]
+      "items": ["content-production", "japanese-line-breaking", "slide-visual-grammar", "deck-grammar"]
     },
     {
       "id": "interaction",
